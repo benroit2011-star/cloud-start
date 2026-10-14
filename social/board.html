@@ -1,0 +1,543 @@
+<title>לוח שיווק נכסים</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=Suez+One&display=swap">
+<style>
+/* Layout: RTL work board — "today" list on the start side, property pipeline beside it, playbook below; stacks on phones */
+:root {
+  --bg: #eef3f1;
+  --surface: #ffffff;
+  --surface-2: #f5f8f7;
+  --ink: #17292a;
+  --muted: #566a69;
+  --line: #d3dedb;
+  --accent: #0b6b5e;
+  --accent-ink: #ffffff;
+  --accent-soft: #dcefea;
+  --citrus: #b56f00;
+  --citrus-soft: #fbefd6;
+  --danger: #b3261e;
+  --st-shoot: #56698a;
+  --st-shot: #2f7896;
+  --st-edit: #7553a3;
+  --st-ready: #b56f00;
+  --st-live: #0b6b5e;
+  --st-sold: #17292a;
+  --font-display: "Suez One", "IBM Plex Sans Hebrew", "Times New Roman", serif;
+  --font-body: "IBM Plex Sans Hebrew", "Assistant", "Segoe UI", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1918; --surface: #142322; --surface-2: #1a2c2b; --ink: #e2eeeb; --muted: #93a9a6; --line: #2a3f3d;
+    --accent: #53c2ae; --accent-ink: #0a1d1a; --accent-soft: #173a35; --citrus: #f0b450; --citrus-soft: #3a2d14; --danger: #ff8f86;
+    --st-shoot: #a3b5d0; --st-shot: #7cc1dc; --st-edit: #bc9fe3; --st-ready: #f0b450; --st-live: #53c2ae; --st-sold: #e2eeeb;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1918; --surface: #142322; --surface-2: #1a2c2b; --ink: #e2eeeb; --muted: #93a9a6; --line: #2a3f3d;
+  --accent: #53c2ae; --accent-ink: #0a1d1a; --accent-soft: #173a35; --citrus: #f0b450; --citrus-soft: #3a2d14; --danger: #ff8f86;
+  --st-shoot: #a3b5d0; --st-shot: #7cc1dc; --st-edit: #bc9fe3; --st-ready: #f0b450; --st-live: #53c2ae; --st-sold: #e2eeeb;
+  color-scheme: dark;
+}
+
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.55; }
+.page { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 56px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Header */
+.top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.eyebrow { margin: 0 0 6px; font-size: 12.5px; font-weight: 600; letter-spacing: .06em; color: var(--accent); }
+h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(32px, 6vw, 46px); line-height: 1.05; }
+.sub { margin: 8px 0 0; color: var(--muted); }
+.counts { display: flex; margin: 0; }
+.counts > div { padding: 0 18px; border-inline-start: 1px solid var(--line); }
+.counts > div:first-child { border-inline-start: 0; padding-inline-start: 0; }
+.counts dt { font-size: 12.5px; color: var(--muted); }
+.counts dd { margin: 0; font-family: var(--font-display); font-size: 30px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+
+/* Main grid */
+.grid { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 28px; margin-top: 28px; align-items: start; }
+@media (max-width: 880px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* Today */
+.today { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+@media (min-width: 881px) { .today { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); } }
+.today-head { background: var(--citrus-soft); padding: 16px 18px 14px; }
+.today-head h2 { font-family: var(--font-display); font-weight: 400; font-size: 24px; }
+.today-head p { margin: 2px 0 0; font-size: 13.5px; color: var(--muted); }
+.today-body { padding: 4px 18px 18px; }
+.today-body h3 { font-size: 13px; font-weight: 600; letter-spacing: .04em; color: var(--muted); margin: 18px 0 4px; }
+.tasks { list-style: none; margin: 0; padding: 0; }
+.task { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.task:last-child { border-bottom: 0; }
+.task .body { min-width: 0; }
+.task .what { display: block; font-weight: 500; }
+.task .where { background: none; border: 0; padding: 0; color: var(--accent); font-size: 13.5px; cursor: pointer; text-align: start; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.task .tags { display: inline-flex; gap: 6px; margin-inline-start: 6px; vertical-align: middle; }
+.tag { font-size: 11.5px; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: var(--surface-2); color: var(--muted); border: 1px solid var(--line); }
+.tag.late { background: var(--citrus-soft); color: var(--citrus); border-color: transparent; }
+.check { width: 24px; height: 24px; margin-top: 1px; border-radius: 50%; border: 1.5px solid var(--muted); background: transparent; cursor: pointer; display: grid; place-items: center; padding: 0; color: var(--accent-ink); font-size: 13px; line-height: 1; }
+.check:hover { border-color: var(--accent); background: var(--accent-soft); }
+.check.done { background: var(--accent); border-color: var(--accent); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line); margin: 8px auto 0; }
+.soon .what { font-weight: 400; color: var(--muted); }
+.empty-note { color: var(--muted); font-size: 14px; padding: 12px 0; margin: 0; }
+
+/* Board */
+.board-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.board-head h2 { font-family: var(--font-display); font-weight: 400; font-size: 26px; }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0; }
+.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 12px; font-size: 13.5px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip .n { font-variant-numeric: tabular-nums; opacity: .7; margin-inline-start: 4px; }
+
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 7px 12px; font-size: 13.5px; cursor: pointer; }
+.btn:hover { border-color: var(--muted); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+.btn.ghost { border-color: transparent; background: transparent; color: var(--muted); }
+.btn.danger { color: var(--danger); }
+.btn[disabled] { opacity: .5; cursor: default; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.card.flash { animation: flash 1.6s ease-out; }
+@keyframes flash { from { box-shadow: 0 0 0 4px var(--citrus); } to { box-shadow: 0 0 0 0 transparent; } }
+@media (prefers-reduced-motion: reduce) { .card.flash { animation: none; outline: 3px solid var(--citrus); } }
+.card-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; color: var(--c); background: color-mix(in srgb, var(--c) 13%, transparent); padding: 3px 10px; border-radius: 999px; }
+.pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.deal { font-size: 12.5px; color: var(--muted); }
+.card h3 { font-size: 17px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere; }
+.meta { margin: 0; color: var(--muted); font-size: 14px; }
+.meta .price { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.hint { margin: 0; font-size: 13.5px; color: var(--muted); background: var(--surface-2); border-radius: 8px; padding: 8px 10px; }
+.hint b { color: var(--ink); font-weight: 600; }
+.notes { margin: 0; font-size: 13.5px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.plat-label { font-size: 12px; color: var(--muted); margin: 0 0 -4px; }
+.plat { display: flex; flex-wrap: wrap; gap: 6px; }
+.pchip { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 3px 10px; font-size: 12.5px; cursor: pointer; }
+.pchip[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.pchip[aria-pressed="true"]::before { content: "✓ "; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; border-top: 1px solid var(--line); padding-top: 10px; margin-top: auto; }
+.actions select { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 6px 8px; font-size: 13.5px; max-width: 100%; }
+.actions .spacer { flex: 1; }
+.confirm { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; }
+.board-empty { background: var(--surface); border: 1px dashed var(--line); border-radius: 12px; padding: 28px 20px; text-align: center; color: var(--muted); }
+.board-empty strong { display: block; color: var(--ink); font-size: 16px; margin-bottom: 4px; }
+
+/* Form */
+.form { background: var(--surface); border: 1px solid var(--accent); border-radius: 12px; padding: 16px; margin-top: 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 12px; }
+.form h3 { grid-column: 1 / -1; font-size: 16px; }
+.form label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); min-width: 0; }
+.form input:not([type="checkbox"]), .form select, .form textarea { border: 1px solid var(--line); background: var(--surface-2); border-radius: 8px; padding: 9px 10px; font-size: 15px; width: 100%; box-sizing: border-box; }
+.form textarea { min-height: 70px; resize: vertical; }
+.form .full { grid-column: 1 / -1; }
+.form .inline { flex-direction: row; align-items: center; gap: 8px; color: var(--ink); align-self: end; padding-bottom: 10px; }
+.form .row { grid-column: 1 / -1; display: flex; gap: 8px; flex-wrap: wrap; }
+
+.status { margin: 12px 0 0; padding: 10px 12px; border-radius: 8px; background: var(--citrus-soft); color: var(--ink); font-size: 14px; }
+
+/* Playbook */
+.playbook { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--line); }
+.playbook > h2 { font-family: var(--font-display); font-weight: 400; font-size: 28px; }
+.playbook > p { margin: 6px 0 0; color: var(--muted); max-width: 62ch; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 32px; margin-top: 24px; }
+.cols article { min-width: 0; }
+.cols h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+.flow, .days, .ideas { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.flow li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; }
+.flow .num { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); font-variant-numeric: tabular-nums; }
+.flow b, .days b { display: block; }
+.flow span, .days span, .ideas span { color: var(--muted); font-size: 14px; }
+.days li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 10px; }
+.days .d { font-family: var(--font-display); font-size: 17px; color: var(--citrus); font-variant-numeric: tabular-nums; }
+.ideas li { padding-inline-start: 14px; position: relative; }
+.ideas li::before { content: ""; position: absolute; inset-inline-start: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.ideas b { font-weight: 600; }
+</style>
+
+<div class="page" dir="rtl" lang="he">
+  <header class="top">
+    <div>
+      <p class="eyebrow">שרון · כל הארץ · עסק משפחתי</p>
+      <h1>לוח שיווק נכסים</h1>
+      <p class="sub">כל נכס מהצילום ועד פוסט ה"נמכר!", ומה עושים היום.</p>
+    </div>
+    <dl class="counts" aria-label="סיכום">
+      <div><dt>בהכנה</dt><dd id="cWork">–</dd></div>
+      <div><dt>באוויר</dt><dd id="cLive">–</dd></div>
+      <div><dt>נמכרו / הושכרו</dt><dd id="cSold">–</dd></div>
+    </dl>
+  </header>
+
+  <main class="grid">
+    <section class="today" aria-labelledby="todayH">
+      <div class="today-head">
+        <h2 id="todayH">מה עושים היום</h2>
+        <p id="todayDate"></p>
+      </div>
+      <div class="today-body">
+        <ul id="todayList" class="tasks"><li><p class="empty-note">טוען את הנכסים…</p></li></ul>
+        <h3>בימים הקרובים</h3>
+        <ul id="soonList" class="tasks soon"><li><p class="empty-note">—</p></li></ul>
+      </div>
+    </section>
+
+    <section class="board" aria-labelledby="boardH">
+      <div class="board-head">
+        <h2 id="boardH">הנכסים</h2>
+        <button id="addBtn" class="btn primary" type="button">+ נכס חדש</button>
+      </div>
+      <p id="status" class="status" role="status" hidden></p>
+
+      <form id="form" class="form" hidden>
+        <h3 id="formTitle">נכס חדש</h3>
+        <label class="full">כתובת או שם הנכס
+          <input id="fTitle" required placeholder="לדוגמה: ויצמן 12, דירת 4 חד׳ עם מרפסת">
+        </label>
+        <label>עיר
+          <input id="fCity" placeholder="כפר סבא">
+        </label>
+        <label>עסקה
+          <select id="fDeal"><option>מכירה</option><option>השכרה</option></select>
+        </label>
+        <label>סוג נכס
+          <select id="fKind"><option>דירה</option><option>דירת גן</option><option>פנטהאוז</option><option>בית פרטי</option><option>דו־משפחתי</option><option>מגרש</option><option>מסחרי</option><option>משרד</option></select>
+        </label>
+        <label>מחיר (₪)
+          <input id="fPrice" inputmode="numeric" placeholder="2,850,000">
+        </label>
+        <label>חדרים
+          <input id="fRooms" inputmode="decimal" placeholder="4">
+        </label>
+        <label>שלב
+          <select id="fStage"></select>
+        </label>
+        <label>תאריך פרסום (אם כבר באוויר)
+          <input id="fPub" type="date">
+        </label>
+        <label class="inline"><input id="fExcl" type="checkbox"> בלעדיות</label>
+        <label class="full">הערות
+          <textarea id="fNotes" placeholder="מי בעל הנכס, מתי אפשר לצלם, מה מיוחד בנכס"></textarea>
+        </label>
+        <div class="row">
+          <button class="btn primary" type="submit" id="fSave">שמירה</button>
+          <button class="btn ghost" type="button" id="fCancel">ביטול</button>
+        </div>
+      </form>
+
+      <div class="filters" id="filters" aria-label="סינון"></div>
+      <div id="cards" class="cards"></div>
+    </section>
+  </main>
+
+  <section class="playbook" aria-labelledby="pbH">
+    <h2 id="pbH">שיטת העבודה</h2>
+    <p>אין שעה קבועה לצילומים, אז הסדר נקבע לפי הנכס: כל נכס עובר את אותו מסלול, וכל נכס שעולה לאוויר מקבל שבועיים של תוכן.</p>
+    <div class="cols">
+      <article>
+        <h3>המסלול של כל נכס</h3>
+        <ol class="flow">
+          <li style="--c: var(--st-shoot)"><span class="num">1</span><div><b>לצילום</b><span>אבא מצלם: תמונות אופקיות, סרטון הליכה אנכי של 30–60 שניות, חזית ונוף מהמרפסת.</span></div></li>
+          <li style="--c: var(--st-shot)"><span class="num">2</span><div><b>צולם</b><span>להעביר את החומרים לעריכה: Higgsfield, או לשלוח לקלוד שיכין רילס.</span></div></li>
+          <li style="--c: var(--st-edit)"><span class="num">3</span><div><b>בעריכה</b><span>רילס של 15–30 שניות, קרוסלה של 6–10 תמונות, כיתוב עם עיר, חדרים ומחיר.</span></div></li>
+          <li style="--c: var(--st-ready)"><span class="num">4</span><div><b>מוכן לפרסום</b><span>הכול מוכן, נשאר לפרסם ולסמן כל ערוץ בכרטיס.</span></div></li>
+          <li style="--c: var(--st-live)"><span class="num">5</span><div><b>באוויר</b><span>מתחילה חבילת ההשקה, והלוח מזכיר מה לפרסם בכל יום.</span></div></li>
+          <li style="--c: var(--st-sold)"><span class="num">6</span><div><b>נמכר / הושכר</b><span>פוסט "נמכר!" בשני העמודים. זה הפוסט שמביא את המוכר הבא.</span></div></li>
+        </ol>
+      </article>
+      <article>
+        <h3>חבילת השקה לנכס חדש</h3>
+        <ul class="days">
+          <li><span class="d">יום 0</span><div><b>רילס + פוסט בכל הערוצים</b><span>לפרסם בנפרד בעמוד של אבא (5,400 עוקבים) ובעמוד שלך (3,200), ולא רק לשתף. אחר כך אינסטגרם, טיקטוק, סטטוס וקבוצות נדל"ן באזור.</span></div></li>
+          <li><span class="d">יום 3</span><div><b>קרוסלת תמונות + סטורי</b><span>התמונות הכי טובות, וסטורי עם סקר: "הייתם גרים פה?"</span></div></li>
+          <li><span class="d">יום 7</span><div><b>סרטון שני: השכונה</b><span>בתי ספר, פארקים ותחבורה. בלי להופיע מול המצלמה: נסיעה בשכונה עם כתוביות.</span></div></li>
+          <li><span class="d">יום 14</span><div><b>"עדיין זמין" או עדכון מחיר</b><span>ושוב בקבוצות הפייסבוק. נכס שנמכר מקבל במקום זה פוסט "נמכר!".</span></div></li>
+        </ul>
+      </article>
+      <article>
+        <h3>שבוע בלי נכס חדש</h3>
+        <ul class="ideas">
+          <li><b>"נמכר!"</b> <span>על עסקה שנסגרה, עם תמונת החזית.</span></li>
+          <li><b>פוסט ביקוש</b> <span>"יש לנו קונים ל-4 חד׳ ברעננה עד 3 מיליון". פוסט כזה מביא מוכרים.</span></li>
+          <li><b>טיפ למוכרים</b> <span>"3 דברים שמעלים את מחיר הדירה לפני מכירה", כרילס עם טקסט על המסך.</span></li>
+          <li><b>מה קורה בשוק</b> <span>עסקאות אחרונות בעיר מהשרון, מנתוני נדל"ן נט.</span></li>
+          <li><b>לפני ואחרי</b> <span>דירה לפני סידור לצילום, ואחרי.</span></li>
+          <li><b>סיור בשכונה</b> <span>סרטון מהרכב עם קריינות AI, בלי שאף אחד מופיע.</span></li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</div>
+
+<script>
+(() => {
+  const STAGES = [
+    { key: 'shoot', label: 'לצילום', color: '--st-shoot', todo: 'לתאם צילום', who: 'אבא', hint: 'הצעד הבא: <b>לתאם צילום</b>. תמונות אופקיות + סרטון הליכה אנכי.' },
+    { key: 'shot', label: 'צולם', color: '--st-shot', todo: 'להעביר את החומרים לעריכה', hint: 'הצעד הבא: <b>להעביר לעריכה</b>, ב-Higgsfield או אצל קלוד.' },
+    { key: 'edit', label: 'בעריכה', color: '--st-edit', todo: 'לסיים רילס, קרוסלה וכיתוב', hint: 'הצעד הבא: <b>רילס + קרוסלה + כיתוב</b> עם עיר, חדרים ומחיר.' },
+    { key: 'ready', label: 'מוכן לפרסום', color: '--st-ready', todo: 'לפרסם בכל הערוצים' },
+    { key: 'live', label: 'באוויר', color: '--st-live' },
+    { key: 'sold', label: 'נמכר', color: '--st-sold' },
+  ];
+  const STAGE = Object.fromEntries(STAGES.map((s, i) => [s.key, { ...s, i }]));
+  const PLATFORMS = [
+    ['fbDad', 'פייסבוק אבא'], ['fbMe', 'פייסבוק שלי'], ['ig', 'אינסטגרם'], ['tt', 'טיקטוק'],
+    ['wa', 'סטטוס וואטסאפ'], ['groups', 'קבוצות נדל"ן'], ['yad2', 'יד2'],
+  ];
+  const FOLLOW = [
+    { key: 'd3', day: 3, text: 'קרוסלת תמונות + סטורי' },
+    { key: 'd7', day: 7, text: 'סרטון שני: השכונה ומה יש בסביבה' },
+    { key: 'd14', day: 14, text: '"עדיין זמין" או עדכון מחיר, ושוב בקבוצות' },
+  ];
+  const FILTERS = [
+    ['all', 'הכל', () => true],
+    ['work', 'בהכנה', p => ['shoot', 'shot', 'edit', 'ready'].includes(p.stage)],
+    ['live', 'באוויר', p => p.stage === 'live'],
+    ['sold', 'נמכרו', p => p.stage === 'sold'],
+  ];
+
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const pad = n => String(n).padStart(2, '0');
+  const ymd = d => d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  const todayStr = () => ymd(new Date());
+  const parseYmd = s => { const [y, m, d] = String(s).split('-').map(Number); return new Date(y, m - 1, d); };
+  const daysSince = s => { if (!s) return null; const t = new Date(); t.setHours(0, 0, 0, 0); return Math.round((t - parseYmd(s)) / 86400000); };
+  const shortDate = (s, n) => { const d = parseYmd(s); d.setDate(d.getDate() + n); return d.toLocaleDateString('he-IL', { weekday: 'short', day: 'numeric', month: 'numeric' }); };
+  const soldWord = p => p.deal === 'השכרה' ? 'הושכר' : 'נמכר';
+  const stageLabel = (key, p) => key === 'sold' && p ? soldWord(p) : STAGE[key]?.label || key;
+  const fmtPrice = v => { const n = Number(String(v || '').replace(/[^\d]/g, '')); return n ? n.toLocaleString('he-IL') + ' ₪' : esc(v); };
+  const missingPlatforms = p => PLATFORMS.filter(([k]) => !(p.platforms && p.platforms[k]));
+
+  let col = null, props = [], readOnly = false, loaded = false;
+  let filter = 'all', confirmDel = null, editingId = null;
+  try { filter = localStorage.getItem('board.filter') || 'all'; } catch (e) {}
+
+  $('todayDate').textContent = new Date().toLocaleDateString('he-IL', { weekday: 'long', day: 'numeric', month: 'long' });
+  $('fStage').innerHTML = STAGES.map(s => `<option value="${s.key}">${s.key === 'sold' ? 'נמכר / הושכר' : s.label}</option>`).join('');
+
+  function showStatus(msg) { const el = $('status'); el.textContent = msg || ''; el.hidden = !msg; }
+
+  /* One write at a time per document. */
+  const queues = new Map();
+  function write(id, fn) {
+    const next = (queues.get(id) || Promise.resolve()).then(fn).then(() => showStatus(''), onWriteError);
+    queues.set(id, next);
+    return next;
+  }
+  function onWriteError(e) {
+    if (e && e.code === 'invalid_argument') { setReadOnly(true); showStatus('אין הרשאת עריכה ללוח הזה. אפשר לצפות, אבל לא לשנות.'); }
+    else if (e && e.code === 'quota_exceeded') showStatus('הלוח מלא. כדאי למחוק נכסים ישנים שנמכרו מזמן ואז לנסות שוב.');
+    else showStatus('השמירה לא הצליחה. לנסות שוב בעוד רגע.');
+  }
+  function setReadOnly(v) { readOnly = v; $('addBtn').hidden = v; if (v) $('form').hidden = true; render(); }
+
+  function patch(p, data) { return write(p.id, () => col.doc(p.id).update(data)); }
+  function setStage(p, stage) {
+    const data = { stage };
+    if (stage === 'live' && !p.publishedAt) data.publishedAt = todayStr();
+    return patch(p, data);
+  }
+
+  /* Tasks derived from each property's state. */
+  function buildTasks() {
+    const today = [], soon = [];
+    for (const p of props) {
+      const s = STAGE[p.stage];
+      if (!s) continue;
+      if (['shoot', 'shot', 'edit'].includes(p.stage)) {
+        today.push({ p, kind: 'stage', what: s.todo, tags: s.who ? [s.who] : [], order: s.i });
+      } else if (p.stage === 'ready') {
+        today.push({ p, kind: 'publish', what: 'לפרסם בכל הערוצים', tags: [], order: -1 });
+      } else if (p.stage === 'live') {
+        const days = daysSince(p.publishedAt) ?? 0;
+        const miss = missingPlatforms(p);
+        if (miss.length) today.push({ p, kind: 'goto', what: 'עוד לא עלה ב: ' + miss.map(m => m[1]).join(', '), tags: [], order: 0 });
+        for (const f of FOLLOW) {
+          if (p.followups && p.followups[f.key]) continue;
+          if (days >= f.day) {
+            const late = days - f.day;
+            today.push({ p, kind: 'follow', key: f.key, what: f.text, tags: [late > 0 ? `באיחור ${late === 1 ? 'יום' : late + ' ימים'}` : 'היום'], late: late > 0, order: 1 });
+          } else {
+            soon.push({ p, what: f.text, when: shortDate(p.publishedAt || todayStr(), f.day), at: f.day - days });
+          }
+        }
+      } else if (p.stage === 'sold' && !p.soldPost) {
+        today.push({ p, kind: 'soldpost', what: `פוסט "${soldWord(p)}!" בשני העמודים + סטטוס`, tags: [], order: 2 });
+      }
+    }
+    today.sort((a, b) => a.order - b.order);
+    soon.sort((a, b) => a.at - b.at);
+    return { today, soon: soon.slice(0, 6) };
+  }
+
+  function taskHtml(t) {
+    const place = `<button class="where" type="button" data-act="goto" data-id="${t.p.id}">${esc(t.p.title)}${t.p.city ? ', ' + esc(t.p.city) : ''}</button>`;
+    const tags = t.tags.length ? `<span class="tags">${t.tags.map(x => `<span class="tag${t.late ? ' late' : ''}">${esc(x)}</span>`).join('')}</span>` : '';
+    let ctl = '<span class="dot" aria-hidden="true"></span>';
+    if (!readOnly) {
+      if (t.kind === 'stage') ctl = `<button class="check" type="button" data-act="next" data-id="${t.p.id}" title="בוצע, להעביר לשלב הבא" aria-label="בוצע: ${esc(t.what)}"></button>`;
+      if (t.kind === 'follow') ctl = `<button class="check" type="button" data-act="follow" data-key="${t.key}" data-id="${t.p.id}" title="בוצע" aria-label="בוצע: ${esc(t.what)}"></button>`;
+      if (t.kind === 'soldpost') ctl = `<button class="check" type="button" data-act="soldpost" data-id="${t.p.id}" title="בוצע" aria-label="בוצע: ${esc(t.what)}"></button>`;
+    }
+    return `<li class="task">${ctl}<div class="body"><span class="what">${esc(t.what)}${tags}</span>${place}</div></li>`;
+  }
+
+  function cardHtml(p) {
+    const s = STAGE[p.stage] || STAGE.shoot;
+    const days = p.stage === 'live' ? daysSince(p.publishedAt) : null;
+    const pill = `<span class="pill" style="--c: var(${s.color})">${esc(stageLabel(s.key, p))}${days != null ? ` · יום ${Math.max(0, days)}` : ''}</span>`;
+    const deal = [p.deal, p.kind, p.exclusive ? 'בלעדיות' : ''].filter(Boolean).map(esc).join(' · ');
+    const meta = [p.price ? `<span class="price">${fmtPrice(p.price)}</span>` : '', p.rooms ? esc(p.rooms) + ' חד׳' : '', p.city ? esc(p.city) : ''].filter(Boolean).join(' · ');
+    const showPlat = ['ready', 'live', 'sold'].includes(s.key);
+    const plat = showPlat ? `<p class="plat-label">פורסם ב:</p><div class="plat">${PLATFORMS.map(([k, l]) => {
+      const on = !!(p.platforms && p.platforms[k]);
+      return `<button class="pchip" type="button" data-act="plat" data-key="${k}" data-id="${p.id}" aria-pressed="${on}"${readOnly ? ' disabled' : ''}>${l}</button>`;
+    }).join('')}</div>` : (s.hint ? `<p class="hint">${s.hint}</p>` : '');
+    const next = STAGES[s.i + 1];
+    let actions = '';
+    if (!readOnly) {
+      if (confirmDel === p.id) {
+        actions = `<div class="actions"><div class="confirm">למחוק את הנכס מהלוח? <button class="btn danger" type="button" data-act="delyes" data-id="${p.id}">מחיקה</button><button class="btn ghost" type="button" data-act="delno">ביטול</button></div></div>`;
+      } else {
+        actions = `<div class="actions">
+          ${next ? `<button class="btn primary" type="button" data-act="next" data-id="${p.id}">העברה ל"${esc(stageLabel(next.key, p))}"</button>` : ''}
+          <select data-act="stage" data-id="${p.id}" aria-label="שלב">${STAGES.map(x => `<option value="${x.key}"${x.key === s.key ? ' selected' : ''}>${esc(stageLabel(x.key, p))}</option>`).join('')}</select>
+          <span class="spacer"></span>
+          <button class="btn ghost" type="button" data-act="edit" data-id="${p.id}">עריכה</button>
+          <button class="btn ghost danger" type="button" data-act="del" data-id="${p.id}">מחיקה</button>
+        </div>`;
+      }
+    }
+    return `<article class="card" id="card-${p.id}">
+      <div class="card-top">${pill}<span class="deal">${deal}</span></div>
+      <h3>${esc(p.title)}</h3>
+      ${meta ? `<p class="meta">${meta}</p>` : ''}
+      ${plat}
+      ${p.notes ? `<p class="notes">${esc(p.notes)}</p>` : ''}
+      ${actions}
+    </article>`;
+  }
+
+  function render() {
+    if (!loaded) return;
+    const work = props.filter(FILTERS[1][2]).length, live = props.filter(FILTERS[2][2]).length, sold = props.filter(FILTERS[3][2]).length;
+    $('cWork').textContent = work; $('cLive').textContent = live; $('cSold').textContent = sold;
+
+    const { today, soon } = buildTasks();
+    $('todayList').innerHTML = today.length ? today.map(taskHtml).join('')
+      : `<li><p class="empty-note">${props.length ? 'אין משימות פתוחות. זמן טוב לפוסט מ"שבוע בלי נכס חדש" למטה.' : 'אחרי שמוסיפים נכס, המשימות שלו יופיעו כאן.'}</p></li>`;
+    $('soonList').innerHTML = soon.length ? soon.map(t => `<li class="task"><span class="dot" aria-hidden="true"></span><div class="body"><span class="what">${esc(t.when)} · ${esc(t.what)}</span><button class="where" type="button" data-act="goto" data-id="${t.p.id}">${esc(t.p.title)}</button></div></li>`).join('')
+      : '<li><p class="empty-note">אין תזכורות מתוכננות.</p></li>';
+
+    $('filters').innerHTML = FILTERS.map(([k, l, fn]) => `<button class="chip" type="button" data-act="filter" data-key="${k}" aria-pressed="${filter === k}">${l}<span class="n">${props.filter(fn).length}</span></button>`).join('');
+
+    const fn = (FILTERS.find(f => f[0] === filter) || FILTERS[0])[2];
+    const shown = props.filter(fn);
+    $('cards').innerHTML = shown.length ? shown.map(cardHtml).join('')
+      : `<div class="board-empty"><strong>${props.length ? 'אין נכסים בסינון הזה' : 'עוד אין נכסים בלוח'}</strong>${props.length ? 'אפשר לבחור "הכל" למעלה.' : (readOnly ? 'נכסים שיתווספו יופיעו כאן.' : 'כדי להתחיל: "+ נכס חדש", שם הנכס והשלב שלו.')}</div>`;
+  }
+
+  function openForm(p) {
+    editingId = p ? p.id : null;
+    $('formTitle').textContent = p ? 'עריכת נכס' : 'נכס חדש';
+    $('fTitle').value = p?.title || '';
+    $('fCity').value = p?.city || '';
+    $('fDeal').value = p?.deal || 'מכירה';
+    $('fKind').value = p?.kind || 'דירה';
+    $('fPrice').value = p?.price || '';
+    $('fRooms').value = p?.rooms || '';
+    $('fStage').value = p?.stage || 'shoot';
+    $('fPub').value = p?.publishedAt || '';
+    $('fExcl').checked = !!p?.exclusive;
+    $('fNotes').value = p?.notes || '';
+    $('form').hidden = false;
+    $('fTitle').focus();
+  }
+  function closeForm() { $('form').hidden = true; editingId = null; }
+
+  function gotoCard(id) {
+    if (filter !== 'all' && !props.filter((FILTERS.find(f => f[0] === filter) || FILTERS[0])[2]).some(p => p.id === id)) { filter = 'all'; render(); }
+    const el = $('card-' + id);
+    if (!el) return;
+    el.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+    el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+  }
+
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-act]');
+    if (!b || b.tagName === 'SELECT') return;
+    const act = b.dataset.act, p = props.find(x => x.id === b.dataset.id);
+    if (act === 'filter') { filter = b.dataset.key; try { localStorage.setItem('board.filter', filter); } catch (err) {} render(); return; }
+    if (act === 'goto') { gotoCard(b.dataset.id); return; }
+    if (act === 'delno') { confirmDel = null; render(); return; }
+    if (!col || readOnly || !p) return;
+    if (act === 'next') { const nx = STAGES[STAGE[p.stage].i + 1]; if (nx) setStage(p, nx.key); }
+    else if (act === 'plat') { const k = b.dataset.key; patch(p, { platforms: { [k]: !(p.platforms && p.platforms[k]) } }); }
+    else if (act === 'follow') patch(p, { followups: { [b.dataset.key]: true } });
+    else if (act === 'soldpost') patch(p, { soldPost: true });
+    else if (act === 'edit') openForm(p);
+    else if (act === 'del') { confirmDel = p.id; render(); }
+    else if (act === 'delyes') { confirmDel = null; write(p.id, () => col.doc(p.id).delete()); }
+  });
+  document.addEventListener('change', e => {
+    const s = e.target.closest('select[data-act="stage"]');
+    if (!s || !col || readOnly) return;
+    const p = props.find(x => x.id === s.dataset.id);
+    if (p && s.value !== p.stage) setStage(p, s.value);
+  });
+
+  $('addBtn').addEventListener('click', () => openForm(null));
+  $('fCancel').addEventListener('click', closeForm);
+  $('form').addEventListener('submit', e => {
+    e.preventDefault();
+    if (!col || readOnly) return;
+    const title = $('fTitle').value.trim();
+    if (!title) { $('fTitle').focus(); return; }
+    const stage = $('fStage').value;
+    const data = {
+      title, city: $('fCity').value.trim(), deal: $('fDeal').value, kind: $('fKind').value,
+      price: $('fPrice').value.trim(), rooms: $('fRooms').value.trim(), stage,
+      exclusive: $('fExcl').checked, notes: $('fNotes').value.trim(),
+      publishedAt: $('fPub').value || (stage === 'live' || stage === 'sold' ? todayStr() : null),
+    };
+    if (editingId) {
+      const p = props.find(x => x.id === editingId);
+      if (p && !$('fPub').value && p.publishedAt) data.publishedAt = p.publishedAt;
+      write(editingId, () => col.doc(editingId).update(data));
+    } else {
+      const ref = col.doc();
+      write(ref.id, () => ref.set({ ...data, platforms: {}, followups: {}, soldPost: false, createdAt: new Date().toISOString() }));
+    }
+    closeForm();
+  });
+
+  (async () => {
+    const db = window.claude ? await window.claude.use('db') : null;
+    if (!db) {
+      loaded = true; readOnly = true; $('addBtn').hidden = true;
+      render();
+      showStatus('הלוח נשמר בתוך Claude. כדי לראות ולעדכן נכסים צריך לפתוח אותו מחובר לחשבון.');
+      return;
+    }
+    const user = await window.claude.use('user');
+    if (user) { try { if ((await user.can('data.write')) === false) readOnly = true; } catch (e) {} }
+    $('addBtn').hidden = readOnly;
+    col = db.collection('properties');
+    col.orderBy('createdAt', 'desc').onSnapshot(snap => {
+      props = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      loaded = true;
+      if (confirmDel && !props.some(p => p.id === confirmDel)) confirmDel = null;
+      render();
+    }, err => {
+      loaded = true; render();
+      showStatus(err && err.code === 'revoked' ? 'הגישה ללוח השתנתה. צריך לרענן את הדף.' : 'החיבור ללוח נקטע. רענון הדף יחבר אותו מחדש.');
+    });
+  })();
+})();
+</script>
