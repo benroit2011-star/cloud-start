@@ -47,6 +47,8 @@ FOOT_NAV = [("index", "index.html", "דף הבית")] + NAV + [
     ("accessibility", "accessibility.html", "הצהרת נגישות")
 ]
 
+HEB_GERSHAYIM = re.compile(r'(?<=[\u05d0-\u05ea])"(?=[\u05d0-\u05ea])')
+HEB_GERESH = re.compile(r"(?<=[\u05d0-\u05ea])'(?![\u05d0-\u05ea])")
 FILL_RE = re.compile(r"\[(?:למלא|לאשר|לאמת)[^\]\[]*\]")
 
 
@@ -79,8 +81,10 @@ def mark_fills(html):
             prev_tag = part
             continue
         if prev_tag.startswith('<mark class="fill'):
-            out.append(part)
+            out.append(HEB_GERESH.sub("׳", HEB_GERSHAYIM.sub("״", part)))
             continue
+        part = HEB_GERSHAYIM.sub("״", part)
+        part = HEB_GERESH.sub("׳", part)
         out.append(FILL_RE.sub(fill_tag, part))
     return "".join(out)
 

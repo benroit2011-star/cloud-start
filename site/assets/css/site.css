@@ -1172,6 +1172,8 @@ main { display: block; }
   font-variant-numeric: tabular-nums;
 }
 .numbered h3 { font-size: var(--step-1); font-weight: 700; }
+.numbered--plain > li { grid-template-columns: minmax(0, 1fr); }
+.numbered--plain > li::before { content: none; }
 .numbered p { color: var(--ink-soft); max-width: var(--measure); }
 
 /* פסקת סגירה עם טלפון גדול */
