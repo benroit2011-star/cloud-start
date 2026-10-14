@@ -1,0 +1,13 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.YOUR-DOMAIN.co.il/accessibility.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ראשי", "item": "https://www.YOUR-DOMAIN.co.il/" },
+        { "@type": "ListItem", "position": 2, "name": "הצהרת נגישות", "item": "https://www.YOUR-DOMAIN.co.il/accessibility.html" }
+      ]
+    }
+  ]
+}

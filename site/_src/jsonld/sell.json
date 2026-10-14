@@ -1,0 +1,26 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.YOUR-DOMAIN.co.il/sell.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ראשי", "item": "https://www.YOUR-DOMAIN.co.il/" },
+        { "@type": "ListItem", "position": 2, "name": "למכור או להשכיר", "item": "https://www.YOUR-DOMAIN.co.il/sell.html" }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.YOUR-DOMAIN.co.il/sell.html#service",
+      "name": "תיווך מכירה והשכרה של דירות ובתים",
+      "serviceType": "תיווך נדל\"ן",
+      "description": "מכירה או השכרה של דירה בשרון עם משרד משפחתי של אבא ובן.",
+      "url": "https://www.YOUR-DOMAIN.co.il/sell.html",
+      "provider": { "@type": "RealEstateAgent", "@id": "https://www.YOUR-DOMAIN.co.il/#organization", "name": "ביתא נדל\"ן" },
+      "areaServed": [
+        { "@type": "Place", "name": "השרון" },
+        { "@type": "Country", "name": "ישראל" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.YOUR-DOMAIN.co.il/about.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ראשי", "item": "https://www.YOUR-DOMAIN.co.il/" },
+        { "@type": "ListItem", "position": 2, "name": "אודות", "item": "https://www.YOUR-DOMAIN.co.il/about.html" }
+      ]
+    },
+    {
+      "@type": "AboutPage",
+      "@id": "https://www.YOUR-DOMAIN.co.il/about.html#webpage",
+      "url": "https://www.YOUR-DOMAIN.co.il/about.html",
+      "name": "אבא ובן, משרד נדל\"ן משפחתי בשרון",
+      "inLanguage": "he-IL",
+      "about": { "@type": "RealEstateAgent", "@id": "https://www.YOUR-DOMAIN.co.il/#organization", "name": "ביתא נדל\"ן" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.YOUR-DOMAIN.co.il/about.html#father",
+      "name": "[למלא: שם האב]",
+      "jobTitle": "[למלא]",
+      "worksFor": { "@id": "https://www.YOUR-DOMAIN.co.il/#organization" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.YOUR-DOMAIN.co.il/about.html#son",
+      "name": "[למלא: שם הבן]",
+      "jobTitle": "[למלא]",
+      "worksFor": { "@id": "https://www.YOUR-DOMAIN.co.il/#organization" },
+      "parent": { "@id": "https://www.YOUR-DOMAIN.co.il/about.html#father" }
+    }
+  ]
+}

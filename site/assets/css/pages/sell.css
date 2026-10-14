@@ -1,0 +1,141 @@
+/*
+ * ביתא נדל"ן — עמוד "למכור או להשכיר".
+ * רק פריסה ש-site.css לא מכסה. כל ערך מגיע מ-tokens.css.
+ */
+
+/* ---------- 1. פתיחה: תוכנית קומה שיוצאת מהגריד ונחתכת בקצה המסך ---------- */
+
+.sell-open {
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+.sell-open .page-hero { align-items: center; }
+.sell-open__more {
+  max-width: var(--measure);
+  color: var(--ink-soft);
+}
+.sell-plan {
+  margin: 0;
+  align-self: center;
+  /* חורג שמאלה (inline-end ב-RTL) אל מעבר לשוליים; המקטע חותך אותו */
+  margin-inline-end: calc(-1 * var(--gutter-l) - 12vw);
+}
+
+@media (min-width: 60rem) {
+  .sell-open .page-hero {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    padding-top: var(--s-8);
+  }
+  .sell-plan { margin-inline-end: calc(-1 * var(--gutter-l) - 8vw); }
+}
+
+/* ---------- 2. בדיקת עיתוי ---------- */
+
+.timing__head { margin-bottom: var(--s-7); }
+.timing__head h2 { max-width: 13ch; }
+.timing .wide-narrow__wide p:not(.lead) { color: var(--ink-soft); }
+.timing .timing__punch {
+  margin-top: var(--s-6);
+  padding-top: var(--s-4);
+  border-top: var(--hair) solid var(--line);
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 700;
+  line-height: var(--lh-head);
+  color: var(--ink);
+}
+.timing .wide-narrow__narrow h3 { font-weight: 700; margin-bottom: var(--s-3); }
+
+/* רשימת בדיקה: קו מידה קצר לפני כל שורה */
+.check-list { list-style: none; }
+.check-list li {
+  position: relative;
+  padding-block: var(--s-3);
+  padding-inline-start: var(--s-6);
+  border-bottom: var(--hair) solid var(--line);
+}
+.check-list li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: calc(var(--s-3) + 0.62em);
+  inline-size: 1.1rem;
+  block-size: 7px;
+  border-inline: var(--hair) solid var(--muted);
+  background: linear-gradient(var(--muted), var(--muted)) center / 100% var(--hair) no-repeat;
+}
+.timing__actions {
+  display: grid;
+  justify-items: start;
+  gap: var(--s-5);
+  margin-top: var(--s-6);
+}
+
+/* ---------- 3. צעדים: שורת "מי" ---------- */
+
+.step .step__who {
+  grid-column: 2;
+  margin-top: var(--s-2);
+  font-size: var(--step--1);
+  letter-spacing: var(--tracking-label);
+  color: var(--muted);
+}
+
+/* ---------- 4. מכירה מול השכרה ---------- */
+
+.compare__title { margin-bottom: var(--s-6); }
+.compare-table thead tr:first-child th {
+  padding-bottom: var(--s-1);
+  border-bottom: 0;
+  font-size: var(--step-3);
+  font-weight: 800;
+}
+.compare-table thead tr:first-child td { border-bottom: 0; }
+.compare-table thead .compare-table__cta td {
+  padding-top: 0;
+  padding-bottom: var(--s-4);
+  border-bottom: var(--hair) solid var(--line-strong);
+}
+.compare-table .link-wa { font-size: 0.9375rem; }
+.compare-table tbody td { inline-size: 36%; color: var(--ink-soft); }
+/* קו דק בין מכירה להשכרה */
+.compare-table tr > :last-child { border-inline-start: var(--hair) solid var(--line); }
+
+/* ---------- 5. רצועה לקונים ---------- */
+
+.buyers .strip h2 { font-size: var(--step-2); }
+.buyers .strip p {
+  flex: 1 1 24rem;
+  max-width: var(--measure);
+  color: var(--ink-soft);
+}
+
+/* ---------- 6. שאלות ---------- */
+
+.sell-faq h2 { max-width: 12ch; margin-bottom: var(--s-6); }
+@media (min-width: 60rem) {
+  .sell-faq {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    column-gap: var(--s-8);
+    align-items: start;
+  }
+  .sell-faq h2 { margin-bottom: 0; }
+}
+
+/* ---------- 7. סגירה: טיפוגרפיה ענקית ---------- */
+
+.sell-closing { border-top: var(--hair) solid var(--line); }
+.sell-closing__title {
+  max-width: 13ch;
+  font-size: var(--step-5);
+  font-weight: 800;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.01em;
+}
+.sell-closing__body { margin-top: var(--s-7); gap: var(--s-5); }
+.sell-closing__line {
+  max-width: 36ch;
+  font-size: var(--step-1);
+  line-height: 1.5;
+}

@@ -1,0 +1,248 @@
+/*
+ * ביתא נדל"ן — עמוד "השקעות".
+ * רק פריסה ש-site.css לא מכסה. כל ערך מגיע מ-tokens.css.
+ */
+
+/* ---------- 1. פתיחה, ולמי זה מתאים ---------- */
+
+.invest-open__goal {
+  max-width: var(--measure);
+  color: var(--ink-soft);
+}
+.invest-fit {
+  padding-top: var(--s-4);
+  border-top: var(--rule) solid var(--line-strong);
+}
+.invest-fit h3 { font-size: var(--step-1); font-weight: 700; }
+.invest-fit h3 + .fit-list { margin-top: var(--s-2); }
+.invest-fit .fit-list + h3 { margin-top: var(--s-6); }
+.invest-fit .small { margin-top: var(--s-5); }
+
+.fit-list { list-style: none; }
+.fit-list li {
+  position: relative;
+  padding-block: var(--s-2);
+  padding-inline-start: var(--s-5);
+  border-bottom: var(--hair) solid var(--line);
+  font-size: 0.9375rem;
+}
+/* ריבוע "אזור" מלא: מתאים */
+.fit-list li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: calc(var(--s-2) + 0.5em);
+  inline-size: 0.625rem;
+  block-size: 0.625rem;
+  background: var(--zone);
+  border: var(--hair) solid var(--zone-ink);
+}
+/* ריבוע ריק עם קו אלכסוני: פחות מתאים */
+.fit-list--no li { color: var(--ink-soft); }
+.fit-list--no li::before {
+  border-color: var(--muted);
+  background: linear-gradient(to top left, transparent calc(50% - 0.6px), var(--muted) calc(50% - 0.6px) calc(50% + 0.6px), transparent calc(50% + 0.6px));
+}
+
+/* ---------- 2. גיליון עסקה: דף עבודה מודפס ---------- */
+
+.deal__head { display: grid; gap: var(--s-4); margin-bottom: var(--s-7); }
+.deal__head .eyebrow { margin-bottom: 0; }
+.deal__intro { max-width: var(--measure); color: var(--ink-soft); }
+@media (min-width: 60rem) {
+  .deal__head {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: var(--s-8);
+    align-items: end;
+  }
+  .deal__head .eyebrow { grid-column: 1 / -1; }
+}
+
+/* דף על דף: קו של גיליון נוסף מציץ מתחת */
+.deal-paper {
+  padding: var(--s-4) var(--s-4) var(--s-3);
+  background: var(--surface);
+  border: var(--hair) solid var(--line);
+  box-shadow: 6px 6px 0 -1px var(--surface), 6px 6px 0 0 var(--line);
+}
+@media (min-width: 48rem) {
+  .deal-paper { padding: var(--s-6) var(--s-6) var(--s-4); }
+}
+.deal-paper .table-wrap { border-top: 0; }
+
+.deal-table { counter-reset: deal-row; }
+.deal-table thead th {
+  padding-block: var(--s-2);
+  border-bottom: var(--rule) solid var(--line-strong);
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  color: var(--muted);
+}
+.deal-table .deal-table__sum { text-align: end; }
+.deal-table tbody tr { counter-increment: deal-row; }
+.deal-table tbody th {
+  inline-size: 26%;
+  color: var(--ink);
+}
+/* מספור שורות כמו בגיליון */
+.deal-table tbody th::before {
+  content: counter(deal-row, decimal-leading-zero);
+  display: inline-block;
+  min-inline-size: 2.25rem;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--muted);
+}
+.deal-table td { font-size: 0.9375rem; }
+.deal-table .cell-empty {
+  inline-size: 10rem;
+  text-align: end;
+  vertical-align: bottom;
+}
+.deal-unit {
+  display: inline-block;
+  padding-inline: var(--s-2);
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.deal-table .formula { color: var(--ink); font-weight: 500; }
+
+/* שורות סיכום */
+.deal-table .is-total > * { border-top: var(--rule) solid var(--line-strong); }
+.deal-table .is-total + .is-total > * { border-top-width: var(--hair); }
+.deal-table .is-total th {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 700;
+}
+.deal-table .is-total .cell-empty {
+  background: repeating-linear-gradient(135deg, transparent 0 4px, var(--line) 4px 5px);
+}
+.deal-table tbody + tbody tr:first-child > * { padding-top: var(--s-6); }
+.deal-paper__note { margin-top: var(--s-4); max-width: 52rem; }
+
+/* ---------- 3. הזווית שמשקיעים מפספסים (full-bleed) ---------- */
+
+.angle {
+  background: var(--surface);
+  border-block: var(--hair) solid var(--line);
+}
+.angle__grid { display: grid; gap: var(--s-7); }
+.angle__text { min-width: 0; }
+.angle__title {
+  max-width: 14ch;
+  margin-bottom: var(--s-5);
+  font-size: var(--step-4);
+  font-weight: 800;
+  line-height: var(--lh-tight);
+}
+.angle__text p { max-width: var(--measure); }
+.angle__text .lead + p,
+.angle__text .lead + p + p { color: var(--ink-soft); }
+.angle__text .angle__more { margin-top: var(--s-6); }
+.angle__drawing { margin: 0; min-width: 0; }
+.angle__drawing .dim__text { font-size: 20px; }
+.angle__drawing .dim__text--big { font-family: var(--font-display); font-size: 40px; font-weight: 800; fill: var(--ink); }
+@media (min-width: 60rem) {
+  .angle__grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: var(--s-8);
+    align-items: center;
+  }
+}
+
+/* ---------- 4. משקיעים מרחוק: רשת אסימטרית ---------- */
+
+.remote__grid { display: grid; gap: var(--s-5); }
+.remote__main { min-width: 0; }
+.remote__title {
+  max-width: 11ch;
+  margin-bottom: var(--s-6);
+  font-size: var(--step-5);
+  font-weight: 800;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.01em;
+}
+.remote__main p { max-width: var(--measure); }
+.remote__main p + p { color: var(--ink-soft); }
+.remote__cta { margin-top: var(--s-6); }
+
+.remote-note {
+  min-width: 0;
+  padding: var(--s-5);
+  border: var(--hair) solid var(--line-strong);
+}
+.remote-note h3 { margin-bottom: var(--s-2); font-size: var(--step-1); font-weight: 700; }
+.remote-note p { color: var(--ink-soft); }
+.remote-note--pros {
+  padding: var(--s-6) var(--s-5);
+  background: var(--surface);
+  border: 0;
+  border-inline-start: 0.5rem solid var(--zone);
+}
+
+@media (min-width: 40rem) and (max-width: 59.99rem) {
+  .remote__grid { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); align-items: start; }
+  .remote__main { grid-column: 1 / -1; }
+  .remote-note--pros { margin-top: var(--s-7); }
+}
+@media (min-width: 60rem) {
+  .remote__grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--s-6);
+    row-gap: var(--s-5);
+    align-items: start;
+  }
+  .remote__main { grid-column: 1 / span 7; grid-row: 1 / span 2; }
+  .remote-note--visit { grid-column: 9 / span 4; grid-row: 1; margin-top: var(--s-8); }
+  .remote-note--pros {
+    grid-column: 8 / span 5;
+    grid-row: 2;
+    display: grid;
+    align-content: end;
+    min-block-size: 15rem;
+  }
+}
+
+/* ---------- 5. ליווי: רשימה ממוספרת עורכית ---------- */
+
+.escort { display: grid; gap: var(--s-6); }
+.escort__title { max-width: 10ch; }
+.escort__body { min-width: 0; }
+.escort__more { margin-top: var(--s-5); }
+@media (min-width: 60rem) {
+  .escort {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    column-gap: var(--s-8);
+    align-items: start;
+  }
+  .escort__title { font-size: var(--step-4); font-weight: 800; line-height: var(--lh-tight); }
+}
+
+/* ---------- 6. שאלות ---------- */
+
+.invest-faq__inner h2 { max-width: 20ch; margin-bottom: var(--s-6); }
+.invest-faq__inner .faq { max-width: 54rem; }
+
+/* ---------- 7. סגירה: רצועה עם טלפון גדול ---------- */
+
+.invest-close .strip {
+  align-items: center;
+  padding-block: var(--s-6);
+  border-top: var(--rule) solid var(--line-strong);
+}
+.invest-close__text { flex: 1 1 22rem; min-width: 0; }
+.invest-close__text h2 { margin-bottom: var(--s-3); }
+.invest-close__text p { max-width: var(--measure); color: var(--ink-soft); }
+.invest-close__call {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-4) var(--s-6);
+}
+.invest-close__note { margin-top: var(--s-4); }

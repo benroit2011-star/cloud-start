@@ -193,8 +193,9 @@ def head(meta, filename):
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">',
         f"<title>{title}</title>",
-        f'<meta name="description" content="{attr(desc)}">',
     ]
+    if desc:
+        lines.append(f'<meta name="description" content="{attr(desc)}">')
     if robots:
         lines.append(f'<meta name="robots" content="{robots}">')
     if not is_404:
@@ -261,6 +262,9 @@ def build_page(path):
 </html>
 """
     html = mark_fills(html)
+    if filename == "404.html":
+        # 404 מוגש גם בכתובות עמוקות (/a/b): קישורים מהשורש
+        html = re.sub(r'(href|src)="(?!https?:|#|/|tel:|mailto:|data:)([^"]+)"', r'\1="/\2"', html)
     (SITE / filename).write_text(html, encoding="utf-8")
     return filename
 

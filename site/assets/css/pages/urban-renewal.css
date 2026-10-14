@@ -1,0 +1,208 @@
+/* urban-renewal.html — רק מה ש-site.css לא מכסה. טוקנים בלבד. */
+
+/* ---------- 1. פתיחה: full-bleed, חתך בניין רחב והטקסט בעמודה צרה לצדו ---------- */
+
+.ur-hero {
+  background: var(--surface);
+  border-bottom: var(--hair) solid var(--line);
+  padding-left: var(--gutter-l);
+  padding-right: var(--gutter-r);
+  padding-top: var(--s-7);
+  /* קו הקרקע בשרטוט חורג מה-viewBox ונחתך כאן, בקצה המסך */
+  overflow: hidden;
+  overflow: clip;
+}
+.ur-hero__inner {
+  display: grid;
+  gap: var(--s-6);
+  max-width: var(--container);
+  margin-inline: auto;
+}
+.ur-hero__text { position: relative; z-index: 1; min-width: 0; }
+.ur-hero h1 { max-width: 13ch; }
+.ur-hero .lead { margin-top: var(--s-5); }
+.ur-hero__more { max-width: var(--measure); color: var(--ink-soft); }
+.ur-hero .hero__actions { margin-top: var(--s-6); }
+
+.ur-hero__drawing { margin: 0; min-width: 0; }
+.ur-hero__drawing .drawing { max-inline-size: 46rem; }
+.drawing .ur-neighbor { stroke: var(--muted); }
+.drawing .ur-neighbor .wall { stroke-width: 2; }
+.drawing .ur-envelope {
+  stroke: var(--ink-soft);
+  stroke-width: 2;
+  stroke-dasharray: 1 8;
+  stroke-linecap: round;
+}
+.drawing .ur-label text { font-size: 19px; fill: var(--ink-soft); }
+
+@media (max-width: 40rem) {
+  /* בטלפון הכיתובים בשרטוט קטנים מכדי לקרוא. התיאור המלא נמצא ב-aria-label */
+  .drawing .ur-label { display: none; }
+}
+
+@media (min-width: 60rem) {
+  .ur-hero { padding-top: var(--s-8); }
+  .ur-hero__inner {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: var(--s-7);
+    align-items: end;
+  }
+  /* הטקסט נגמר מעל קו הקרקע של השרטוט */
+  .ur-hero__text { align-self: start; padding-bottom: var(--s-9); }
+}
+
+/* ---------- 2. באיזה כובע ---------- */
+
+.ur-hat__head { display: grid; gap: var(--s-4); margin-bottom: var(--s-7); }
+.ur-hat__head .eyebrow { margin-bottom: 0; }
+.ur-hat__intro { max-width: var(--measure); font-size: var(--step-1); line-height: 1.55; }
+.ur-hat .split__side p { max-width: var(--measure); color: var(--ink-soft); }
+.ur-hat .split__side strong { color: var(--ink); }
+
+.ur-hat__pledge {
+  display: grid;
+  gap: var(--s-5);
+  justify-items: start;
+  margin-top: var(--s-7);
+}
+.ur-hat__line {
+  font-family: var(--font-display);
+  font-size: var(--step-4);
+  font-weight: 700;
+  line-height: var(--lh-head);
+  letter-spacing: -0.01em;
+  max-width: 20ch;
+  text-wrap: balance;
+}
+.ur-hat__line mark.fill { font-size: 0.36em; vertical-align: middle; }
+
+@media (min-width: 60rem) {
+  .ur-hat__head { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--s-8); align-items: end; }
+  .ur-hat__head .eyebrow { grid-column: 1 / -1; }
+  /* השורה הרחבה זזה פנימה ושוברת את הקו של שתי העמודות */
+  .ur-hat__pledge { padding-inline-start: calc(100% / 12); }
+}
+
+/* ---------- 3. מה קרה לתמ"א 38: רצועת משטח עם טבלה ---------- */
+
+.ur-tama { background: var(--surface); border-block: var(--hair) solid var(--line); }
+.ur-tama__head { display: grid; gap: var(--s-5); margin-bottom: var(--s-7); }
+.ur-tama__head .eyebrow { margin-bottom: 0; }
+.ur-tama__head h2 { font-size: var(--step-4); max-width: 14ch; }
+.ur-tama__intro { max-width: var(--measure); color: var(--ink-soft); }
+.ur-tama__key { color: var(--ink); font-weight: 600; }
+
+@media (min-width: 60rem) {
+  .ur-tama__head { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); column-gap: var(--s-8); align-items: start; }
+  .ur-tama__head .eyebrow { grid-column: 1 / -1; }
+  .ur-tama__intro { padding-top: var(--s-2); }
+}
+
+.ur-table tbody th { inline-size: 20%; }
+.ur-table thead th { inline-size: 40%; }
+.ur-table td { color: var(--ink-soft); }
+.ur-table tbody tr:last-child th,
+.ur-table tbody tr:last-child td { border-bottom-color: var(--line-strong); }
+
+/* ---------- 4. המסלול ---------- */
+
+.ur-route__head { display: grid; gap: var(--s-4); margin-bottom: var(--s-7); }
+.ur-route__head p { max-width: var(--measure); color: var(--ink-soft); }
+
+@media (min-width: 64rem) {
+  /* שבעה שלבים בשורה: הגוף קצת קטן יותר כדי שהעמודות לא יימתחו לגובה */
+  .ur-route .timeline__step p { font-size: 0.9375rem; line-height: 1.55; }
+  .ur-route .timeline__you { font-size: var(--step--1); }
+}
+
+/* ---------- 5. ציטוט ---------- */
+
+.ur-quote .bigquote mark.fill {
+  font-size: 0.34em;
+  line-height: 1.5;
+  vertical-align: middle;
+}
+
+/* ---------- 6. שאלות לשאול כל יזם: כותרת דביקה בצד ---------- */
+
+.ur-questions__head { margin-bottom: var(--s-6); }
+.ur-questions__head p { margin-top: var(--s-4); max-width: var(--measure); color: var(--ink-soft); }
+.ur-questions__body { min-width: 0; }
+
+.ur-offer {
+  display: grid;
+  gap: var(--s-4);
+  justify-items: start;
+  margin-top: var(--s-6);
+  padding-inline-start: var(--s-5);
+  border-inline-start: 0.5rem solid var(--zone);
+}
+.ur-offer p { max-width: var(--measure); font-size: var(--step-1); line-height: 1.5; }
+
+@media (min-width: 60rem) {
+  .ur-questions__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    column-gap: var(--s-8);
+  }
+  .ur-questions__head {
+    position: sticky;
+    top: calc(var(--header-h) + var(--s-6));
+    align-self: start;
+    margin-bottom: 0;
+  }
+}
+
+/* ---------- 7. שאלות ותשובות: רצועת משטח, האקורדיון מוסט לצד השני ---------- */
+
+.ur-faq { background: var(--surface); border-block: var(--hair) solid var(--line); }
+.ur-faq__head { margin-bottom: var(--s-6); }
+.ur-faq__head h2 { max-width: 16ch; }
+.ur-faq__note { margin-top: var(--s-4); max-width: var(--measure); }
+.ur-faq__links { margin-top: var(--s-7); }
+.ur-faq__links p + p { margin-top: 0; }
+
+@media (min-width: 60rem) {
+  .ur-faq__head h2 { font-size: var(--step-4); }
+  .ur-faq__body .faq,
+  .ur-faq__note { max-width: 52rem; margin-inline-start: auto; }
+}
+
+/* ---------- 8. פרויקטים (מוסתר עד שיש תוכן) ---------- */
+
+.ur-projects__grid { display: grid; gap: var(--s-4); margin-top: var(--s-6); }
+@media (min-width: 60rem) {
+  .ur-projects__grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .ur-projects__grid > * { grid-column: span 4; }
+  .ur-projects__grid > .ur-project--big { grid-column: 1 / span 8; grid-row: span 2; }
+}
+
+/* ---------- 9. סגירה ---------- */
+
+.ur-closing h2 { font-size: var(--step-4); max-width: 13ch; margin-bottom: var(--s-6); }
+
+.ur-send {
+  list-style: none;
+  max-width: var(--measure);
+  margin-bottom: var(--s-6);
+  border-top: var(--hair) solid var(--line-strong);
+}
+.ur-send li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-4);
+  padding-block: var(--s-3);
+  border-bottom: var(--hair) solid var(--line);
+  font-size: var(--step-1);
+  font-weight: 500;
+}
+/* קו מידה קצר לפני כל פריט, כמו ב-eyebrow */
+.ur-send li::before {
+  content: "";
+  flex: none;
+  inline-size: 1.5rem;
+  block-size: 9px;
+  border-inline: var(--hair) solid var(--muted);
+  background: linear-gradient(var(--muted), var(--muted)) center / 100% var(--hair) no-repeat;
+}

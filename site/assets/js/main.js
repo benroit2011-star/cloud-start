@@ -17,7 +17,10 @@
   }
 
   function waHref(key, vars) {
-    var text = fill(TEMPLATES[key] || TEMPLATES.general || "", vars);
+    var template = TEMPLATES[key] || TEMPLATES.general || "";
+    // "כל הערים": המילים "ב{city}" יורדות מההודעה
+    if (vars && vars.city === "") template = template.replace(/ ?ב\{city\}/, "");
+    var text = fill(template, vars);
     return "https://wa.me/" + PHONE + (text ? "?text=" + encodeURIComponent(text) : "");
   }
 
@@ -177,6 +180,8 @@
   /* ---------- נכסים ---------- */
 
   var DEAL = { sale: "למכירה", rent: "להשכרה" };
+  var WA_GLYPH = '<svg class="wa-glyph" viewBox="0 0 20 20" aria-hidden="true" focusable="false">' +
+    '<path d="M10 2.5a7.5 7.5 0 0 0-6.5 11.2L2.5 17.5l3.9-1A7.5 7.5 0 1 0 10 2.5z"/></svg>';
   var STATUS_ORDER = { available: 0, negotiation: 1, closed: 2 };
   var money = new Intl.NumberFormat("he-IL", { maximumFractionDigits: 0 });
 
@@ -260,7 +265,8 @@
       : p.status === "negotiation" ? "שאלו על נכס דומה" : "שאלו על הנכס";
     return (
       '<a class="btn btn--wa prop__cta" data-wa="' + key + '" data-wa-vars="' +
-      esc(JSON.stringify(propertyVars(p))) + '" href="#">' + esc(label) + "</a>"
+      esc(JSON.stringify(propertyVars(p))) + '" href="#">' + WA_GLYPH + "<span>" + esc(label) + "</span>" +
+      '<span class="sr-only"> (נפתח בוואטסאפ)</span></a>'
     );
   }
 
@@ -382,7 +388,7 @@
         if (line) line.textContent = "אין כרגע נכסים" + dealWord + cityWord + ".";
         var wa = $("[data-wa=filter_empty]", emptyFilter);
         if (wa) {
-          wa.dataset.waVars = JSON.stringify({ dealLabel: state.deal === "all" ? "" : DEAL[state.deal], city: state.city === "all" ? "אזור השרון" : state.city });
+          wa.dataset.waVars = JSON.stringify({ dealLabel: state.deal === "all" ? "" : DEAL[state.deal], city: state.city === "all" ? "" : state.city });
           wireWhatsApp(emptyFilter);
         }
       }
