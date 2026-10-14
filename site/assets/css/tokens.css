@@ -1,0 +1,118 @@
+/*
+ * ביתא נדל"ן — טוקנים.
+ * כיוון: תשריט של הוועדה המקומית. נייר פלוטר, קווי גרפיט, והצהוב של "אזור מגורים" כמרקר יחיד.
+ * כל צבע וגודל באתר מגיע מכאן.
+ */
+:root {
+  /* צבע — נייר בהיר */
+  --paper: #f3f4f1;
+  --surface: #fbfbf9;
+  --ink: #1c1e21;
+  --ink-soft: #3a3d42;
+  --muted: #595d63;
+  --line: #c7cac5;
+  --line-strong: #1c1e21;
+  --zone: #f1d54a;          /* צהוב מגורים */
+  --zone-wash: #f7e9a3;     /* מרקר על טקסט */
+  --zone-ink: #1c1e21;      /* טקסט על צהוב */
+  --stamp: #b3261e;         /* אדום חותמת: רק 404 ו-[למלא] */
+  --fill-bg: #fbe7e4;
+  --fill-ink: #8f1d17;
+  --focus: #1c1e21;
+  --zone-opacity: 0.55;
+  --zone-blend: multiply;
+  color-scheme: light;
+
+  /* טיפוגרפיה */
+  --font-display: "Rubik", "Arial Hebrew", "Noto Sans Hebrew", Arial, sans-serif;
+  --font-body: "IBM Plex Sans Hebrew", "Arial Hebrew", "Noto Sans Hebrew", Arial, sans-serif;
+
+  --step--1: 0.8125rem;                                  /* 13 כיתובים */
+  --step-0: 1.0625rem;                                   /* 17 גוף */
+  --step-1: clamp(1.1875rem, 1.1rem + 0.4vw, 1.375rem);  /* 19–22 ליד */
+  --step-2: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);    /* 22–28 H3 */
+  --step-3: clamp(1.75rem, 1.4rem + 1.6vw, 2.625rem);    /* 28–42 H2 */
+  --step-4: clamp(2.25rem, 1.6rem + 3vw, 4.25rem);       /* 36–68 H1 */
+  --step-5: clamp(2.75rem, 1.8rem + 4.6vw, 5.75rem);     /* דיספליי */
+  --step-giant: clamp(5.5rem, 2rem + 17vw, 17rem);       /* "ביתא" */
+  --step-phone: clamp(2rem, 1.2rem + 4vw, 4.5rem);       /* טלפון בסגירה */
+
+  --lh-tight: 1.05;
+  --lh-head: 1.18;
+  --lh-body: 1.65;
+  --tracking-label: 0.06em;
+
+  /* ריווח: בסיס 4 */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+  --section-tight: clamp(2.5rem, 2rem + 2vw, 4rem);
+  --section: clamp(4rem, 3rem + 5vw, 8rem);
+  --section-breath: clamp(5rem, 3rem + 9vw, 11rem);
+
+  /* קווים, פינות, תנועה */
+  --hair: 1px;
+  --rule: 2px;
+  --radius: 2px;
+  --radius-pill: 999px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 140ms;
+  --dur: 260ms;
+  --dur-draw: 700ms;
+
+  /* פריסה */
+  --container: 76rem;
+  --measure: 38rem;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+  --header-h: 4.5rem;
+  --bar-h: 3.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #18191b;
+    --surface: #202225;
+    --ink: #e9e8e3;
+    --ink-soft: #cfcec8;
+    --muted: #a6a8a4;
+    --line: #3b3e43;
+    --line-strong: #e9e8e3;
+    --zone: #e8c93f;
+    --zone-wash: #4a4220;
+    --zone-ink: #18191b;
+    --stamp: #ff7b6e;
+    --fill-bg: #3a1f1c;
+    --fill-ink: #ffb8ae;
+    --focus: #e9e8e3;
+    --zone-opacity: 0.32;
+    --zone-blend: normal;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #18191b;
+  --surface: #202225;
+  --ink: #e9e8e3;
+  --ink-soft: #cfcec8;
+  --muted: #a6a8a4;
+  --line: #3b3e43;
+  --line-strong: #e9e8e3;
+  --zone: #e8c93f;
+  --zone-wash: #4a4220;
+  --zone-ink: #18191b;
+  --stamp: #ff7b6e;
+  --fill-bg: #3a1f1c;
+  --fill-ink: #ffb8ae;
+  --focus: #e9e8e3;
+  --zone-opacity: 0.32;
+  --zone-blend: normal;
+  color-scheme: dark;
+}

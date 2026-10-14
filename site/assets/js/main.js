@@ -13,7 +13,7 @@
   function fill(template, vars) {
     return String(template || "").replace(/\{(\w+)\}/g, function (_, key) {
       return vars && vars[key] != null ? vars[key] : "___";
-    });
+    }).replace(/ {2,}/g, " ");
   }
 
   function waHref(key, vars) {
@@ -210,7 +210,8 @@
 
   function floorLabel(p) {
     if (p.floor == null) return "";
-    var f = p.floor === 0 ? "קרקע" : "קומה " + p.floor;
+    if (p.floor === 0) return "קומת קרקע";
+    var f = "קומה " + p.floor;
     return p.floorsTotal ? f + " מתוך " + p.floorsTotal : f;
   }
 
@@ -255,8 +256,8 @@
     if (p.status === "closed") return "";
     var key = p.sample ? "search" : p.status === "negotiation" ? "property_negotiation" : "property";
     var label = p.sample
-      ? "לכתוב לנו מה אתם מחפשים"
-      : p.status === "negotiation" ? "לשאול על נכס דומה" : "לשאול על " + p.id;
+      ? "ספרו לנו מה אתם מחפשים"
+      : p.status === "negotiation" ? "שאלו על נכס דומה" : "שאלו על הנכס";
     return (
       '<a class="btn btn--wa prop__cta" data-wa="' + key + '" data-wa-vars="' +
       esc(JSON.stringify(propertyVars(p))) + '" href="#">' + esc(label) + "</a>"
@@ -271,14 +272,15 @@
   }
 
   function renderProperty(p) {
-    var facts = [roomsLabel(p.rooms), p.sqm ? p.sqm + " מ״ר" : "", floorLabel(p)].filter(Boolean).join(" · ");
+    var outdoor = p.outdoorSqm ? (/גן|פרטי/.test(p.type || "") ? "גינה " : "מרפסת ") + p.outdoorSqm + " מ״ר" : "";
+    var facts = [roomsLabel(p.rooms), p.sqm ? p.sqm + " מ״ר" : "", floorLabel(p), outdoor].filter(Boolean).join(" · ");
     var features = (p.features || []).slice(0, 4).join(" · ");
     var cls = "prop" + (p.sample ? " prop--sample" : "") + (p.status === "closed" ? " prop--closed" : "") +
       (p.status === "negotiation" ? " prop--negotiation" : "");
     return (
       '<article class="' + cls + '" id="' + esc(p.id) + '">' +
         '<div class="prop__media">' + propertyMedia(p) +
-          (p.sample ? '<span class="sample-tag">נכס לדוגמה · להחלפה</span>' : "") +
+          (p.sample ? '<span class="sample-tag">נכס לדוגמה, להחלפה</span>' : "") +
         "</div>" +
         '<div class="prop__body">' +
           '<p class="prop__eyebrow">' + esc(DEAL[p.deal] || "") + (p.type ? " · " + esc(p.type) : "") +
@@ -292,7 +294,8 @@
         '<div class="prop__side">' +
           '<p class="prop__price">' + esc(priceLabel(p)) + "</p>" +
           propertyCTA(p) +
-          '<p class="prop__meta">נכס ' + esc(p.id) + (p.updated ? " · עודכן " + esc(formatDate(p.updated)) : "") + "</p>" +
+          '<p class="prop__meta">נכס ' + esc(p.id) + (p.updated ? " · עודכן " + esc(formatDate(p.updated)) : "") +
+            " · ביתא נדל״ן, מתווך מקרקעין, רישיון מס׳ " + (CFG.LICENSE ? esc(CFG.LICENSE) : '<mark class="fill">[למלא]</mark>') + "</p>" +
         "</div>" +
       "</article>"
     );
@@ -301,16 +304,18 @@
   function renderRow(p) {
     // שורת גיליון מקוצרת לדף הבית
     var facts = [roomsLabel(p.rooms), p.sqm ? p.sqm + " מ״ר" : ""].filter(Boolean).join(" · ");
+    var waKey = p.sample ? "search" : "property";
+    var waLabel = p.sample ? "ספרו לנו מה אתם מחפשים" : "לשאול על הנכס";
     return (
       '<li class="sheet__row' + (p.sample ? " is-sample" : "") + '">' +
-        '<a class="sheet__link" href="properties.html#' + esc(p.id) + '">' +
-          '<span class="sheet__id">' + esc(p.id) + "</span>" +
-          '<span class="sheet__place">' + esc(p.neighborhood) + ", " + esc(p.city) +
-            (p.sample ? ' <span class="sample-tag sample-tag--inline">לדוגמה</span>' : "") + "</span>" +
-          '<span class="sheet__deal">' + esc(DEAL[p.deal] || "") + "</span>" +
-          '<span class="sheet__facts">' + esc(facts) + "</span>" +
-          '<span class="sheet__price">' + esc(priceLabel(p)) + "</span>" +
-        "</a>" +
+        '<span class="sheet__id">' + esc(p.id) + "</span>" +
+        '<a class="sheet__place" href="properties.html#' + esc(p.id) + '">' + esc(p.neighborhood) + ", " + esc(p.city) +
+          (p.sample ? ' <span class="sample-tag sample-tag--inline">לדוגמה</span>' : "") + "</a>" +
+        '<span class="sheet__deal">' + esc(DEAL[p.deal] || "") + "</span>" +
+        '<span class="sheet__facts">' + esc(facts) + "</span>" +
+        '<span class="sheet__price">' + esc(priceLabel(p)) + "</span>" +
+        '<a class="sheet__wa link-wa" data-wa="' + waKey + '" data-wa-vars="' + esc(JSON.stringify(propertyVars(p))) +
+          '" href="#">' + esc(waLabel) + '<span class="sr-only"> (נפתח בוואטסאפ)</span></a>' +
       "</li>"
     );
   }
@@ -335,7 +340,10 @@
     var availableEl = $("[data-available-count]");
 
     var open = all.filter(function (p) { return p.status !== "closed"; });
-    if (availableEl) availableEl.textContent = String(all.filter(function (p) { return p.status === "available"; }).length);
+    if (availableEl) {
+      var n = all.filter(function (p) { return p.status === "available"; }).length;
+      availableEl.textContent = n === 0 ? "אין כרגע נכסים זמינים" : n === 1 ? "נכס אחד זמין" : n + " נכסים זמינים";
+    }
     if (sampleNotice) sampleNotice.hidden = !all.some(function (p) { return p.sample; });
 
     if (!open.length) {
@@ -354,8 +362,8 @@
         cityBox.hidden = true;
       } else {
         cityBox.innerHTML =
-          '<button type="button" class="chip" data-city="all">כל הערים</button>' +
-          cities.map(function (c) { return '<button type="button" class="chip" data-city="' + esc(c) + '">' + esc(c) + "</button>"; }).join("");
+          '<button type="button" class="chip" data-city="all" aria-pressed="true">כל הערים</button>' +
+          cities.map(function (c) { return '<button type="button" class="chip" data-city="' + esc(c) + '" aria-pressed="false">' + esc(c) + "</button>"; }).join("");
       }
     }
 
@@ -369,16 +377,19 @@
       if (emptyFilter) {
         emptyFilter.hidden = !!shown.length;
         var line = $("[data-empty-filter-line]", emptyFilter);
-        var dealWord = state.deal === "all" ? "נכסים" : DEAL[state.deal];
+        var dealWord = state.deal === "all" ? "" : " " + DEAL[state.deal];
         var cityWord = state.city === "all" ? "" : " ב" + state.city;
-        if (line) line.textContent = "אין כרגע " + dealWord + cityWord + ".";
+        if (line) line.textContent = "אין כרגע נכסים" + dealWord + cityWord + ".";
         var wa = $("[data-wa=filter_empty]", emptyFilter);
         if (wa) {
-          wa.dataset.waVars = JSON.stringify({ dealLabel: state.deal === "all" ? "נכס" : DEAL[state.deal], city: state.city === "all" ? "השרון" : state.city });
+          wa.dataset.waVars = JSON.stringify({ dealLabel: state.deal === "all" ? "" : DEAL[state.deal], city: state.city === "all" ? "אזור השרון" : state.city });
           wireWhatsApp(emptyFilter);
         }
       }
-      if (countEl) countEl.textContent = shown.length === 1 ? "מוצג נכס אחד" : "מוצגים " + shown.length + " נכסים";
+      if (countEl) {
+        countEl.textContent = shown.length === 0 ? "אין נכסים שמתאימים לסינון"
+          : shown.length === 1 ? "מוצג נכס אחד" : "מוצגים " + shown.length + " נכסים";
+      }
       $$("[data-deal]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.deal === state.deal)); });
       $$("[data-city]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.city === state.city)); });
       try {
@@ -420,6 +431,8 @@
       return;
     }
     box.innerHTML = rows.map(renderRow).join("");
+    var note = $("[data-preview-sample]");
+    if (note) note.hidden = !rows.some(function (p) { return p.sample; });
   }
 
   /* ---------- שנה בפוטר ---------- */

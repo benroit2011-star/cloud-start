@@ -1,0 +1,88 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.YOUR-DOMAIN.co.il/#website",
+      "url": "https://www.YOUR-DOMAIN.co.il/",
+      "name": "ביתא נדל\"ן",
+      "alternateName": ["ביתא נדל\"ן השרון", "[למלא: כתיב לטיני מאושר]"],
+      "inLanguage": "he-IL",
+      "publisher": { "@id": "https://www.YOUR-DOMAIN.co.il/#organization" }
+    },
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://www.YOUR-DOMAIN.co.il/#organization",
+      "name": "ביתא נדל\"ן",
+      "alternateName": "[למלא: כתיב לטיני מאושר]",
+      "description": "חברת נדל\"ן משפחתית בניהול אב ובנו: תיווך מכירה והשכרה, יזמות והתחדשות עירונית, ייעוץ והשקעות נדל\"ן. בעיקר בשרון, עם פעילות בכל הארץ.",
+      "url": "https://www.YOUR-DOMAIN.co.il/",
+      "logo": "https://www.YOUR-DOMAIN.co.il/[למלא: נתיב הלוגו, PNG מרובע של 112px לפחות]",
+      "image": "https://www.YOUR-DOMAIN.co.il/og-image.png",
+      "telephone": "[למלא: +972-5X-XXX-XXXX]",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "[למלא]",
+        "addressLocality": "[למלא]",
+        "postalCode": "[למלא]",
+        "addressCountry": "IL"
+      },
+      "areaServed": [
+        { "@type": "Place", "name": "השרון" },
+        { "@type": "Country", "name": "ישראל" }
+      ],
+      "foundingDate": "[למלא: YYYY]",
+      "founder": [
+        {
+          "@type": "Person",
+          "@id": "https://www.YOUR-DOMAIN.co.il/about.html#father",
+          "name": "[למלא: שם האב]",
+          "jobTitle": "[למלא]",
+          "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "רישיון תיווך במקרקעין",
+            "credentialCategory": "license",
+            "identifier": "[למלא: מספר רישיון]",
+            "recognizedBy": { "@type": "GovernmentOrganization", "name": "רשם המתווכים במקרקעין, משרד המשפטים" }
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.YOUR-DOMAIN.co.il/about.html#son",
+          "name": "[למלא: שם הבן]",
+          "jobTitle": "[למלא]",
+          "parent": { "@id": "https://www.YOUR-DOMAIN.co.il/about.html#father" }
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "[למלא: אותו מספר]",
+        "contactType": "customer service",
+        "availableLanguage": ["he"]
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "[למלא: HH:MM]",
+          "closes": "[למלא: HH:MM]"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "תחומי פעילות",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "תיווך מכירה והשכרה של דירות ובתים", "url": "https://www.YOUR-DOMAIN.co.il/sell.html" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "יזמות והתחדשות עירונית", "url": "https://www.YOUR-DOMAIN.co.il/urban-renewal.html" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ייעוץ והשקעות נדל\"ן", "url": "https://www.YOUR-DOMAIN.co.il/invest.html" } }
+        ]
+      },
+      "sameAs": [
+        "[למלא: קישור לפרופיל Google Business]",
+        "[למלא: דף המשרד ביד2]",
+        "[למלא: דף המשרד במדלן]",
+        "[למלא: פייסבוק / אינסטגרם]"
+      ]
+    }
+  ]
+}
