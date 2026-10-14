@@ -122,11 +122,10 @@
     z-index: 1;
     background: var(--surface);
   }
-  /* צל בקצה השמאלי: יש עוד טבלה בהמשך הגלילה. נעלם כשמגיעים לסוף */
+  /* צל קבוע בקצה השמאלי: יש עוד טבלה בהמשך הגלילה.
+     (שכבת "כיסוי" עם background-attachment: local לא מתמקמת נכון ב-RTL בכרומיום, לכן הצל קבוע) */
   .ur-tama .table-wrap {
-    background:
-      linear-gradient(to right, var(--surface) 40%, transparent) left center / 3rem 100% no-repeat local,
-      radial-gradient(farthest-side at 0 50%, color-mix(in srgb, var(--ink) 22%, transparent), transparent) left center / 0.9rem 100% no-repeat scroll;
+    background: radial-gradient(farthest-side at 0 50%, color-mix(in srgb, var(--ink) 20%, transparent), transparent) left center / 0.9rem 100% no-repeat;
   }
 }
 .ur-table tbody tr:last-child th,
@@ -151,8 +150,9 @@
   vertical-align: middle;
 }
 @media (min-width: 60rem) {
-  /* site.css מזיז את הציטוט 4vw ימינה. ב-1280 זה יוצא מהמסך, אז ההזזה מוגבלת לשוליים שיש בפועל */
-  .ur-quote .bigquote { margin-inline-start: calc(-1 * clamp(0px, (100vw - var(--container)) / 2 - var(--s-4), 4vw)); }
+  /* ב-site.css ‏.bigquote מקבל margin: 0 (גובר על המרכוז של .section > *) ועוד ‎-4vw, ולכן ב-1280 וב-1440 הוא יוצא מהמסך.
+     כאן: מתחילים מקצה הקונטיינר וחורגים ממנו עד 4vw, בלי לעבור את השוליים שיש בפועל */
+  .ur-quote .bigquote { margin-inline-start: max(0px, (100% - var(--container)) / 2 - 4vw); }
 }
 
 /* ---------- 6. שאלות לשאול כל יזם: כותרת דביקה בצד ---------- */

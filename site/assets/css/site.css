@@ -980,7 +980,7 @@ main { display: block; }
 .timeline__step:focus-visible::before,
 .timeline__step:focus-within::before { background: var(--zone); }
 .timeline__step:focus-visible { box-shadow: none; outline: var(--rule) solid var(--focus); outline-offset: 4px; }
-@media (min-width: 64rem) {
+@media (min-width: 80rem) {
   .timeline { grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); }
   .timeline__step {
     margin: 0;
@@ -999,7 +999,7 @@ main { display: block; }
 
 /* ציטוט ענק שובר גריד */
 .bigquote {
-  margin: 0;
+  margin-block: 0;
   font-family: var(--font-display);
   font-size: var(--step-5);
   font-weight: 700;
@@ -1008,7 +1008,9 @@ main { display: block; }
   max-width: 18ch;
 }
 .bigquote footer { margin-top: var(--s-5); font-family: var(--font-body); font-size: var(--step-0); font-weight: 500; color: var(--muted); }
-@media (min-width: 60rem) { .bigquote { margin-inline-start: -4vw; } }
+@media (min-width: 60rem) {
+  .bigquote { margin-inline-start: max(0px, calc((100% - var(--container)) / 2 - 4vw)); margin-inline-end: auto; }
+}
 
 /* רצועה דקה */
 .strip {
