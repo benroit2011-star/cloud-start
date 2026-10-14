@@ -207,6 +207,7 @@ mark.fill {
 .link-wa:hover,
 .link-arrow:hover { background-size: 100% 100%; }
 .link-arrow::after { content: " ←"; }
+.link-wa .wa-glyph { margin-inline-end: 0.35em; vertical-align: -0.15em; }
 
 .tel-link {
   font-variant-numeric: tabular-nums;
@@ -887,7 +888,7 @@ main { display: block; }
 }
 
 /* טבלה */
-.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-top: var(--rule) solid var(--line-strong); }
+.table-wrap { position: relative; overflow-x: auto; -webkit-overflow-scrolling: touch; border-top: var(--rule) solid var(--line-strong); }
 .table {
   inline-size: 100%;
   min-inline-size: 36rem;

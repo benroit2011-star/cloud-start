@@ -126,6 +126,20 @@
 .deal-table tbody + tbody tr:first-child > * { padding-top: var(--s-6); }
 .deal-paper__note { margin-top: var(--s-4); max-width: 52rem; }
 
+/* בטלפון: הגיליון נכנס כולו לרוחב, בלי עמודה שמסתתרת מאחורי גלילה */
+@media (max-width: 40rem) {
+  .deal-paper { padding: var(--s-3) var(--s-3) var(--s-2); }
+  .deal-table { min-inline-size: 0; }
+  .deal-table th,
+  .deal-table td { padding-inline: var(--s-2); }
+  .deal-table td { font-size: 0.875rem; }
+  .deal-table tbody th { inline-size: 30%; font-size: 0.9375rem; }
+  .deal-table tbody th::before { display: block; min-inline-size: 0; }
+  .deal-table .is-total th { font-size: 1rem; }
+  .deal-table .cell-empty,
+  .table--sheet.deal-table .cell-empty { inline-size: 4.75rem; min-inline-size: 4.75rem; padding-inline: var(--s-1); }
+}
+
 /* ---------- 3. הזווית שמשקיעים מפספסים (full-bleed) ---------- */
 
 .angle {
@@ -245,4 +259,5 @@
   align-items: center;
   gap: var(--s-4) var(--s-6);
 }
+.invest-close__call .tel-link--big mark.fill { font-size: 0.55em; vertical-align: middle; }
 .invest-close__note { margin-top: var(--s-4); }

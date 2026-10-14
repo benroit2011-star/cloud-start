@@ -103,6 +103,19 @@
 /* קו דק בין מכירה להשכרה */
 .compare-table tr > :last-child { border-inline-start: var(--hair) solid var(--line); }
 
+/* בטלפון: עמודת "השכרה" מציצה מהקצה, וכותרות השורות נשארות במקום בגלילה */
+@media (max-width: 40rem) {
+  .compare-table { min-inline-size: 30rem; }
+  .compare-table tbody th,
+  .compare-table thead tr > :first-child {
+    position: sticky;
+    inset-inline-start: 0;
+    z-index: 1;
+    background: var(--paper);
+  }
+  .compare-table tbody th { inline-size: 26%; padding-inline-end: var(--s-3); }
+}
+
 /* ---------- 5. רצועה לקונים ---------- */
 
 .buyers .strip h2 { font-size: var(--step-2); }

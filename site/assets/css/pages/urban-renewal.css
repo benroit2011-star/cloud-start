@@ -19,7 +19,7 @@
   margin-inline: auto;
 }
 .ur-hero__text { position: relative; z-index: 1; min-width: 0; }
-.ur-hero h1 { max-width: 13ch; }
+.ur-hero h1 { max-width: 17ch; }
 .ur-hero .lead { margin-top: var(--s-5); }
 .ur-hero__more { max-width: var(--measure); color: var(--ink-soft); }
 .ur-hero .hero__actions { margin-top: var(--s-6); }
@@ -43,13 +43,17 @@
 
 @media (min-width: 60rem) {
   .ur-hero { padding-top: var(--s-8); }
+  /* 6/6: ב-5/12 "התחדשות עירונית" נשברת לשתי שורות ב-1280 */
   .ur-hero__inner {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
     column-gap: var(--s-7);
     align-items: end;
   }
   /* הטקסט נגמר מעל קו הקרקע של השרטוט */
   .ur-hero__text { align-self: start; padding-bottom: var(--s-9); }
+  /* השרטוט חורג שמאלה מהגריד, והבניין השכן נחתך בקצה המסך */
+  .ur-hero__drawing { margin-inline-end: -8vw; }
+  .ur-hero__drawing .drawing { max-inline-size: 48rem; }
 }
 
 /* ---------- 2. באיזה כובע ---------- */
@@ -102,6 +106,29 @@
 .ur-table tbody th { inline-size: 20%; }
 .ur-table thead th { inline-size: 40%; }
 .ur-table td { color: var(--ink-soft); }
+/* הכיתוב נשאר ברוחב המסך גם כשהטבלה רחבה ממנו וגוללת */
+.ur-table caption {
+  position: sticky;
+  inset-inline-start: 0;
+  max-inline-size: calc(100vw - var(--gutter-l) - var(--gutter-r));
+}
+
+@media (max-width: 52rem) {
+  /* כותרת השורה נשארת גלויה כשגוללים לעמודת פינוי-בינוי */
+  .ur-table tbody th,
+  .ur-table thead td {
+    position: sticky;
+    inset-inline-start: 0;
+    z-index: 1;
+    background: var(--surface);
+  }
+  /* צל בקצה השמאלי: יש עוד טבלה בהמשך הגלילה. נעלם כשמגיעים לסוף */
+  .ur-tama .table-wrap {
+    background:
+      linear-gradient(to right, var(--surface) 40%, transparent) left center / 3rem 100% no-repeat local,
+      radial-gradient(farthest-side at 0 50%, color-mix(in srgb, var(--ink) 22%, transparent), transparent) left center / 0.9rem 100% no-repeat scroll;
+  }
+}
 .ur-table tbody tr:last-child th,
 .ur-table tbody tr:last-child td { border-bottom-color: var(--line-strong); }
 
@@ -118,10 +145,14 @@
 
 /* ---------- 5. ציטוט ---------- */
 
-.ur-quote .bigquote mark.fill {
+.ur-quote .bigquote p mark.fill {
   font-size: 0.34em;
   line-height: 1.5;
   vertical-align: middle;
+}
+@media (min-width: 60rem) {
+  /* site.css מזיז את הציטוט 4vw ימינה. ב-1280 זה יוצא מהמסך, אז ההזזה מוגבלת לשוליים שיש בפועל */
+  .ur-quote .bigquote { margin-inline-start: calc(-1 * clamp(0px, (100vw - var(--container)) / 2 - var(--s-4), 4vw)); }
 }
 
 /* ---------- 6. שאלות לשאול כל יזם: כותרת דביקה בצד ---------- */
@@ -180,7 +211,8 @@
 
 /* ---------- 9. סגירה ---------- */
 
-.ur-closing h2 { font-size: var(--step-4); max-width: 13ch; margin-bottom: var(--s-6); }
+.ur-closing h2 { font-size: var(--step-4); margin-bottom: var(--s-6); }
+.ur-closing__turn { display: block; }
 
 .ur-send {
   list-style: none;
