@@ -1,0 +1,88 @@
+<!--
+title: העמוד לא נמצא | ביתא נדל"ן
+wa: not_found
+robots: noindex
+-->
+<main id="main">
+
+  <!-- 1. העמוד שלא נבנה: טקסט + תוכנית שחזרה מהוועדה (אותה רשת כמו פתיחת דף הבית) -->
+  <section class="hero nf" aria-labelledby="nf-title">
+    <div class="hero__text">
+      <p class="eyebrow">תיק בניין מס' 404</p>
+      <h1 id="nf-title" class="nf__title">העמוד הזה <span class="hero__title-turn">לא קיבל היתר.</span></h1>
+      <p class="lead">ביקשנו היתר לעמוד הזה, והוועדה המקומית החזירה את התוכנית עם חותמת אדומה. כנראה הקישור ישן, או שנפלה אות בכתובת.</p>
+      <!-- "גם לא עמודים." בשורה משלו: עמודים של אתר, ועמודים של בניין -->
+      <p class="hero__punch">אנחנו לא בונים בלי היתר. <strong>גם לא עמודים.</strong></p>
+    </div>
+
+    <figure class="nf__drawing">
+      <div class="nf__plan" role="img" aria-label="תוכנית קומה בשרטוט קווי. אחד החדרים משורטט בקו מקווקו, ועליו חותמת אדומה מוטה: &quot;לא אושר&quot;.">
+        <svg class="drawing" viewBox="0 0 480 600" aria-hidden="true" focusable="false">
+          <!-- החדר שלא אושר: תוספת מקווקוות מעל הקיר העליון -->
+          <g class="dim">
+            <line x1="180" y1="24" x2="400" y2="24"/>
+            <line x1="180" y1="16" x2="180" y2="32"/><line x1="400" y1="16" x2="400" y2="32"/>
+            <text x="290" y="12" class="dim__text nf__dim-404">4.04</text>
+          </g>
+          <rect class="future" x="180" y="44" width="220" height="170"/>
+          <path class="future" d="M260 214 a40 40 0 0 1 40 -40"/>
+          <!-- הבניין המאושר -->
+          <rect class="wall" x="40" y="214" width="360" height="320"/>
+          <g class="wall-inner">
+            <line x1="220" y1="214" x2="220" y2="354"/>
+            <line x1="220" y1="404" x2="220" y2="534"/>
+            <line x1="40" y1="380" x2="120" y2="380"/>
+            <line x1="160" y1="380" x2="220" y2="380"/>
+          </g>
+          <g class="door">
+            <path d="M220 354 a50 50 0 0 0 -50 50"/><line x1="220" y1="404" x2="170" y2="404"/>
+            <path d="M120 380 a40 40 0 0 1 40 -40"/>
+          </g>
+          <g class="window">
+            <line x1="36" y1="250" x2="36" y2="330"/><line x1="44" y1="250" x2="44" y2="330"/>
+            <line x1="260" y1="530" x2="360" y2="530"/><line x1="260" y1="538" x2="360" y2="538"/>
+            <line x1="396" y1="420" x2="396" y2="500"/><line x1="404" y1="420" x2="404" y2="500"/>
+          </g>
+          <g class="room-label">
+            <text x="310" y="310">סלון</text>
+            <text x="130" y="302">חדר</text>
+            <text x="130" y="462">חדר</text>
+          </g>
+          <rect class="zone" x="236" y="230" width="148" height="150"/>
+          <!-- קווי מידה של הבניין -->
+          <g class="dim">
+            <line x1="40" y1="562" x2="400" y2="562"/>
+            <line x1="40" y1="554" x2="40" y2="570"/><line x1="400" y1="554" x2="400" y2="570"/>
+            <line x1="220" y1="554" x2="220" y2="570"/>
+            <text x="130" y="590" class="dim__text">4.50</text>
+            <text x="310" y="590" class="dim__text">4.50</text>
+            <line x1="430" y1="214" x2="430" y2="534"/>
+            <line x1="422" y1="214" x2="438" y2="214"/><line x1="422" y1="534" x2="438" y2="534"/>
+            <text x="442" y="374" class="dim__text dim__text--v">7.40</text>
+          </g>
+        </svg>
+        <!-- החותמת ב-HTML מעל השרטוט. מיקום פיזי (left/top) כי מערכת הצירים של ה-SVG משמאל לימין -->
+        <p class="stamp nf__stamp" aria-hidden="true">לא אושר<span class="nf__stamp-sub">הוחזר לתיקון · 404</span></p>
+      </div>
+    </figure>
+  </section>
+
+  <!-- 2. מה שכן בנוי: טקסט רחב + צר -->
+  <section class="section section--tight section--rule nf-built" aria-labelledby="built-title">
+    <div class="wide-narrow">
+      <div class="wide-narrow__wide">
+        <h2 id="built-title">בינתיים, הנה מה שכן בנוי</h2>
+        <ol class="nf-built__list">
+          <li><a href="index.html">חזרה לעמוד הבית</a></li>
+          <li><a href="properties.html">נכסים שזמינים עכשיו</a></li>
+          <li><a href="urban-renewal.html">התחדשות עירונית</a></li>
+        </ol>
+      </div>
+      <div class="wide-narrow__narrow nf-built__ask">
+        <p>ואם הגעתם לכאן בחיפוש אחרי משהו מסוים, כתבו לנו מה זה היה.</p>
+        <a class="btn btn--wa" data-wa="not_found" href="https://wa.me/972000000000"><svg class="wa-glyph" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2.5a7.5 7.5 0 0 0-6.5 11.2L2.5 17.5l3.9-1A7.5 7.5 0 1 0 10 2.5z"/></svg><span>לכתוב לנו מה חיפשתם</span><span class="sr-only"> (נפתח בוואטסאפ)</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>

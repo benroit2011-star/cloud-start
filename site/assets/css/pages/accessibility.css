@@ -1,0 +1,66 @@
+/* accessibility.html — עמוד מסמך שקט: עמודת קריאה אחת. רק מה ש-site.css לא מכסה. */
+
+/* עמודת הקריאה מיושרת לקצה הימני של הקונטיינר, כמו ה-H1 */
+.a11y-doc { max-width: var(--container); }
+.a11y-doc > * { max-width: var(--measure); }
+
+.a11y-part + .a11y-part {
+  margin-top: var(--s-7);
+  padding-top: var(--s-6);
+  border-top: var(--hair) solid var(--line);
+}
+.a11y-part h2 {
+  margin-bottom: var(--s-4);
+  font-size: var(--step-2);
+  font-weight: 700;
+}
+.a11y-part p { color: var(--ink-soft); }
+
+.a11y-list { list-style: none; margin-top: var(--s-4); }
+.a11y-part > h2 + .a11y-list { margin-top: 0; border-top: var(--hair) solid var(--line); }
+.a11y-list li {
+  position: relative;
+  padding-block: var(--s-3);
+  padding-inline-start: var(--s-5);
+  border-bottom: var(--hair) solid var(--line);
+  color: var(--ink-soft);
+}
+/* סימון פריט: קו מידה קצר, כמו ב-eyebrow */
+.a11y-list li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: calc(var(--s-3) + 0.62em);
+  inline-size: 0.75rem;
+  block-size: 7px;
+  border-inline: var(--hair) solid var(--muted);
+  background: linear-gradient(var(--muted), var(--muted)) center / 100% var(--hair) no-repeat;
+}
+.a11y-list strong { color: var(--ink); }
+.a11y-list--short li { padding-block: var(--s-2); }
+.a11y-list--short li::before { top: calc(var(--s-2) + 0.62em); }
+
+.a11y-part kbd {
+  display: inline-block;
+  padding: 0 0.35em;
+  border: var(--hair) solid var(--line-strong);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.875em;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+  direction: ltr;
+}
+
+/* טבלת פרטי קשר בשתי עמודות: בלי רוחב מינימלי ובלי גלילה במובייל */
+.a11y-contact { margin-top: var(--s-6); }
+.a11y-contact .table { min-inline-size: 0; }
+.a11y-contact .table tbody th { inline-size: 36%; }
+.a11y-contact .table td { overflow-wrap: anywhere; }
+
+.a11y-cta { margin-top: var(--s-6); }
+
+/* פרטי ההצהרה: רצועה דקה בסוף העמוד */
+.a11y-meta { margin-top: var(--s-8); }
+.a11y-meta__list { list-style: none; justify-content: flex-start; }

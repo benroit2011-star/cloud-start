@@ -1,0 +1,26 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.YOUR-DOMAIN.co.il/urban-renewal.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ראשי", "item": "https://www.YOUR-DOMAIN.co.il/" },
+        { "@type": "ListItem", "position": 2, "name": "התחדשות עירונית", "item": "https://www.YOUR-DOMAIN.co.il/urban-renewal.html" }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.YOUR-DOMAIN.co.il/urban-renewal.html#service",
+      "name": "התחדשות עירונית ופינוי בינוי",
+      "serviceType": "התחדשות עירונית",
+      "description": "תמ\"א 38 כבר לא בתוקף. מה אפשר היום בבניין ישן בשרון, התחדשות בניינית או פינוי בינוי, ואילו שאלות לשאול יזם לפני שחותמים.",
+      "url": "https://www.YOUR-DOMAIN.co.il/urban-renewal.html",
+      "provider": { "@type": "RealEstateAgent", "@id": "https://www.YOUR-DOMAIN.co.il/#organization", "name": "ביתא נדל\"ן" },
+      "areaServed": [
+        { "@type": "Place", "name": "השרון" },
+        { "@type": "Country", "name": "ישראל" }
+      ]
+    }
+  ]
+}

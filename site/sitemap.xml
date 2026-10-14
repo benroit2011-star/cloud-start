@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- properties.html לא נמצא כאן כל עוד יש בו רק נכסים לדוגמה (noindex). כשעולים נכסים אמיתיים: מוסיפים אותו ומסירים את ה-noindex. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.YOUR-DOMAIN.co.il/</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://www.YOUR-DOMAIN.co.il/sell.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://www.YOUR-DOMAIN.co.il/urban-renewal.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://www.YOUR-DOMAIN.co.il/invest.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://www.YOUR-DOMAIN.co.il/about.html</loc><lastmod>2026-10-14</lastmod></url>
+  <url><loc>https://www.YOUR-DOMAIN.co.il/accessibility.html</loc><lastmod>2026-10-14</lastmod></url>
+</urlset>

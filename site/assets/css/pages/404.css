@@ -1,0 +1,79 @@
+/* ביתא נדל"ן — 404: "העמוד הזה לא קיבל היתר". רק מה ש-site.css לא מכסה. טוקנים בלבד. */
+
+.nf__title { max-width: 14ch; }
+
+.nf__drawing { margin: 0; min-width: 0; }
+.nf__plan {
+  position: relative;
+  max-width: 28rem;
+  margin-inline: auto;
+}
+.nf__plan .drawing .future { stroke-width: 2; }
+.nf__plan .drawing .nf__dim-404 { font-size: var(--step-0); font-weight: 600; }
+
+/* החותמת: אדום רק כאן. ממורכזת על החדר המקווקו (x 180–400, y 44–214 מתוך 480×600) */
+.nf__stamp {
+  position: absolute;
+  left: 60.4%;
+  top: 21.5%;
+  margin: 0;
+  padding: var(--s-2) var(--s-3);
+  font-size: var(--step-2);
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+  transform: translate(-50%, -50%) rotate(-8deg);
+}
+.nf__stamp-sub {
+  display: block;
+  margin-top: var(--s-1);
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- מה שכן בנוי ---------- */
+
+.nf-built__list {
+  list-style: none;
+  counter-reset: built;
+  margin-top: var(--s-5);
+  border-top: var(--rule) solid var(--line-strong);
+}
+.nf-built__list li {
+  counter-increment: built;
+  border-bottom: var(--hair) solid var(--line);
+}
+.nf-built__list a {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-4);
+  padding-block: var(--s-4);
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 700;
+  line-height: var(--lh-head);
+  text-decoration: none;
+}
+.nf-built__list a::before {
+  content: counter(built, decimal-leading-zero);
+  flex: none;
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.nf-built__list a::after {
+  content: "←";
+  content: "←" / "";
+  margin-inline-start: auto;
+  font-weight: 500;
+  transition: transform var(--dur-fast) var(--ease);
+}
+.nf-built__list a:hover { background: linear-gradient(transparent 62%, var(--zone-wash) 62%); }
+.nf-built__list a:hover::after { transform: translateX(calc(-1 * var(--s-2))); }
+
+.nf-built__ask { display: grid; gap: var(--s-4); justify-items: start; }
+.nf-built__ask p { color: var(--ink-soft); }
