@@ -1,0 +1,293 @@
+{
+  "meta": {
+    "name": "ביתא נדל״ן / Beta Nadlan: design tokens",
+    "version": "1.0.0",
+    "direction": "A surveyor's field sheet printed in citrus-grove green on chalk paper: hard hairlines, tabular numerals, a map scale bar measured in days, and one Jaffa-orange mark that means 'sold'.",
+    "cssNaming": "Expose every token as a custom property: --color-*, --font-*, --text-*, --space-*, --section-*, --radius-*, --shadow-*, --dur-*, --ease-*. Light is the default; dark applies under @media (prefers-color-scheme: dark) on :root:not([data-theme=\"light\"]) and again on :root[data-theme=\"dark\"].",
+    "contrast": "All ratios computed with the WCAG 2.x relative-luminance formula; the table is in design.md."
+  },
+
+  "color": {
+    "$roles": {
+      "bg": "Page background. 'Chalk': coastal light on kurkar limestone, a faint eucalyptus grey. Not cream.",
+      "surface": "'Sheet': listing sheets, the channels table, header once scrolled, mobile action bar.",
+      "sand": "'Kurkar': used for ONE band only, the listings section (sheets laid on sand).",
+      "text": "'Grove ink'. All body text, rules, the scale bar.",
+      "muted": "Secondary text, captions, photo credits. Meets 4.5:1 on bg, surface and sand.",
+      "border": "Decorative hairlines between rows, sheet outlines. Never the only cue for an interactive boundary.",
+      "borderStrong": "Ink rules, scale bar, table header rule, phone-button divider in the mobile bar.",
+      "primary": "'Citrus leaf'. Fill of the WhatsApp CTA only (plus hover/active). Not used for headings or backgrounds.",
+      "primaryHover": "WhatsApp CTA hover/active fill.",
+      "onPrimary": "Text and glyph on primary.",
+      "accent": "'Jaffa orange'. FILL ONLY: scale-bar marker (always with an ink ring), the נמכר tag (always with ink text), ::selection. Never text on light surfaces, never a button or section background.",
+      "onAccent": "Text on accent fills.",
+      "accentText": "Orange as text, rare: the inline word נמכר in a sentence or a sold listing's status line.",
+      "accentBorder": "Ring around the marker and border of the נמכר tag.",
+      "focus": "Focus ring on bg, surface and sand. The 'you are here' marker, same family as the scale-bar marker.",
+      "band": "'Grove deep'. Inverse band, used exactly twice: the 14-day launch plan and the final CTA.",
+      "bandText": "Text, rules and scale bar on the band.",
+      "bandMuted": "Secondary text on the band.",
+      "bandRule": "Hairlines on the band.",
+      "bandAccent": "The orange '14' numeral and the marker on the band (orange on grove green = an orange on the tree).",
+      "bandCta": "WhatsApp CTA fill when it sits on the band.",
+      "bandCtaHover": "Its hover fill.",
+      "onBandCta": "Text and glyph on bandCta.",
+      "bandFocus": "Focus ring on the band.",
+      "placeholderBg": "Photo placeholder fill (until real photos arrive).",
+      "placeholderHatch": "45deg hatch lines on placeholders, like a hatched parcel on a survey plan.",
+      "placeholderBorder": "1px dashed outline of placeholders and of [למלא] text markers.",
+      "placeholderText": "Label text inside placeholders and [למלא] markers.",
+      "selectionBg": "::selection background (text uses onAccent)."
+    },
+    "light": {
+      "bg": "#EDEEE8",
+      "surface": "#FAFAF6",
+      "sand": "#E3DCC9",
+      "text": "#18231C",
+      "muted": "#4E5A52",
+      "border": "#C3C9C0",
+      "borderStrong": "#18231C",
+      "primary": "#234D35",
+      "primaryHover": "#183A27",
+      "onPrimary": "#F4F5EF",
+      "accent": "#E8711E",
+      "onAccent": "#18231C",
+      "accentText": "#9A4008",
+      "accentBorder": "#18231C",
+      "focus": "#B4500C",
+      "band": "#183A29",
+      "bandText": "#EDEEE8",
+      "bandMuted": "#AFC2B4",
+      "bandRule": "#3A5A48",
+      "bandAccent": "#F08A3C",
+      "bandCta": "#EDEEE8",
+      "bandCtaHover": "#FFFFFF",
+      "onBandCta": "#183A29",
+      "bandFocus": "#F5A066",
+      "placeholderBg": "#E2E5DC",
+      "placeholderHatch": "#C3C9BE",
+      "placeholderBorder": "#8A958C",
+      "placeholderText": "#4A564E",
+      "selectionBg": "#E8711E"
+    },
+    "dark": {
+      "bg": "#0F1512",
+      "surface": "#161E19",
+      "sand": "#1E1C16",
+      "text": "#E4E8E1",
+      "muted": "#A0ABA2",
+      "border": "#2C3830",
+      "borderStrong": "#C9D0C7",
+      "primary": "#8CC4A0",
+      "primaryHover": "#A6D4B6",
+      "onPrimary": "#0F1A13",
+      "accent": "#F08A3C",
+      "onAccent": "#0F1512",
+      "accentText": "#F5A066",
+      "accentBorder": "#0F1512",
+      "focus": "#F5A066",
+      "band": "#16301F",
+      "bandText": "#E4E8E1",
+      "bandMuted": "#A3B6A8",
+      "bandRule": "#2F4A3A",
+      "bandAccent": "#F08A3C",
+      "bandCta": "#8CC4A0",
+      "bandCtaHover": "#A6D4B6",
+      "onBandCta": "#0F1A13",
+      "bandFocus": "#F5A066",
+      "placeholderBg": "#18211B",
+      "placeholderHatch": "#2E3A32",
+      "placeholderBorder": "#5B675E",
+      "placeholderText": "#A0ABA2",
+      "selectionBg": "#F08A3C"
+    }
+  },
+
+  "typography": {
+    "googleFontsHref": "https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&display=swap",
+    "googleFontsHrefUtilityDigits": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&text=0123456789%2F%3A.%2C-%2B%25%E2%82%AA%E2%86%90&display=swap",
+    "family": {
+      "display": {
+        "name": "Karantina",
+        "google": "Karantina:wght@400;700",
+        "hebrewSubset": true,
+        "weights": [400, 700],
+        "stack": "\"Karantina\", \"Arial Hebrew\", \"Assistant\", Arial, sans-serif",
+        "use": "h1, h2, the giant day numerals, the route step words, the pull quote, the wordmark. Never below 36px, never for paragraphs, buttons, tables or labels."
+      },
+      "body": {
+        "name": "IBM Plex Sans Hebrew",
+        "google": "IBM+Plex+Sans+Hebrew:wght@400;500;600;700",
+        "hebrewSubset": true,
+        "weights": [400, 500, 600, 700],
+        "stack": "\"IBM Plex Sans Hebrew\", \"Assistant\", \"Segoe UI\", \"Arial Hebrew\", Arial, sans-serif",
+        "use": "Everything that is read: paragraphs, h3, buttons, labels, table cells."
+      },
+      "utility": {
+        "name": "IBM Plex Mono (digits and symbols only)",
+        "google": "IBM+Plex+Mono:wght@500 (loaded with text= subset of 0-9 / : . , - + % ₪ ←)",
+        "hebrewSubset": false,
+        "stack": "\"IBM Plex Mono\", \"IBM Plex Sans Hebrew\", ui-monospace, Menlo, monospace",
+        "use": "Days (יום 3), tick labels, aspect ratios, m², floor, price, phone and license numbers. Plex Mono has no Hebrew, so Hebrew letters in the same run fall back per glyph to Plex Sans Hebrew (same superfamily, designed to sit together)."
+      }
+    },
+    "scale": {
+      "numeral":   { "family": "display", "weight": 700, "size": "clamp(5rem, 1.5rem + 14vw, 13rem)",        "lineHeight": 0.82, "tracking": "0",      "use": "0 / 3 / 7 / 14 under the L scale bar" },
+      "display1":  { "family": "display", "weight": 700, "size": "clamp(3.5rem, 1.6rem + 8.4vw, 8.75rem)",   "lineHeight": 0.9,  "tracking": "0",      "use": "hero h1 (56px to 140px)" },
+      "display2":  { "family": "display", "weight": 700, "size": "clamp(2.75rem, 1.6rem + 4.6vw, 5.25rem)",  "lineHeight": 0.95, "tracking": "0",      "use": "section h2 (44px to 84px)" },
+      "display3":  { "family": "display", "weight": 400, "size": "clamp(2.25rem, 1.5rem + 3vw, 3.75rem)",    "lineHeight": 1.0,  "tracking": "0",      "use": "route step words, pull quote, the '8,600' figure (36px to 60px)" },
+      "heading":   { "family": "body",    "weight": 600, "size": "clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem)",   "lineHeight": 1.3,  "tracking": "0",      "use": "h3, listing titles" },
+      "lead":      { "family": "body",    "weight": 400, "size": "clamp(1.125rem, 1.02rem + 0.45vw, 1.375rem)", "lineHeight": 1.55, "tracking": "0",   "use": "hero sub-line, section intros" },
+      "body":      { "family": "body",    "weight": 400, "size": "1.0625rem", "lineHeight": 1.7,  "tracking": "0",      "use": "paragraphs (17px)" },
+      "small":     { "family": "body",    "weight": 400, "size": "0.9375rem", "lineHeight": 1.55, "tracking": "0",      "use": "secondary copy, table cells" },
+      "label":     { "family": "body",    "weight": 600, "size": "0.875rem",  "lineHeight": 1.3,  "tracking": "0",      "use": "eyebrows, sheet location line, tag text" },
+      "button":    { "family": "body",    "weight": 600, "size": "1.0625rem", "lineHeight": 1.2,  "tracking": "0",      "use": "buttons" },
+      "utility":   { "family": "utility", "weight": 500, "size": "0.8125rem", "lineHeight": 1.35, "tracking": "0.02em", "numeric": "tabular-nums", "use": "tick labels, ratios, specs, photo credits (13px, the floor)" }
+    }
+  },
+
+  "space": {
+    "0": "0",
+    "1": "0.25rem",
+    "2": "0.5rem",
+    "3": "0.75rem",
+    "4": "1rem",
+    "5": "1.25rem",
+    "6": "1.5rem",
+    "8": "2rem",
+    "10": "2.5rem",
+    "12": "3rem",
+    "16": "4rem",
+    "20": "5rem",
+    "24": "6rem",
+    "32": "8rem",
+    "40": "10rem"
+  },
+
+  "section": {
+    "$note": "Vertical padding (padding-block) per section is assigned in design.md; never give every section the same value.",
+    "tight": "clamp(2.5rem, 1.5rem + 3vw, 4rem)",
+    "base":  "clamp(4rem, 2.5rem + 4.5vw, 6rem)",
+    "loose": "clamp(5rem, 3rem + 6vw, 8rem)",
+    "max":   "clamp(6rem, 3rem + 9vw, 11rem)"
+  },
+
+  "layout": {
+    "containerMax": "77.5rem",
+    "bleedMax": "90rem",
+    "measure": "36rem",
+    "measureNarrow": "26rem",
+    "gutter": "clamp(1rem, 0.25rem + 3.2vw, 2.5rem)",
+    "columnGap": "clamp(1rem, 0.6rem + 1.2vw, 1.5rem)",
+    "columns": { "mobile": 4, "tablet": 8, "desktop": 12, "dayGrid": 14 },
+    "headerHeight": "4rem",
+    "actionBarHeight": "4rem",
+    "touchTargetMin": "3rem"
+  },
+
+  "breakpoint": {
+    "sm": "30rem",
+    "md": "45rem",
+    "lg": "64rem",
+    "xl": "80rem"
+  },
+
+  "radius": {
+    "$note": "Square by default. Photos, sheets, tables, placeholders and bands: 0.",
+    "none": "0",
+    "xs": "2px",
+    "dot": "50%"
+  },
+
+  "border": {
+    "hairline": "1px",
+    "rule": "2px",
+    "placeholder": "1px dashed"
+  },
+
+  "shadow": {
+    "$note": "Only two shadows exist. Nothing else casts one.",
+    "light": {
+      "sheetHover": "0 1px 0 rgb(24 35 28 / 0.06), 0 14px 28px -18px rgb(24 35 28 / 0.45)",
+      "actionBar": "0 -10px 24px -16px rgb(24 35 28 / 0.5)"
+    },
+    "dark": {
+      "sheetHover": "none; use border-color borderStrong instead",
+      "actionBar": "0 -1px 0 #2C3830"
+    }
+  },
+
+  "motion": {
+    "duration": {
+      "instant": "80ms",
+      "fast": "140ms",
+      "base": "220ms",
+      "slow": "360ms",
+      "draw": "700ms",
+      "tickStagger": "35ms",
+      "copiedNotice": "2400ms"
+    },
+    "easing": {
+      "standard": "cubic-bezier(0.2, 0, 0, 1)",
+      "exit": "cubic-bezier(0.4, 0, 1, 1)",
+      "travel": "cubic-bezier(0.65, 0, 0.35, 1)",
+      "settle": "cubic-bezier(0.3, 1.3, 0.6, 1)"
+    },
+    "reducedMotion": "All transforms and the scale-bar draw are removed; only color/opacity transitions remain, capped at 80ms; scroll-behavior: auto."
+  },
+
+  "aspectRatio": {
+    "hero": "4 / 5",
+    "listing": "4 / 3",
+    "reel": "9 / 16",
+    "neighbourhood": "3 / 2",
+    "portrait": "4 / 5",
+    "detail": "1 / 1"
+  },
+
+  "signature": {
+    "scaleBar": {
+      "name": "סרגל 14 הימים (the 14-day scale bar)",
+      "days": 14,
+      "ticks": 15,
+      "majorTicks": [0, 3, 7, 14],
+      "segments": [
+        { "from": 0, "to": 3, "fill": "solid" },
+        { "from": 3, "to": 7, "fill": "hollow" },
+        { "from": 7, "to": 14, "fill": "solid" }
+      ],
+      "direction": "Day 0 at inline-start (right in RTL), day 14 at inline-end (left). Never mirrored.",
+      "baseline": "1px",
+      "tickMinorLength": "8px",
+      "tickMajorLength": "20px",
+      "tickMinorWidth": "1px",
+      "tickMajorWidth": "2px",
+      "segmentHeight": "6px",
+      "segmentGap": "2px below baseline",
+      "markerSize": "12px",
+      "markerRing": "2px accentBorder (bandText on the band)",
+      "color": "borderStrong; bandText on the band",
+      "markerFill": "accent; bandAccent on the band",
+      "sizes": {
+        "L": "launch band, container width, numerals in typography.scale.numeral under the major ticks",
+        "M": "hero foot and final-CTA top rule, container width, labels in utility",
+        "S": "listing sheet foot, sheet width, only a caption 'יום N מתוך 14'"
+      }
+    },
+    "wordmark": {
+      "text": "ביתא",
+      "suffix": "נדל״ן (with gershayim U+05F4, not straight quotes)",
+      "font": "display 700",
+      "underline": "Segmented like the scale bar: a solid bar under בית, a hollow (1.5px outline) bar under א. Height 0.07em, gap 0.1em below the baseline, 0.06em break between the two parts.",
+      "suffixStyle": "body 600 at 0.32em of the wordmark size, baseline-aligned, at inline-end of ביתא, separated by 0.18em",
+      "minSize": "28px (header); footer uses display2",
+      "color": "text (bandText on the band)"
+    }
+  },
+
+  "zIndex": {
+    "header": 20,
+    "actionBar": 30,
+    "copiedNotice": 40
+  }
+}
