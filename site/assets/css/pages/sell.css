@@ -84,6 +84,8 @@
 /* ---------- 4. מכירה מול השכרה ---------- */
 
 .compare__title { margin-bottom: var(--s-6); }
+/* בלי זה ה-.sr-only (absolute) שבקישורים בטבלה בורח מאזור הגלילה ויוצר גלילה אופקית בעמוד */
+.compare .table-wrap { position: relative; }
 .compare-table thead tr:first-child th {
   padding-bottom: var(--s-1);
   border-bottom: 0;
