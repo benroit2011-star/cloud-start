@@ -10,8 +10,8 @@
   "color": {
     "$roles": {
       "bg": "Page background. 'Chalk': coastal light on kurkar limestone, a faint eucalyptus grey. Not cream.",
-      "surface": "'Sheet': listing sheets, the channels table, header once scrolled, mobile action bar.",
-      "sand": "'Kurkar': used for ONE band only, the listings section (sheets laid on sand).",
+      "surface": "'Sheet': the listings index (section 5), header once scrolled, mobile action bar.",
+      "sand": "'Kurkar': ONE full-bleed band only, the 'כ-8,600' number band (sitemap section 3). It stands in for the sitemap's 'accent colour band': orange is reserved.",
       "text": "'Grove ink'. All body text, rules, the scale bar.",
       "muted": "Secondary text, captions, photo credits. Meets 4.5:1 on bg, surface and sand.",
       "border": "Decorative hairlines between rows, sheet outlines. Never the only cue for an interactive boundary.",
@@ -24,7 +24,7 @@
       "accentText": "Orange as text, rare: the inline word נמכר in a sentence or a sold listing's status line.",
       "accentBorder": "Ring around the marker and border of the נמכר tag.",
       "focus": "Focus ring on bg, surface and sand. The 'you are here' marker, same family as the scale-bar marker.",
-      "band": "'Grove deep'. Inverse band, used exactly twice: the 14-day launch plan and the final CTA.",
+      "band": "'Grove deep'. Inverse full-bleed band, used exactly twice: section 2 (how we market, the 14-day plan) and section 9 (closing CTA).",
       "bandText": "Text, rules and scale bar on the band.",
       "bandMuted": "Secondary text on the band.",
       "bandRule": "Hairlines on the band.",
@@ -132,10 +132,10 @@
       }
     },
     "scale": {
-      "numeral":   { "family": "display", "weight": 700, "size": "clamp(5rem, 1.5rem + 14vw, 13rem)",        "lineHeight": 0.82, "tracking": "0",      "use": "0 / 3 / 7 / 14 under the L scale bar" },
+      "numeral":   { "family": "display", "weight": 700, "size": "clamp(5rem, 1.5rem + 14vw, 13rem)",        "lineHeight": 0.82, "tracking": "0",      "use": "0 / 3 / 7 / 14 under the L scale bar, and the 'כ-8,600' figure in the sand band" },
       "display1":  { "family": "display", "weight": 700, "size": "clamp(3.5rem, 1.6rem + 8.4vw, 8.75rem)",   "lineHeight": 0.9,  "tracking": "0",      "use": "hero h1 (56px to 140px)" },
       "display2":  { "family": "display", "weight": 700, "size": "clamp(2.75rem, 1.6rem + 4.6vw, 5.25rem)",  "lineHeight": 0.95, "tracking": "0",      "use": "section h2 (44px to 84px)" },
-      "display3":  { "family": "display", "weight": 400, "size": "clamp(2.25rem, 1.5rem + 3vw, 3.75rem)",    "lineHeight": 1.0,  "tracking": "0",      "use": "route step words, pull quote, the '8,600' figure (36px to 60px)" },
+      "display3":  { "family": "display", "weight": 400, "size": "clamp(2.25rem, 1.5rem + 3vw, 3.75rem)",    "lineHeight": 1.0,  "tracking": "0",      "use": "pull quote, city names in the areas list, the phone number in the closing band (36px to 60px)" },
       "heading":   { "family": "body",    "weight": 600, "size": "clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem)",   "lineHeight": 1.3,  "tracking": "0",      "use": "h3, listing titles" },
       "lead":      { "family": "body",    "weight": 400, "size": "clamp(1.125rem, 1.02rem + 0.45vw, 1.375rem)", "lineHeight": 1.55, "tracking": "0",   "use": "hero sub-line, section intros" },
       "body":      { "family": "body",    "weight": 400, "size": "1.0625rem", "lineHeight": 1.7,  "tracking": "0",      "use": "paragraphs (17px)" },
@@ -237,12 +237,15 @@
   },
 
   "aspectRatio": {
-    "hero": "4 / 5",
-    "listing": "4 / 3",
+    "heroDesktop": "5 / 4",
+    "heroMobile": "4 / 5",
+    "listingPreview": "4 / 3",
+    "listingThumb": "1 / 1",
     "reel": "9 / 16",
     "neighbourhood": "3 / 2",
-    "portrait": "4 / 5",
-    "detail": "1 / 1"
+    "fatherFrame": "4 / 5",
+    "alexFrame": "1 / 1",
+    "og": "1200 / 630"
   },
 
   "signature": {
@@ -269,9 +272,9 @@
       "color": "borderStrong; bandText on the band",
       "markerFill": "accent; bandAccent on the band",
       "sizes": {
-        "L": "launch band, container width, numerals in typography.scale.numeral under the major ticks",
-        "M": "hero foot and final-CTA top rule, container width, labels in utility",
-        "S": "listing sheet foot, sheet width, only a caption 'יום N מתוך 14'"
+        "L": "section 2 on the band, container width, 14-column day grid, numerals in typography.scale.numeral under the major ticks",
+        "M": "hero foot (labels in utility) and the closing band's top rule (no labels), container width",
+        "S": "listings index row, 96px wide in the status column, caption 'יום N/14' in utility"
       }
     },
     "wordmark": {
