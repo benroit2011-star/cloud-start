@@ -853,6 +853,8 @@ main { display: block; }
 }
 .page-hero h1 { max-width: 16ch; }
 .page-hero .lead { margin-top: var(--s-5); }
+.page-hero__main { min-width: 0; }
+.page-hero__main .crumbs { margin-bottom: var(--s-5); }
 .page-hero__aside { min-width: 0; align-self: end; }
 @media (min-width: 60rem) {
   .page-hero { grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); column-gap: var(--s-8); }

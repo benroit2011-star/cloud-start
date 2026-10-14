@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /_spec/
+Disallow: /_qa/
+Disallow: /_src/
+
+# [למלא] להחליף את YOUR-DOMAIN בדומיין הסופי
+Sitemap: https://www.YOUR-DOMAIN.co.il/sitemap.xml
