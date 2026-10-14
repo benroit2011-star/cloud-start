@@ -93,11 +93,21 @@ mark.fill {
   border: var(--hair) dashed var(--stamp);
   border-radius: var(--radius);
   padding: 0 0.3em;
-  font-size: 0.86em;
+  font-family: var(--font-body);
+  font-size: var(--step--1);
   font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0;
+  vertical-align: middle;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
+/* [לאשר] / [לאמת]: גלויים רק במצב סקירה (?review או #review) */
+html:not(.review) mark.fill--confirm { display: none; }
+/* כל עוד אין מספר טלפון ב-config.js: הטלפון מוסתר, וואטסאפ נשאר */
+html.no-phone:not(.review) [data-phone-only],
+html.no-phone:not(.review) .tel-link { display: none !important; }
+html.no-phone:not(.review) .action-bar { grid-template-columns: 1fr; }
 
 /* ---------- טיפוגרפיה עורכית ---------- */
 
@@ -176,15 +186,28 @@ mark.fill {
 
 /* וואטסאפ: צהוב מגורים עם צל קו של שרטוט */
 .btn--wa {
+  position: relative;
   background: var(--zone);
   color: var(--zone-ink);
-  border-color: var(--zone-ink);
-  box-shadow: 4px 4px 0 0 var(--line-strong);
+  border: var(--hair) solid var(--zone-ink);
 }
-.btn--wa:hover { box-shadow: 2px 2px 0 0 var(--line-strong); transform: translate(2px, 2px); }
-.btn--wa:active { box-shadow: 0 0 0 0 var(--line-strong); transform: translate(4px, 4px); }
+/* hover: קו מידה נמתח מתחת לטקסט */
+.btn--wa::after {
+  content: "";
+  position: absolute;
+  inset-inline: var(--s-4);
+  bottom: 0.45rem;
+  block-size: 7px;
+  border-inline: var(--hair) solid currentColor;
+  background: linear-gradient(currentColor, currentColor) center / 100% var(--hair) no-repeat;
+  transform: scaleX(0);
+  transition: transform var(--dur) var(--ease);
+}
+.btn--wa:hover::after,
+.btn--wa:focus-visible::after { transform: scaleX(1); }
 .btn--lg { min-height: 3.5rem; padding-inline: var(--s-6); font-size: var(--step-1); }
-.btn--sm { min-height: 2.5rem; padding-inline: var(--s-4); font-size: var(--step--1); box-shadow: 3px 3px 0 0 var(--line-strong); }
+.btn--sm { min-height: 2.5rem; padding-inline: var(--s-4); font-size: var(--step--1); }
+.btn--sm::after { bottom: 0.25rem; }
 
 .wa-glyph {
   inline-size: 1.1em;
@@ -256,23 +279,29 @@ mark.fill {
   text-decoration: none;
   flex: none;
 }
-.brand__mark {
-  display: grid;
-  place-items: center;
-  inline-size: 2.5rem;
-  block-size: 2.5rem;
-  background: var(--zone);
-  color: var(--zone-ink);
-  border: var(--rule) solid var(--zone-ink);
+.brand__mark { inline-size: 2.25rem; block-size: 2.25rem; flex: none; }
+.brand__zone { fill: var(--zone); stroke: none; }
+.brand__wall { fill: none; stroke: var(--ink); stroke-width: 3; }
+.brand__inner { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+.brand__door { fill: none; stroke: var(--ink); stroke-width: 1; }
+.brand__name {
+  position: relative;
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.375rem;
   font-weight: 800;
   line-height: 1;
+  padding-bottom: 0.45rem;
 }
-.brand__name {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 700;
+.brand__sub { font-weight: 500; font-size: 0.8em; }
+/* קו מידה מתחת לשם */
+.brand__name::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  block-size: 5px;
+  border-inline: var(--hair) solid var(--muted);
+  background: linear-gradient(var(--muted), var(--muted)) center / 100% var(--hair) no-repeat;
 }
 
 .site-nav { margin-inline-start: auto; }
@@ -494,7 +523,7 @@ main { display: block; }
   border-bottom: var(--rule) solid var(--line-strong);
 }
 .lens-tab {
-  flex: 1 1 0;
+  flex: 1 1 auto;
   display: flex;
   align-items: baseline;
   gap: var(--s-3);
@@ -517,6 +546,12 @@ main { display: block; }
   font-variant-numeric: tabular-nums;
 }
 .lens-tab:hover { color: var(--ink); }
+.lens-tab--all { flex: 0 1 auto; font-size: var(--step-1); font-weight: 600; align-self: end; }
+@media (max-width: 40rem) {
+  .lenses__tabs { flex-wrap: wrap; }
+  .lens-tab { font-size: var(--step-2); }
+  .lens-tab--all { flex-basis: 100%; font-size: var(--step-0); padding-block: var(--s-2); }
+}
 .lens-tab[aria-selected="true"] { color: var(--ink); }
 .lens-tab[aria-selected="true"]::after {
   content: "";
@@ -530,13 +565,16 @@ main { display: block; }
 
 .lenses__stage {
   display: grid;
-  gap: var(--s-6);
+  gap: var(--s-7);
   margin-top: var(--s-6);
 }
-.lenses__drawing { margin: 0; min-width: 0; }
+.lenses__drawing { position: relative; margin: 0 auto; min-width: 0; max-width: 60rem; inline-size: 100%; padding-top: var(--s-5); }
+.lenses__drawing .legend { margin-top: var(--s-5); }
+.lenses__drawing > .drawing { position: relative; }
 .lenses__panels { min-width: 0; }
 .lens-panel h3 { margin-bottom: var(--s-4); }
 .lens-panel:focus-visible { box-shadow: none; outline-offset: 6px; }
+.lens-panel__note { max-width: var(--measure); color: var(--ink-soft); }
 
 .lens-list {
   list-style: none;
@@ -566,34 +604,81 @@ main { display: block; }
   font-variant-numeric: tabular-nums;
   margin-top: 0.15em;
 }
+@media (min-width: 60rem) {
+  .lens-list { columns: 2; column-gap: var(--s-7); }
+  .lens-list li { break-inside: avoid; }
+}
 
-/* בלי JS: כל הרשימות גלויות, המתגים מוסתרים */
+/* נייר פרגמנט: כל קריאה היא גיליון שמונח על אותו שרטוט */
+.tracing {
+  position: absolute;
+  top: var(--s-5);
+  inset-inline: 0;
+  aspect-ratio: 800 / 440;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur-draw) var(--ease);
+  --tilt: -0.6deg;
+}
+.tracing--development { --tilt: 0.5deg; }
+.tracing--investment { --tilt: -0.25deg; }
+.tracing::before {
+  content: "";
+  position: absolute;
+  inset: -14px -10px;
+  background: color-mix(in srgb, var(--surface) 58%, transparent);
+  border: var(--hair) solid var(--line);
+  transform: rotate(var(--tilt));
+}
+/* פס נייר דבק */
+.tracing::after {
+  content: "";
+  position: absolute;
+  top: -26px;
+  inset-inline-start: 14%;
+  inline-size: 4.5rem;
+  block-size: 1.4rem;
+  background: color-mix(in srgb, var(--zone) 40%, var(--surface));
+  opacity: 0.85;
+  transform: rotate(calc(var(--tilt) * 6));
+}
+.tracing svg { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; }
+.tracing__label {
+  position: absolute;
+  top: -6px;
+  inset-inline-end: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  color: var(--ink-soft);
+}
+.lenses.is-enhanced [data-active="brokerage"] .tracing--brokerage,
+.lenses.is-enhanced [data-active="development"] .tracing--development,
+.lenses.is-enhanced [data-active="investment"] .tracing--investment { opacity: 1; transform: none; }
+/* שלושתן יחד: שלושה גיליונות זה על זה, מוזזים מעט */
+.lenses.is-enhanced [data-active="all"] .tracing { opacity: 1; }
+.lenses.is-enhanced [data-active="all"] .tracing::before { background: color-mix(in srgb, var(--surface) 30%, transparent); }
+.lenses.is-enhanced [data-active="all"] .tracing--brokerage { transform: translate(-6px, -4px); }
+.lenses.is-enhanced [data-active="all"] .tracing--development { transform: translate(5px, 3px); }
+.lenses.is-enhanced [data-active="all"] .tracing--investment { transform: translate(-2px, 6px); }
+.lenses.is-enhanced [data-active="all"] .tracing__label { display: none; }
+
+.tracing rect,
+.tracing line {
+  fill: var(--zone);
+  fill-opacity: 0.6;
+  stroke: var(--line-strong);
+  stroke-width: 2;
+}
+.tracing line { fill: none; stroke: var(--zone); stroke-width: 5; }
+.tracing .pin circle { fill: var(--ink); stroke: var(--surface); stroke-width: 2; }
+.tracing .pin text { fill: var(--surface); stroke: none; font-family: var(--font-body); font-size: 14px; font-weight: 600; text-anchor: middle; }
+
+/* בלי JS: כל הרשימות גלויות, המתגים והגיליונות מוסתרים */
 .lenses:not(.is-enhanced) .lenses__tabs { display: none; }
 .lenses:not(.is-enhanced) .lens-panel + .lens-panel { margin-top: var(--s-6); }
-
-/* הדגשות בשרטוט */
-.drawing .hl { opacity: 0; transition: opacity var(--dur) var(--ease); }
-.drawing .hl rect,
-.drawing .hl line {
-  stroke: var(--line-strong);
-  stroke-width: 2.5;
-  fill: var(--zone);
-  fill-opacity: 0.55;
-}
-.drawing .hl line { fill: none; stroke-width: 4; stroke: var(--zone); }
-.drawing .pin circle { fill: var(--ink); stroke: var(--surface); stroke-width: 2; }
-.drawing .pin text { fill: var(--surface); font-size: 14px; font-weight: 600; }
-[data-active="brokerage"] .hl--brokerage,
-[data-active="development"] .hl--development,
-[data-active="investment"] .hl--investment { opacity: 1; }
-.lenses:not(.is-enhanced) .hl { opacity: 0; }
-
-.is-drawing .hl rect,
-.is-drawing .hl line {
-  stroke-dasharray: 1;
-  animation: draw-line var(--dur-draw) var(--ease) both;
-}
-@keyframes draw-line { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.lenses:not(.is-enhanced) [data-lens-panel="all"] { display: none; }
 
 .lenses__foot {
   display: grid;
@@ -612,8 +697,6 @@ main { display: block; }
 .lenses__cta { display: grid; gap: var(--s-3); justify-items: start; }
 
 @media (min-width: 60rem) {
-  .lenses__stage { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--s-7); align-items: start; }
-  .lenses__panels { order: -1; }
   .lenses__foot { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: center; column-gap: var(--s-7); }
 }
 
@@ -738,79 +821,72 @@ main { display: block; }
 .steps__list { list-style: none; border-top: var(--rule) solid var(--line-strong); }
 .step {
   display: grid;
-  grid-template-columns: 4.5rem minmax(0, 1fr);
+  grid-template-columns: 3rem minmax(0, 1fr);
   gap: var(--s-1) var(--s-5);
   padding-block: var(--s-5);
   border-bottom: var(--hair) solid var(--line);
 }
 .step__num {
   grid-row: span 2;
-  font-family: var(--font-display);
-  font-size: var(--step-4);
-  font-weight: 800;
-  line-height: 0.9;
-  color: var(--line);
+  display: grid;
+  place-items: center;
+  inline-size: 2rem;
+  block-size: 2rem;
+  border-radius: 50%;
+  border: var(--hair) solid var(--line-strong);
+  font-size: var(--step--1);
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
-  -webkit-text-stroke: var(--hair) var(--ink);
 }
 .step__title { font-size: var(--step-2); font-weight: 700; }
+.step > :not(.step__num) { grid-column: 2; }
 .step p { max-width: var(--measure); color: var(--ink-soft); }
 
 @media (min-width: 60rem) {
   .steps { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); column-gap: var(--s-8); max-width: var(--container); margin-inline: auto; }
   .steps > * { margin: 0; max-width: none; }
   .steps__head { position: sticky; top: calc(var(--header-h) + var(--s-6)); align-self: start; }
-  .step { grid-template-columns: 7rem minmax(0, 1fr); }
-  .step:nth-child(2) { padding-block: var(--s-7); }
+  .step { grid-template-columns: 3.5rem minmax(0, 1fr); }
 }
 
-/* ---------- 6. דלתות: רשת אסימטרית ---------- */
+/* ---------- 6. דלתות: ארבע שורות, כל אחת עם קשת דלת של תוכנית קומה ---------- */
 
-.doors__head { margin-bottom: var(--s-6); }
-.doors__grid {
+.doors__head { margin-bottom: var(--s-5); }
+.doors__list { list-style: none; border-top: var(--rule) solid var(--line-strong); }
+.door-row {
   display: grid;
-  gap: var(--s-4);
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: var(--s-1) var(--s-4);
+  padding-block: var(--s-5);
+  border-bottom: var(--hair) solid var(--line);
 }
-.door-card {
-  position: relative;
-  display: grid;
-  align-content: start;
-  gap: var(--s-3);
-  padding: var(--s-5);
-  border: var(--hair) solid var(--line-strong);
-  background: var(--paper);
-  transition: background-color var(--dur) var(--ease);
-}
-.door-card h3 { font-weight: 700; }
-.door-card h3 a { text-decoration: none; }
-.door-card h3 a::after { content: " ←"; font-weight: 500; }
-.door-card p { color: var(--ink-soft); }
-.door-card .link-wa { justify-self: start; margin-top: var(--s-2); font-size: 0.9375rem; }
-.door-card:hover { background: var(--surface); }
-.door-card--big { background: var(--zone); color: var(--zone-ink); border-width: var(--rule); }
-.door-card--big p { color: var(--zone-ink); }
-.door-card--big:hover { background: var(--zone); }
-.door-card--big h3 { font-size: var(--step-3); }
-.door-card--big .link-wa { background-image: linear-gradient(var(--paper), var(--paper)); }
-
-@media (min-width: 48rem) {
-  .doors__grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-  .door-card--big { grid-column: span 6; }
-  .door-card--buy { grid-column: span 3; }
-  .door-card--renewal { grid-column: span 3; }
-  .door-card--invest { grid-column: span 6; }
-}
-@media (min-width: 64rem) {
-  .doors__grid { grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: minmax(0, auto); }
-  .door-card--big { grid-column: 1 / span 6; grid-row: 1 / span 2; padding: var(--s-7) var(--s-6); align-content: end; min-height: 22rem; }
-  .door-card--buy { grid-column: 7 / span 6; }
-  .door-card--renewal { grid-column: 7 / span 3; }
-  .door-card--invest { grid-column: 10 / span 3; }
+.door-row__arc { grid-row: span 3; inline-size: 2.25rem; block-size: 2.25rem; fill: none; stroke: var(--ink); stroke-width: 1.5; margin-top: 0.2rem; }
+.door-row h3 { font-size: var(--step-2); font-weight: 700; }
+.door-row h3 a { text-decoration: none; }
+.door-row h3 a::after { content: " ←"; font-weight: 500; }
+.door-row h3 a:hover { text-decoration: underline; text-decoration-thickness: var(--hair); }
+.door-row p { color: var(--ink-soft); max-width: var(--measure); }
+.door-row .link-wa { justify-self: start; font-size: 0.9375rem; }
+.door-row--main { background: var(--zone); color: var(--zone-ink); padding-inline: var(--s-4); border-bottom-color: var(--zone-ink); }
+.door-row--main p { color: var(--zone-ink); }
+.door-row--main .door-row__arc { stroke: var(--zone-ink); }
+.door-row--main .link-wa { background-image: linear-gradient(var(--paper), var(--paper)); }
+@media (min-width: 60rem) {
+  .door-row { grid-template-columns: 3rem minmax(0, 5fr) minmax(0, 6fr) auto; align-items: baseline; column-gap: var(--s-6); }
+  .door-row__arc { grid-row: auto; }
+  .door-row .link-wa { justify-self: end; }
 }
 
 /* ---------- 7. סגירה ---------- */
 
-.closing { border-top: var(--hair) solid var(--line); overflow: hidden; }
+.closing { border-top: var(--hair) solid var(--line); }
+.closing__lead {
+  font-size: var(--step-5);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  max-width: 14ch;
+}
 .closing__word {
   font-size: var(--step-giant);
   font-weight: 800;
@@ -830,10 +906,61 @@ main { display: block; }
 @media (min-width: 60rem) {
   .closing { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--s-7); align-items: end; }
   .closing > * { max-width: none; margin-inline: 0; }
-  .closing__word { grid-column: 1; grid-row: 1; }
-  .closing__dict { grid-column: 1; grid-row: 2; }
-  .closing__body { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; padding-bottom: var(--s-3); }
+  .closing__lead { grid-column: 1; }
+  .closing__body { grid-column: 2; margin-top: 0; padding-bottom: var(--s-3); }
 }
+
+/* ---------- כותרת עם שורת מפתח קטנה ---------- */
+
+.h1-kicker {
+  display: block;
+  margin-bottom: var(--s-3);
+  font-family: var(--font-body);
+  font-size: var(--step-1);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+/* ---------- ערכת תשריט: משבצת כותרת, מקרא ---------- */
+
+.title-block {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  margin-top: var(--s-3);
+  border: var(--hair) solid var(--line-strong);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+  max-width: 24rem;
+  background: var(--paper);
+}
+.title-block > * { padding: var(--s-1) var(--s-2); border-bottom: var(--hair) solid var(--line); margin: 0; }
+.title-block dt { color: var(--muted); border-inline-end: var(--hair) solid var(--line); }
+.title-block dd { margin: 0; font-weight: 600; }
+.title-block > :nth-last-child(-n + 2) { border-bottom: 0; }
+.legend { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5); margin-top: var(--s-3); font-size: 0.75rem; color: var(--muted); }
+.legend__item { display: inline-flex; align-items: center; gap: var(--s-2); }
+.legend__swatch { inline-size: 0.9rem; block-size: 0.9rem; border: var(--hair) solid var(--line-strong); }
+.legend__swatch--zone { background: var(--zone); }
+.legend__swatch--future { background: repeating-linear-gradient(90deg, var(--muted) 0 3px, transparent 3px 6px) center / 100% var(--hair) no-repeat; border-style: dashed; }
+.drawing .north { stroke: var(--ink); stroke-width: 1; }
+.drawing .north path { fill: var(--ink); stroke: none; }
+.drawing .scale-bar rect { stroke: var(--ink); stroke-width: 1; }
+.drawing .scale-bar .fill-ink { fill: var(--ink); }
+.drawing .hatch { stroke: var(--muted); stroke-width: 0.75; }
+
+/* ---------- מקום לצילום (במקום דיוקן גנרי) ---------- */
+
+.photo-slot { margin: 0; min-width: 0; }
+.photo-slot .drawing { background: var(--surface); }
+.photo-slot .corner { stroke: var(--ink); stroke-width: 2; }
+.photo-slot .figure-line { stroke: var(--ink); stroke-width: 1.25; }
+.photo-slot .figure-fill { fill: var(--zone); stroke: none; opacity: var(--zone-opacity); mix-blend-mode: var(--zone-blend); }
+.photo-slot .slot-stamp rect { fill: none; stroke: var(--stamp); stroke-width: 1.5; }
+.photo-slot .slot-stamp text { fill: var(--stamp); font-size: 15px; font-weight: 600; }
+.photo-slot figcaption { margin-top: var(--s-2); font-size: var(--step--1); color: var(--muted); }
 
 /* ---------- רכיבים לעמודים פנימיים ---------- */
 
@@ -1115,8 +1242,10 @@ main { display: block; }
 }
 .prop__media img { inline-size: 100%; block-size: 100%; object-fit: cover; }
 .prop__media .plan { inline-size: 70%; fill: none; stroke: var(--ink); }
-.plan .plan-wall { stroke-width: 2.5; }
-.plan .plan-inner line { stroke-width: 1.25; }
+.plan .plan-wall { stroke-width: 2.5; fill: none; }
+.plan .plan-inner { stroke-width: 1.25; }
+.plan .plan-zone { fill: var(--zone); stroke: none; opacity: var(--zone-opacity); mix-blend-mode: var(--zone-blend); }
+.plan .plan-label--start { text-anchor: start; font-weight: 600; }
 .plan .plan-door { stroke-width: 1; stroke: var(--muted); }
 .plan .plan-dim line { stroke: var(--muted); stroke-width: 1; }
 .plan .plan-label { fill: var(--muted); stroke: none; font-family: var(--font-body); font-size: 9px; text-anchor: middle; }
@@ -1173,7 +1302,9 @@ main { display: block; }
   margin-inline: auto;
 }
 .site-footer__label { font-size: var(--step--1); letter-spacing: var(--tracking-label); opacity: 0.7; }
-.site-footer__call { display: grid; gap: var(--s-3); justify-items: start; min-width: 0; }
+.site-footer__call { display: grid; gap: var(--s-5); justify-items: start; align-content: start; min-width: 0; }
+.site-footer__phone { display: grid; gap: var(--s-3); justify-items: start; }
+.site-footer__wa { font-family: var(--font-display); font-size: var(--step-2); font-weight: 700; }
 .site-footer__note { opacity: 0.8; }
 .site-footer .link-wa { color: var(--paper); background-image: linear-gradient(var(--zone), var(--zone)); }
 .site-footer .link-wa:hover { color: var(--zone-ink); }

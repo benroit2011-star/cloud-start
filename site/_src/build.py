@@ -32,6 +32,7 @@ FONTS_URL = (
     "family=Rubik:wght@400;500;700;800&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&display=swap"
 )
 PHONE_PLACEHOLDER_INTL = "972000000000"
+LICENSE_LINE = 'ביתא נדל"ן · [למלא: שם המתווך המורשה] · מתווך מקרקעין · רישיון מס\' [למלא]'
 OG_IMAGE_ALT = 'ביתא נדל"ן: תיווך, התחדשות עירונית והשקעות בשרון'
 
 NAV = [
@@ -53,6 +54,18 @@ def attr(s):
     return s.replace("&", "&amp;").replace('"', "&quot;")
 
 
+def fill_tag(m):
+    text = m.group(0)
+    cls = "fill fill--confirm" if text.startswith(("[לאשר", "[לאמת")) else "fill"
+    return f'<mark class="{cls}">{text}</mark>'
+
+
+def phone_is_set():
+    cfg = (SITE / "assets" / "js" / "config.js").read_text(encoding="utf-8")
+    m = re.search(r'PHONE_DISPLAY:\s*"([^"]*)"', cfg)
+    return bool(m and m.group(1).strip())
+
+
 def mark_fills(html):
     """עוטף [למלא ...] בטקסט גלוי בלבד: לא בתוך תגיות, לא בתוך script/style, לא אם כבר עטוף."""
     out = []
@@ -65,10 +78,10 @@ def mark_fills(html):
             out.append(part)
             prev_tag = part
             continue
-        if prev_tag.startswith('<mark class="fill"'):
+        if prev_tag.startswith('<mark class="fill'):
             out.append(part)
             continue
-        out.append(FILL_RE.sub(lambda m: '<mark class="fill">' + m.group(0) + "</mark>", part))
+        out.append(FILL_RE.sub(fill_tag, part))
     return "".join(out)
 
 
@@ -96,6 +109,15 @@ def tel_link(cls="tel-link", prefix='<span class="sr-only">להתקשר: </span>
     return f'<a class="{cls}" data-tel href="tel:+{PHONE_PLACEHOLDER_INTL}">{prefix}{phone_text()}</a>'
 
 
+BRAND_MARK = (
+    '<svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">'
+    '<rect class="brand__zone" x="5" y="5" width="15" height="17"/>'
+    '<rect class="brand__wall" x="3" y="3" width="34" height="34"/>'
+    '<path class="brand__inner" d="M22 3V22M3 24H13M18 24H37"/>'
+    '<path class="brand__door" d="M13 24A5 5 0 0 1 18 19"/></svg>'
+)
+
+
 def header(nav_key, wa_key):
     items = []
     menu_items = []
@@ -103,12 +125,12 @@ def header(nav_key, wa_key):
         cur = ' aria-current="page"' if key == nav_key else ""
         items.append(f'<li><a href="{href}"{cur}>{label}</a></li>')
         menu_items.append(
-            f'<li><a href="{href}"{cur}><span class="site-menu__num">{i:02d}</span>{label}</a></li>'
+            f'<li><a href="{href}"{cur}>{label}</a></li>'
         )
     return f"""<header class="site-header">
   <div class="site-header__inner">
     <a class="brand" href="index.html" aria-label="ביתא נדל&quot;ן, לדף הבית">
-      <span class="brand__mark" aria-hidden="true">ב</span><span class="brand__name">ביתא נדל״ן</span>
+      {BRAND_MARK}<span class="brand__name">ביתא <span class="brand__sub">נדל״ן</span></span>
     </a>
     <nav class="site-nav" aria-label="ראשי">
       <ul>
@@ -116,7 +138,7 @@ def header(nav_key, wa_key):
       </ul>
     </nav>
     <div class="site-header__contact">
-      {tel_link()}
+      <span data-phone-only>{tel_link()}</span>
       {wa_link(wa_key, "וואטסאפ", "btn btn--wa btn--sm")}
     </div>
     <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-menu" data-open-label="תפריט" data-close-label="סגירה">תפריט</button>
@@ -128,9 +150,9 @@ def header(nav_key, wa_key):
       </ol>
     </nav>
     <div class="site-menu__foot">
-      {tel_link("tel-link tel-link--big")}
-      {wa_link(wa_key, "לכתוב לנו בוואטסאפ")}
-      <p class="license">מתווך מקרקעין מורשה, רישיון מס' [למלא]</p>
+      <span data-phone-only>{tel_link("tel-link tel-link--big")}</span>
+      {wa_link(wa_key, "כתבו לנו בוואטסאפ")}
+      <p class="license" data-license>{LICENSE_LINE}</p>
     </div>
   </div>
 </header>"""
@@ -140,21 +162,23 @@ def footer(wa_key):
     links = "".join(f'<li><a href="{href}">{label}</a></li>' for _, href, label in FOOT_NAV)
     return f"""<footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="site-footer__call" data-phone-block>
-      <p class="site-footer__label">טלפון</p>
-      {tel_link("tel-link tel-link--huge")}
-      <p class="site-footer__note">המספר הזה מגיע ישר אלינו. [לאשר]</p>
-      {wa_link("general", "או לכתוב בוואטסאפ", "link-wa")}
+    <div class="site-footer__call">
+      <div class="site-footer__phone" data-phone-only data-phone-block>
+        <p class="site-footer__label">טלפון</p>
+        {tel_link("tel-link tel-link--huge")}
+        <p class="site-footer__note">המספר הזה מגיע ישר אלינו. [לאשר]</p>
+      </div>
+      {wa_link("general", "כתבו לנו בוואטסאפ", "link-wa site-footer__wa")}
     </div>
     <div class="site-footer__details">
       <p class="site-footer__name">ביתא נדל״ן</p>
       <p class="dict"><span class="dict__word">ביתא</span>, בארמית: הבית.</p>
-      <p>עסק נדל"ן משפחתי של אבא ובן. בעיקר בשרון, עם עסקאות בכל הארץ.</p>
+      <p>עסק נדל"ן משפחתי של אבא ובן. בעיקר בשרון, ופעילות בכל הארץ.</p>
       <dl class="facts">
         <div><dt>משרד</dt><dd>[למלא: רחוב, מספר, עיר]</dd></div>
         <div><dt>שעות</dt><dd>[למלא: ימים ושעות]</dd></div>
         <div><dt>דוא"ל</dt><dd>[למלא: כתובת מייל. אם אין, השורה יורדת]</dd></div>
-        <div><dt>רישיון</dt><dd>מתווך מקרקעין מורשה, רישיון מס' [למלא]</dd></div>
+        <div><dt>רישיון</dt><dd data-license>{LICENSE_LINE}</dd></div>
       </dl>
     </div>
     <nav class="site-footer__nav" aria-label="ניווט בתחתית העמוד">
@@ -165,8 +189,8 @@ def footer(wa_key):
   </div>
 </footer>
 <div class="action-bar" role="region" aria-label="יצירת קשר">
-  {wa_link(wa_key, "לכתוב בוואטסאפ", "action-bar__wa")}
-  <a class="action-bar__tel" data-tel href="tel:+{PHONE_PLACEHOLDER_INTL}"><span>להתקשר</span><span class="sr-only">: </span><!-- PHONE --><span class="sr-only" data-phone-display>[למלא: מספר טלפון]</span></a>
+  {wa_link(wa_key, "כתבו לנו בוואטסאפ", "action-bar__wa")}
+  <a class="action-bar__tel" data-phone-only data-tel href="tel:+{PHONE_PLACEHOLDER_INTL}"><span>התקשרו</span><span class="sr-only">: </span><span class="sr-only" data-phone-display>[למלא: מספר טלפון]</span></a>
 </div>"""
 
 
@@ -218,8 +242,8 @@ def head(meta, filename):
             f'<meta name="twitter:image" content="{SITE_URL}/og-image.png">',
         ]
     lines += [
-        '<meta name="theme-color" content="#f7f7f4" media="(prefers-color-scheme: light)">',
-        '<meta name="theme-color" content="#1c1d1f" media="(prefers-color-scheme: dark)">',
+        '<meta name="theme-color" content="#f3f4f1" media="(prefers-color-scheme: light)">',
+        '<meta name="theme-color" content="#18191b" media="(prefers-color-scheme: dark)">',
         '<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">',
         '<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">',
         '<link rel="preconnect" href="https://fonts.googleapis.com">',
@@ -248,9 +272,11 @@ def build_page(path):
     meta, main = parse(path)
     filename = path.name
     wa = meta.get("wa", "general")
+    html_cls = "" if phone_is_set() else ' class="no-phone"'
     html = f"""<!doctype html>
-<html lang="he" dir="rtl">
+<html lang="he" dir="rtl"{html_cls}>
 <head>
+<script>if(/(^|[?&#])review\\b/.test(location.search+location.hash))document.documentElement.classList.add("review")</script>
 {head(meta, filename)}
 </head>
 <body data-wa="{wa}">
@@ -262,6 +288,7 @@ def build_page(path):
 </html>
 """
     html = mark_fills(html)
+    html = re.sub(r"<!--.*?-->\s*", "", html, flags=re.S)
     if filename == "404.html":
         # 404 מוגש גם בכתובות עמוקות (/a/b): קישורים מהשורש
         html = re.sub(r'(href|src)="(?!https?:|#|/|tel:|mailto:|data:)([^"]+)"', r'\1="/\2"', html)

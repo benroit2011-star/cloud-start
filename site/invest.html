@@ -1,6 +1,7 @@
 <!doctype html>
-<html lang="he" dir="rtl">
+<html lang="he" dir="rtl" class="no-phone">
 <head>
+<script>if(/(^|[?&#])review\b/.test(location.search+location.hash))document.documentElement.classList.add("review")</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>השקעות נדל"ן בשרון ובכל הארץ | ביתא נדל"ן</title>
@@ -21,8 +22,8 @@
 <meta name="twitter:title" content="השקעות נדל&quot;ן בשרון ובכל הארץ | ביתא נדל&quot;ן">
 <meta name="twitter:description" content="ליווי משקיעים בנדל&quot;ן בשרון ובכל הארץ, גם למי שגר רחוק או בחו&quot;ל. איתור ובדיקה של עסקאות, וגיליון מספרים מלא לפני שמתחייבים.">
 <meta name="twitter:image" content="https://www.YOUR-DOMAIN.co.il/og-image.png">
-<meta name="theme-color" content="#f7f7f4" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#1c1d1f" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f3f4f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#18191b" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,7 +68,7 @@
 <header class="site-header">
   <div class="site-header__inner">
     <a class="brand" href="index.html" aria-label="ביתא נדל&quot;ן, לדף הבית">
-      <span class="brand__mark" aria-hidden="true">ב</span><span class="brand__name">ביתא נדל״ן</span>
+      <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect class="brand__zone" x="5" y="5" width="15" height="17"/><rect class="brand__wall" x="3" y="3" width="34" height="34"/><path class="brand__inner" d="M22 3V22M3 24H13M18 24H37"/><path class="brand__door" d="M13 24A5 5 0 0 1 18 19"/></svg><span class="brand__name">ביתא <span class="brand__sub">נדל״ן</span></span>
     </a>
     <nav class="site-nav" aria-label="ראשי">
       <ul>
@@ -75,7 +76,7 @@
       </ul>
     </nav>
     <div class="site-header__contact">
-      <a class="tel-link" data-tel href="tel:+972000000000"><span class="sr-only">להתקשר: </span><!-- PHONE --><span class="phone" data-phone-display><mark class="fill">[למלא: מספר טלפון]</mark></span></a>
+      <span data-phone-only><a class="tel-link" data-tel href="tel:+972000000000"><span class="sr-only">להתקשר: </span><span class="phone" data-phone-display><mark class="fill">[למלא: מספר טלפון]</mark></span></a></span>
       <a class="btn btn--wa btn--sm" data-wa="invest" href="https://wa.me/972000000000"><svg class="wa-glyph" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2.5a7.5 7.5 0 0 0-6.5 11.2L2.5 17.5l3.9-1A7.5 7.5 0 1 0 10 2.5z"/></svg><span>וואטסאפ</span><span class="sr-only"> (נפתח בוואטסאפ)</span></a>
     </div>
     <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-menu" data-open-label="תפריט" data-close-label="סגירה">תפריט</button>
@@ -83,19 +84,18 @@
   <div class="site-menu" id="site-menu">
     <nav aria-label="תפריט">
       <ol class="site-menu__list">
-        <li><a href="properties.html"><span class="site-menu__num">01</span>נכסים</a></li><li><a href="sell.html"><span class="site-menu__num">02</span>למכור או להשכיר</a></li><li><a href="urban-renewal.html"><span class="site-menu__num">03</span>התחדשות עירונית</a></li><li><a href="invest.html" aria-current="page"><span class="site-menu__num">04</span>השקעות</a></li><li><a href="about.html"><span class="site-menu__num">05</span>אבא ובן</a></li>
+        <li><a href="properties.html">נכסים</a></li><li><a href="sell.html">למכור או להשכיר</a></li><li><a href="urban-renewal.html">התחדשות עירונית</a></li><li><a href="invest.html" aria-current="page">השקעות</a></li><li><a href="about.html">אבא ובן</a></li>
       </ol>
     </nav>
     <div class="site-menu__foot">
-      <a class="tel-link tel-link--big" data-tel href="tel:+972000000000"><span class="sr-only">להתקשר: </span><!-- PHONE --><span class="phone" data-phone-display><mark class="fill">[למלא: מספר טלפון]</mark></span></a>
-      <a class="btn btn--wa" data-wa="invest" href="https://wa.me/972000000000"><svg class="wa-glyph" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2.5a7.5 7.5 0 0 0-6.5 11.2L2.5 17.5l3.9-1A7.5 7.5 0 1 0 10 2.5z"/></svg><span>לכתוב לנו בוואטסאפ</span><span class="sr-only"> (נפתח בוואטסאפ)</span></a>
-      <p class="license">מתווך מקרקעין מורשה, רישיון מס' <mark class="fill">[למלא]</mark></p>
+      <span data-phone-only><a class="tel-link tel-link--big" data-tel href="tel:+972000000000"><span class="sr-only">להתקשר: </span><span class="phone" data-phone-display><mark class="fill">[למלא: מספר טלפון]</mark></span></a></span>
+      <a class="btn btn--wa" data-wa="invest" href="https://wa.me/972000000000"><svg class="wa-glyph" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2.5a7.5 7.5 0 0 0-6.5 11.2L2.5 17.5l3.9-1A7.5 7.5 0 1 0 10 2.5z"/></svg><span>כתבו לנו בוואטסאפ</span><span class="sr-only"> (נפתח בוואטסאפ)</span></a>
+      <p class="license" data-license>ביתא נדל"ן · <mark class="fill">[למלא: שם המתווך המורשה]</mark> · מתווך מקרקעין · רישיון מס' <mark class="fill">[למלא]</mark></p>
     </div>
   </div>
 </header>
 <main id="main">
 
-  <!-- 1. פתיחה, ולמי זה מתאים: טקסט רחב + צר -->
   <section class="page-hero invest-open" aria-labelledby="invest-title">
     <div class="page-hero__main">
       <nav class="crumbs" aria-label="נתיב">
@@ -113,13 +113,12 @@
       </div>
     </div>
 
-    <!-- כל הבלוק לאישור הבעלים, כולל הניסוח -->
     <div class="page-hero__aside invest-fit">
       <h3>למי זה מתאים</h3>
       <ul class="fit-list">
         <li>למי שרוצה לראות את כל העלויות על הנייר לפני שמתאהבים בדירה</li>
         <li>למי שגר רחוק, בארץ או בחו"ל, וצריך מישהו בשטח</li>
-        <li>למי שמוכן להחזיק נכס כמה שנים <mark class="fill">[לאשר]</mark></li>
+        <li>למי שמוכן להחזיק נכס כמה שנים <mark class="fill fill--confirm">[לאשר]</mark></li>
         <li><mark class="fill">[למלא: תקציב מינימלי, אם יש]</mark></li>
       </ul>
       <h3>ולמי פחות</h3>
@@ -127,16 +126,15 @@
         <li>למי שמחפש תשואה מובטחת. אין כזו.</li>
         <li><mark class="fill">[למלא: סוגי עסקאות שאנחנו לא לוקחים]</mark></li>
       </ul>
-      <p class="small">אין באמור ייעוץ השקעות, מס או משפטי. <mark class="fill">[לאשר מול עו"ד]</mark></p>
+      <p class="small">אין באמור ייעוץ השקעות, מס או משפטי. <mark class="fill fill--confirm">[לאשר מול עו"ד]</mark></p>
     </div>
   </section>
 
-  <!-- 2. גיליון עסקה: מסמך עבודה מודפס. התאים ריקים בכוונה; אין להכניס מספר לדוגמה -->
   <section class="section deal" id="deal" aria-labelledby="deal-title">
     <div class="deal__head">
       <p class="eyebrow">גיליון עסקה</p>
       <h2 id="deal-title">גיליון אחד לכל עסקה</h2>
-      <p class="deal__intro">כל נכס שנבדוק יחד מקבל גיליון כזה <mark class="fill">[לאשר שזה מה שאנחנו נותנים]</mark>. התאים כאן ריקים בכוונה. מספרים נכנסים רק מעסקה אמיתית, וכל מספר מגיע עם המקור שלו.</p>
+      <p class="deal__intro">כל נכס שנבדוק יחד מקבל גיליון כזה <mark class="fill fill--confirm">[לאשר שזה מה שאנחנו נותנים]</mark>. התאים כאן ריקים בכוונה. מספרים נכנסים רק מעסקה אמיתית, וכל מספר מגיע עם המקור שלו.</p>
     </div>
     <div class="deal-paper">
       <div class="table-wrap" role="region" aria-labelledby="deal-title" tabindex="0">
@@ -236,38 +234,33 @@
           </tbody>
         </table>
       </div>
-      <p class="small deal-paper__note" id="deal-note">אין באמור ייעוץ השקעות, מס או משפטי. את מס הרכישה ואת המס על השכירות בודקים מול רואה חשבון או יועץ מס. <mark class="fill">[לאשר מול עו"ד]</mark></p>
+      <p class="small deal-paper__note" id="deal-note">אין באמור ייעוץ השקעות, מס או משפטי. את מס הרכישה ואת המס על השכירות בודקים מול רואה חשבון או יועץ מס. <mark class="fill fill--confirm">[לאשר מול עו"ד]</mark></p>
     </div>
   </section>
 
-  <!-- 3. הזווית שמשקיעים מפספסים: full-bleed, שרטוט הבניין עם קומות עתידיות מקווקוות -->
   <section class="section angle" aria-labelledby="angle-title">
     <div class="angle__grid">
       <div class="angle__text">
         <p class="eyebrow">מהזווית של היזמות</p>
         <h2 id="angle-title" class="angle__title">מה יקרה לבניין בעוד כמה שנים</h2>
         <p class="lead">בדירה בבניין ישן יש שתי שאלות. מה הדירה מכניסה היום, ומה יקרה לבניין בהמשך.</p>
-        <p>בניין שיש לו תוכנית התחדשות, או שבעליו כבר בהתארגנות לפינוי-בינוי, יכול לשנות את החשבון לשני הכיוונים. מצד אחד, אולי דירה חדשה בעתיד. מצד שני, שנים של אי-ודאות, והסכם חתום עם יזם שמי שקונה נכנס לנעליו <mark class="fill">[לאמת מול עו"ד]</mark>.</p>
-        <p>אנחנו עוסקים גם ביזמות והתחדשות עירונית, ולכן השורה הזו בגיליון נבדקת בכל עסקה <mark class="fill">[לאשר]</mark>.</p>
+        <p>בניין שיש לו תוכנית התחדשות, או שבעליו כבר בהתארגנות לפינוי-בינוי, יכול לשנות את החשבון לשני הכיוונים. מצד אחד, אולי דירה חדשה בעתיד. מצד שני, שנים של אי-ודאות, והסכם חתום עם יזם שמי שקונה נכנס לנעליו <mark class="fill fill--confirm">[לאמת מול עו"ד]</mark>.</p>
+        <p>אנחנו עוסקים גם ביזמות והתחדשות עירונית, ולכן השורה הזו בגיליון נבדקת בכל עסקה <mark class="fill fill--confirm">[לאשר]</mark>.</p>
         <p class="angle__more"><a class="link-arrow" href="urban-renewal.html">איך עובד פינוי בינוי מהצד של בעלי הדירות</a></p>
       </div>
       <figure class="angle__drawing">
         <svg class="drawing drawing--building" viewBox="0 -120 800 560" role="img" aria-label="שרטוט קווי של בניין מגורים ישן, ומעליו קומות עתידיות בקו מקווקו" focusable="false">
-          <!-- קרקע וקו מגרש -->
           <line class="ground" x1="20" y1="380" x2="780" y2="380"/>
           <g class="dim">
             <line x1="90" y1="404" x2="710" y2="404"/>
             <line x1="90" y1="396" x2="90" y2="412"/><line x1="710" y1="396" x2="710" y2="412"/>
             <text x="400" y="430" class="dim__text">קו מגרש</text>
-            <!-- גובה: מה שיש היום, ומה שאולי יתווסף -->
             <line x1="660" y1="-100" x2="660" y2="320"/>
             <line x1="652" y1="-100" x2="668" y2="-100"/><line x1="652" y1="80" x2="668" y2="80"/><line x1="652" y1="320" x2="668" y2="320"/>
             <text x="690" y="-2" class="dim__text dim__text--big">?</text>
             <text x="700" y="206" class="dim__text">היום</text>
           </g>
-          <!-- מרקר אזור: הקומות שאולי יתווספו -->
           <rect class="zone" x="200" y="-100" width="400" height="180"/>
-          <!-- קומות עתידיות, מקווקו -->
           <g class="future">
             <rect x="200" y="-100" width="400" height="180"/>
             <line x1="200" y1="-40" x2="600" y2="-40"/>
@@ -277,7 +270,6 @@
             <rect x="222" y="-22" width="44" height="24"/><rect x="300" y="-22" width="44" height="24"/><rect x="456" y="-22" width="44" height="24"/><rect x="534" y="-22" width="44" height="24"/>
             <rect x="222" y="38" width="44" height="24"/><rect x="300" y="38" width="44" height="24"/><rect x="456" y="38" width="44" height="24"/><rect x="534" y="38" width="44" height="24"/>
           </g>
-          <!-- גוף הבניין -->
           <rect class="wall" x="200" y="80" width="400" height="240"/>
           <g class="wall-inner">
             <line x1="200" y1="140" x2="600" y2="140"/>
@@ -285,19 +277,16 @@
             <line x1="200" y1="260" x2="600" y2="260"/>
             <rect x="370" y="80" width="60" height="300"/>
           </g>
-          <!-- קומת עמודים -->
           <g class="columns">
             <line x1="200" y1="320" x2="200" y2="380"/><line x1="280" y1="320" x2="280" y2="380"/>
             <line x1="520" y1="320" x2="520" y2="380"/><line x1="600" y1="320" x2="600" y2="380"/>
           </g>
-          <!-- חלונות -->
           <g class="windows">
             <rect x="222" y="98" width="44" height="24"/><rect x="300" y="98" width="44" height="24"/><rect x="456" y="98" width="44" height="24"/><rect x="534" y="98" width="44" height="24"/>
             <rect x="222" y="158" width="44" height="24"/><rect x="300" y="158" width="44" height="24"/><rect x="456" y="158" width="44" height="24"/><rect x="534" y="158" width="44" height="24"/>
             <rect x="222" y="218" width="44" height="24"/><rect x="300" y="218" width="44" height="24"/><rect x="456" y="218" width="44" height="24"/><rect x="534" y="218" width="44" height="24"/>
             <rect x="222" y="278" width="44" height="24"/><rect x="300" y="278" width="44" height="24"/><rect x="456" y="278" width="44" height="24"/><rect x="534" y="278" width="44" height="24"/>
           </g>
-          <!-- חניה -->
           <g class="parking">
             <rect x="290" y="340" width="70" height="36"/><rect x="440" y="340" width="70" height="36"/>
             <text x="325" y="364" class="tiny">P</text><text x="475" y="364" class="tiny">P</text>
@@ -307,30 +296,28 @@
     </div>
   </section>
 
-  <!-- 4. משקיעים מרחוק: רשת אסימטרית, בלוק גדול ושתי הערות בגדלים שונים -->
   <section class="section remote" aria-labelledby="remote-title">
     <div class="remote__grid">
       <div class="remote__main">
         <p class="eyebrow">משקיעים מרחוק, בארץ ובחו"ל</p>
         <h2 id="remote-title" class="remote__title">אתם רחוק. אנחנו בשטח.</h2>
-        <p>בהשקעה מרחוק, החלק הקשה הוא להיות שם: לראות את הדירה ואת הבניין, ולברר בעירייה מה מתוכנן ברחוב. כשאתם לא כאן, אנחנו עושים את זה במקומכם ומעדכנים אתכם בוואטסאפ, בשעה שנוחה לכם, גם כשיש הפרש שעות <mark class="fill">[לאשר]</mark>.</p>
-        <p>את החתימה עצמה אפשר לעשות דרך ייפוי כוח לעורך דין בישראל <mark class="fill">[לאמת מול עו"ד]</mark>. שפות: <mark class="fill">[למלא: באילו שפות אנחנו מדברים עם לקוחות, חוץ מעברית]</mark>.</p>
+        <p>בהשקעה מרחוק, החלק הקשה הוא להיות שם: לראות את הדירה ואת הבניין, ולברר בעירייה מה מתוכנן ברחוב. כשאתם לא כאן, אנחנו עושים את זה במקומכם ומעדכנים אתכם בוואטסאפ, בשעה שנוחה לכם, גם כשיש הפרש שעות <mark class="fill fill--confirm">[לאשר]</mark>.</p>
+        <p>את החתימה עצמה אפשר לעשות דרך ייפוי כוח לעורך דין בישראל <mark class="fill fill--confirm">[לאמת מול עו"ד]</mark>. שפות: <mark class="fill">[למלא: באילו שפות אנחנו מדברים עם לקוחות, חוץ מעברית]</mark>.</p>
         <div class="remote__cta">
           <a class="btn btn--wa" data-wa="invest_remote" href="https://wa.me/972000000000"><svg class="wa-glyph" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2.5a7.5 7.5 0 0 0-6.5 11.2L2.5 17.5l3.9-1A7.5 7.5 0 1 0 10 2.5z"/></svg><span>כתבו לנו מאיפה אתם</span><span class="sr-only"> (נפתח בוואטסאפ)</span></a>
         </div>
       </div>
       <div class="remote-note remote-note--visit">
         <h3>ביקור במקומכם</h3>
-        <p>צילום ווידאו של הדירה ושל חדר המדרגות, כמו שהם, בלי זוויות מחמיאות <mark class="fill">[לאשר]</mark>.</p>
+        <p>צילום ווידאו של הדירה ושל חדר המדרגות, כמו שהם, בלי זוויות מחמיאות <mark class="fill fill--confirm">[לאשר]</mark>.</p>
       </div>
       <div class="remote-note remote-note--pros">
         <h3>עורך דין ורואה חשבון</h3>
-        <p>נתאם עם אנשי המקצוע שלכם. אם אין לכם, נמליץ על כאלה שעבדנו איתם <mark class="fill">[לאשר]</mark>. שאלות מיסוי של תושבי חוץ שייכות לרואה החשבון.</p>
+        <p>נתאם עם אנשי המקצוע שלכם. אם אין לכם, נמליץ על כאלה שעבדנו איתם <mark class="fill fill--confirm">[לאשר]</mark>. שאלות מיסוי של תושבי חוץ שייכות לרואה החשבון.</p>
       </div>
     </div>
   </section>
 
-  <!-- 5. איך נראה ליווי: רשימה ממוספרת עורכית. כל השלבים לאישור הבעלים -->
   <section class="section section--rule" aria-labelledby="escort-title">
     <div class="escort">
       <h2 id="escort-title" class="escort__title">ככה עובד ליווי</h2>
@@ -342,7 +329,7 @@
           </li>
           <li>
             <h3>איתור</h3>
-            <p>מחפשים נכסים שמתאימים למה שסיכמנו, כולל נכסים שעוד לא פורסמו <mark class="fill">[לאשר]</mark>. מה שלא עומד בתנאים שקבענו, לא מגיע אליכם.</p>
+            <p>מחפשים נכסים שמתאימים למה שסיכמנו, כולל נכסים שעוד לא פורסמו <mark class="fill fill--confirm">[לאשר]</mark>. מה שלא עומד בתנאים שקבענו, לא מגיע אליכם.</p>
           </li>
           <li>
             <h3>ניתוח</h3>
@@ -362,8 +349,6 @@
     </div>
   </section>
 
-  <!-- 6. שאלות: אקורדיון, בלי JS -->
-  <!-- FAQPage schema לא נכלל כרגע: חמש מתוך שבע התשובות עדיין עם סימוני מילוי ואימות. כשייסגרו, מוסיפים FAQPage ל-_src/jsonld/invest.json בטקסט זהה מילה במילה. -->
   <section class="section invest-faq" aria-labelledby="faq-title">
     <div class="invest-faq__inner">
       <h2 id="faq-title">שאלות של משקיעים, תשובות בלי מספרים</h2>
@@ -371,25 +356,25 @@
         <details>
           <summary>כמה מס רכישה משלמים על דירה להשקעה?</summary>
           <div class="faq__answer">
-            <p>זה תלוי בעיקר בשני דברים: כמה דירות כבר יש לכם, והאם אתם תושבי ישראל. על דירה נוספת משלמים בדרך כלל יותר מאשר על דירה יחידה, והשיעורים עצמם משתנים מדי פעם בחקיקה, ולכן לא נכתוב אותם כאן. חשבו את הסכום בסימולטור מס הרכישה של רשות המסים, ובדקו אותו מול רואה חשבון או יועץ מס לפני שאתם חותמים. בגיליון העסקה שלנו מס הרכישה הוא שורה נפרדת. נכון לאוקטובר 2026 <mark class="fill">[לאמת]</mark>.</p>
+            <p>זה תלוי בעיקר בשני דברים: כמה דירות כבר יש לכם, והאם אתם תושבי ישראל. על דירה נוספת משלמים בדרך כלל יותר מאשר על דירה יחידה, והשיעורים עצמם משתנים מדי פעם בחקיקה, ולכן לא נכתוב אותם כאן. חשבו את הסכום בסימולטור מס הרכישה של רשות המסים, ובדקו אותו מול רואה חשבון או יועץ מס לפני שאתם חותמים. בגיליון העסקה שלנו מס הרכישה הוא שורה נפרדת. נכון לאוקטובר 2026 <mark class="fill fill--confirm">[לאמת]</mark>.</p>
           </div>
         </details>
         <details>
           <summary>כמה הון עצמי צריך כדי לקנות דירה להשקעה?</summary>
           <div class="faq__answer">
-            <p>בנק ישראל מגביל את שיעור המימון שבנק יכול לתת במשכנתא, והמגבלה על דירה נוספת מחמירה יותר מזו של דירה יחידה <mark class="fill">[לאמת את השיעור העדכני]</mark>. בנוסף, כדאי לתכנן שההון העצמי יכסה גם את מס הרכישה ואת העלויות הנלוות. את הסכום המדויק בודקים מול הבנק או מול יועץ משכנתאות, ובגיליון העסקה הוא מופיע כשורה.</p>
+            <p>בנק ישראל מגביל את שיעור המימון שבנק יכול לתת במשכנתא, והמגבלה על דירה נוספת מחמירה יותר מזו של דירה יחידה <mark class="fill fill--confirm">[לאמת את השיעור העדכני]</mark>. בנוסף, כדאי לתכנן שההון העצמי יכסה גם את מס הרכישה ואת העלויות הנלוות. את הסכום המדויק בודקים מול הבנק או מול יועץ משכנתאות, ובגיליון העסקה הוא מופיע כשורה.</p>
           </div>
         </details>
         <details>
           <summary>כדאי לקנות דירה בבניין שמיועד לפינוי בינוי?</summary>
           <div class="faq__answer">
-            <p>יכול להיות, אם יודעים באיזה שלב הפרויקט נמצא. התארגנות, הסכם חתום, תוכנית מאושרת והיתר הם ארבעה מצבים שונים מאוד, ולכל אחד סיכון אחר. אם בעלי הדירות כבר חתמו עם יזם, מי שקונה נכנס בדרך כלל לנעלי המוכר בהסכם <mark class="fill">[לאמת מול עו"ד]</mark>. כדאי לחשב גם את תקופת הבנייה: מה תקבלו בה לפי ההסכם, ומה קורה אם היא מתארכת. בעמוד ההתחדשות העירונית הסברנו <a href="urban-renewal.html">איך עובד פינוי בינוי מהצד של בעלי הדירות</a>.</p>
+            <p>יכול להיות, אם יודעים באיזה שלב הפרויקט נמצא. התארגנות, הסכם חתום, תוכנית מאושרת והיתר הם ארבעה מצבים שונים מאוד, ולכל אחד סיכון אחר. אם בעלי הדירות כבר חתמו עם יזם, מי שקונה נכנס בדרך כלל לנעלי המוכר בהסכם <mark class="fill fill--confirm">[לאמת מול עו"ד]</mark>. כדאי לחשב גם את תקופת הבנייה: מה תקבלו בה לפי ההסכם, ומה קורה אם היא מתארכת. בעמוד ההתחדשות העירונית הסברנו <a href="urban-renewal.html">איך עובד פינוי בינוי מהצד של בעלי הדירות</a>.</p>
           </div>
         </details>
         <details>
           <summary>אפשר להשקיע בנדל"ן בשרון כשגרים בחו"ל?</summary>
           <div class="faq__answer">
-            <p>כן. אפשר לקנות מרחוק, ואת החתימה אפשר לעשות דרך ייפוי כוח לעורך דין בישראל <mark class="fill">[לאמת מול עו"ד]</mark>. שני דברים כדאי לבדוק מראש. מיסוי: תושב חוץ לא תמיד זכאי לאותן מדרגות מס רכישה כמו תושב ישראל, ויש כללים מיוחדים למי שמתכנן לעבור לישראל <mark class="fill">[לאמת מול יועץ מס]</mark>. ומימון: בנקים בודקים בקשות משכנתא של תושבי חוץ בתנאים משלהם <mark class="fill">[לאמת]</mark>. את החלק שבשטח, ביקורים ובדיקות בעירייה, אנחנו לוקחים על עצמנו <mark class="fill">[לאשר]</mark>.</p>
+            <p>כן. אפשר לקנות מרחוק, ואת החתימה אפשר לעשות דרך ייפוי כוח לעורך דין בישראל <mark class="fill fill--confirm">[לאמת מול עו"ד]</mark>. שני דברים כדאי לבדוק מראש. מיסוי: תושב חוץ לא תמיד זכאי לאותן מדרגות מס רכישה כמו תושב ישראל, ויש כללים מיוחדים למי שמתכנן לעבור לישראל <mark class="fill fill--confirm">[לאמת מול יועץ מס]</mark>. ומימון: בנקים בודקים בקשות משכנתא של תושבי חוץ בתנאים משלהם <mark class="fill fill--confirm">[לאמת]</mark>. את החלק שבשטח, ביקורים ובדיקות בעירייה, אנחנו לוקחים על עצמנו <mark class="fill fill--confirm">[לאשר]</mark>.</p>
           </div>
         </details>
         <details>
@@ -407,60 +392,61 @@
         <details>
           <summary>כמה עולה הליווי שלכם?</summary>
           <div class="faq__answer">
-            <p><mark class="fill">[למלא: דמי ייעוץ או דמי תיווך, ובאיזה שלב משלמים]</mark>. התנאים נכתבים מראש, לפני שמתחילים לחפש <mark class="fill">[לאשר]</mark>.</p>
+            <p><mark class="fill">[למלא: דמי ייעוץ או דמי תיווך, ובאיזה שלב משלמים]</mark>. התנאים נכתבים מראש, לפני שמתחילים לחפש <mark class="fill fill--confirm">[לאשר]</mark>.</p>
           </div>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- 7. סגירה: רצועה דקה עם טלפון גדול -->
   <section class="section section--tight invest-close" aria-labelledby="close-title">
     <div class="invest-close__inner">
       <div class="strip invest-close__strip" data-phone-block>
         <div class="invest-close__text">
           <h2 id="close-title">נתחיל מהתקציב</h2>
-          <p>כתבו בערך כמה אתם רוצים להשקיע ומה חשוב לכם. השאלות שלנו יגיעו לפני ההצעות <mark class="fill">[לאשר]</mark>.</p>
+          <p>כתבו בערך כמה אתם רוצים להשקיע ומה חשוב לכם. השאלות שלנו יגיעו לפני ההצעות <mark class="fill fill--confirm">[לאשר]</mark>.</p>
         </div>
         <div class="invest-close__call">
-          <a class="tel-link tel-link--big" data-tel href="tel:+972000000000"><span class="sr-only">להתקשר: </span><!-- PHONE --><span class="phone" data-phone-display><mark class="fill">[למלא: מספר טלפון]</mark></span></a>
+          <a class="tel-link tel-link--big" data-tel href="tel:+972000000000"><span class="sr-only">להתקשר: </span><span class="phone" data-phone-display><mark class="fill">[למלא: מספר טלפון]</mark></span></a>
           <a class="btn btn--wa" data-wa="invest" href="https://wa.me/972000000000"><svg class="wa-glyph" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2.5a7.5 7.5 0 0 0-6.5 11.2L2.5 17.5l3.9-1A7.5 7.5 0 1 0 10 2.5z"/></svg><span>כתבו לנו על ההשקעה</span><span class="sr-only"> (נפתח בוואטסאפ)</span></a>
         </div>
       </div>
-      <p class="small invest-close__note">אין באמור ייעוץ השקעות, מס או משפטי. <mark class="fill">[לאשר מול עו"ד]</mark></p>
+      <p class="small invest-close__note">אין באמור ייעוץ השקעות, מס או משפטי. <mark class="fill fill--confirm">[לאשר מול עו"ד]</mark></p>
     </div>
   </section>
 
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="site-footer__call" data-phone-block>
-      <p class="site-footer__label">טלפון</p>
-      <a class="tel-link tel-link--huge" data-tel href="tel:+972000000000"><span class="sr-only">להתקשר: </span><!-- PHONE --><span class="phone" data-phone-display><mark class="fill">[למלא: מספר טלפון]</mark></span></a>
-      <p class="site-footer__note">המספר הזה מגיע ישר אלינו. <mark class="fill">[לאשר]</mark></p>
-      <a class="link-wa" data-wa="general" href="https://wa.me/972000000000"><svg class="wa-glyph" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2.5a7.5 7.5 0 0 0-6.5 11.2L2.5 17.5l3.9-1A7.5 7.5 0 1 0 10 2.5z"/></svg><span>או לכתוב בוואטסאפ</span><span class="sr-only"> (נפתח בוואטסאפ)</span></a>
+    <div class="site-footer__call">
+      <div class="site-footer__phone" data-phone-only data-phone-block>
+        <p class="site-footer__label">טלפון</p>
+        <a class="tel-link tel-link--huge" data-tel href="tel:+972000000000"><span class="sr-only">להתקשר: </span><span class="phone" data-phone-display><mark class="fill">[למלא: מספר טלפון]</mark></span></a>
+        <p class="site-footer__note">המספר הזה מגיע ישר אלינו. <mark class="fill fill--confirm">[לאשר]</mark></p>
+      </div>
+      <a class="link-wa site-footer__wa" data-wa="general" href="https://wa.me/972000000000"><svg class="wa-glyph" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2.5a7.5 7.5 0 0 0-6.5 11.2L2.5 17.5l3.9-1A7.5 7.5 0 1 0 10 2.5z"/></svg><span>כתבו לנו בוואטסאפ</span><span class="sr-only"> (נפתח בוואטסאפ)</span></a>
     </div>
     <div class="site-footer__details">
       <p class="site-footer__name">ביתא נדל״ן</p>
       <p class="dict"><span class="dict__word">ביתא</span>, בארמית: הבית.</p>
-      <p>עסק נדל"ן משפחתי של אבא ובן. בעיקר בשרון, עם עסקאות בכל הארץ.</p>
+      <p>עסק נדל"ן משפחתי של אבא ובן. בעיקר בשרון, ופעילות בכל הארץ.</p>
       <dl class="facts">
         <div><dt>משרד</dt><dd><mark class="fill">[למלא: רחוב, מספר, עיר]</mark></dd></div>
         <div><dt>שעות</dt><dd><mark class="fill">[למלא: ימים ושעות]</mark></dd></div>
         <div><dt>דוא"ל</dt><dd><mark class="fill">[למלא: כתובת מייל. אם אין, השורה יורדת]</mark></dd></div>
-        <div><dt>רישיון</dt><dd>מתווך מקרקעין מורשה, רישיון מס' <mark class="fill">[למלא]</mark></dd></div>
+        <div><dt>רישיון</dt><dd data-license>ביתא נדל"ן · <mark class="fill">[למלא: שם המתווך המורשה]</mark> · מתווך מקרקעין · רישיון מס' <mark class="fill">[למלא]</mark></dd></div>
       </dl>
     </div>
     <nav class="site-footer__nav" aria-label="ניווט בתחתית העמוד">
       <ul><li><a href="index.html">דף הבית</a></li><li><a href="properties.html">נכסים</a></li><li><a href="sell.html">למכור או להשכיר</a></li><li><a href="urban-renewal.html">התחדשות עירונית</a></li><li><a href="invest.html">השקעות</a></li><li><a href="about.html">אבא ובן</a></li><li><a href="accessibility.html">הצהרת נגישות</a></li></ul>
     </nav>
-    <p class="site-footer__small">פרטי הנכסים והמחירים באתר מתעדכנים ידנית ועשויים להשתנות. <mark class="fill">[לאשר]</mark>
+    <p class="site-footer__small">פרטי הנכסים והמחירים באתר מתעדכנים ידנית ועשויים להשתנות. <mark class="fill fill--confirm">[לאשר]</mark>
       <span class="site-footer__copy">© <span data-year>2026</span> ביתא נדל״ן</span></p>
   </div>
 </footer>
 <div class="action-bar" role="region" aria-label="יצירת קשר">
-  <a class="action-bar__wa" data-wa="invest" href="https://wa.me/972000000000"><svg class="wa-glyph" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2.5a7.5 7.5 0 0 0-6.5 11.2L2.5 17.5l3.9-1A7.5 7.5 0 1 0 10 2.5z"/></svg><span>לכתוב בוואטסאפ</span><span class="sr-only"> (נפתח בוואטסאפ)</span></a>
-  <a class="action-bar__tel" data-tel href="tel:+972000000000"><span>להתקשר</span><span class="sr-only">: </span><!-- PHONE --><span class="sr-only" data-phone-display><mark class="fill">[למלא: מספר טלפון]</mark></span></a>
+  <a class="action-bar__wa" data-wa="invest" href="https://wa.me/972000000000"><svg class="wa-glyph" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2.5a7.5 7.5 0 0 0-6.5 11.2L2.5 17.5l3.9-1A7.5 7.5 0 1 0 10 2.5z"/></svg><span>כתבו לנו בוואטסאפ</span><span class="sr-only"> (נפתח בוואטסאפ)</span></a>
+  <a class="action-bar__tel" data-phone-only data-tel href="tel:+972000000000"><span>התקשרו</span><span class="sr-only">: </span><span class="sr-only" data-phone-display><mark class="fill">[למלא: מספר טלפון]</mark></span></a>
 </div>
 </body>
 </html>
