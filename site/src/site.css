@@ -117,7 +117,7 @@ bdi { unicode-bidi: isolate; }
 .h2 { font-size: var(--t-d2); line-height: .95; }
 
 /* Bands */
-.band { background: var(--band); color: var(--band-text); --muted: var(--band-muted); --border: var(--band-rule); --border-strong: var(--band-text); --focus: var(--band-focus); --accent: var(--band-accent); --accent-border: var(--band-text); --ph-text: var(--band-muted); --ph-border: var(--band-muted); }
+.band { background: var(--band); color: var(--band-text); --text: var(--band-text); --muted: var(--band-muted); --border: var(--band-rule); --border-strong: var(--band-text); --focus: var(--band-focus); --accent: var(--band-accent); --accent-border: var(--band-text); --ph-text: var(--band-muted); --ph-border: var(--band-muted); }
 .sand { background: var(--sand); }
 
 /* Buttons */
@@ -218,7 +218,9 @@ bdi { unicode-bidi: isolate; }
 .step-list p { color: var(--band-text); }
 .plan { margin-top: clamp(3rem, 2rem + 3vw, 4.5rem); }
 .plan .sbar { margin-bottom: 0; }
-.days { margin-top: 18px; row-gap: 20px; }
+.days { list-style: none; padding: 0; margin-top: 18px; row-gap: 20px; }
+.day .idx { font-size: var(--t-utility); }
+.lands { font-family: var(--font-display); font-weight: 700; font-size: var(--t-d3); line-height: 1; margin-top: clamp(2rem, 1.5rem + 2vw, 3rem); }
 .day { display: flex; flex-direction: column; gap: 10px; padding-inline-end: clamp(.75rem, .5rem + 1vw, 1.5rem); border-inline-start: 1px solid var(--band-rule); padding-inline-start: 12px; min-width: 0; }
 .day .dnum { font-family: var(--font-display); font-weight: 700; font-size: var(--t-numeral); line-height: .82; }
 .day .dnum small { display: block; font-family: var(--font-body); font-size: var(--t-label); font-weight: 600; line-height: 1.3; color: var(--band-muted); margin-bottom: 6px; }
@@ -229,6 +231,7 @@ bdi { unicode-bidi: isolate; }
 .day.d14 { text-align: start; }
 .sold-line { margin-top: clamp(2rem, 1.5rem + 2vw, 3rem); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; border-top: 1px solid var(--band-rule); padding-top: 18px; }
 .sold-line p { max-width: 40rem; }
+.sold-line .tag-sold { font-size: 1rem; padding: 4px 10px; }
 .route .cta-row { margin-top: clamp(2.5rem, 1.5rem + 3vw, 3.5rem); }
 .route .cta-row .lnk { color: var(--band-text); }
 @media (max-width: 44.99rem) {
@@ -293,6 +296,7 @@ bdi { unicode-bidi: isolate; }
 .cities .fill { font-size: 1rem; vertical-align: middle; }
 .deal-table { grid-column: 9 / span 4; align-self: end; border-collapse: collapse; width: 100%; font-size: var(--t-small); }
 .deal-table th, .deal-table td { text-align: start; padding: 10px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.deal-table caption { caption-side: top; text-align: start; font-size: var(--t-label); font-weight: 600; color: var(--muted); padding-bottom: 8px; }
 .deal-table thead th { border-bottom: 1px solid var(--border-strong); font-weight: 600; }
 .deal-table tbody th { font-weight: 600; }
 @media (max-width: 63.99rem) { .areas-main, .deal-table { grid-column: 1 / -1; } }

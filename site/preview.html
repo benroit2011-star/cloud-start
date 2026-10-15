@@ -1,0 +1,736 @@
+<title>ביתא נדל״ן</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=Karantina:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&text=0123456789%2F%3A.%2C-%2B%25%E2%82%AA%E2%86%90&display=swap">
+<style>
+/* Layout: surveyor's field sheet — start-aligned 12-col grid (RTL), a 14-day scale bar as the recurring signature, two grove-green bands and one sand band */
+:root {
+  --bg: #EDEEE8;
+  --surface: #FAFAF6;
+  --sand: #E3DCC9;
+  --text: #18231C;
+  --muted: #4E5A52;
+  --border: #C3C9C0;
+  --border-strong: #18231C;
+  --primary: #234D35;
+  --primary-hover: #183A27;
+  --on-primary: #F4F5EF;
+  --accent: #E8711E;
+  --on-accent: #18231C;
+  --accent-text: #9A4008;
+  --accent-border: #18231C;
+  --focus: #B4500C;
+  --band: #183A29;
+  --band-text: #EDEEE8;
+  --band-muted: #AFC2B4;
+  --band-rule: #3A5A48;
+  --band-accent: #F08A3C;
+  --band-cta: #EDEEE8;
+  --band-cta-hover: #FFFFFF;
+  --on-band-cta: #183A29;
+  --band-focus: #F5A066;
+  --ph-bg: #E2E5DC;
+  --ph-hatch: #C3C9BE;
+  --ph-border: #8A958C;
+  --ph-text: #4A564E;
+  --selection: #E8711E;
+  --shadow-bar: 0 -10px 24px -16px rgb(24 35 28 / 0.5);
+
+  --font-display: "Karantina", "Arial Hebrew", "Assistant", Arial, sans-serif;
+  --font-body: "IBM Plex Sans Hebrew", "Assistant", "Segoe UI", "Arial Hebrew", Arial, sans-serif;
+  --font-utility: "IBM Plex Mono", "IBM Plex Sans Hebrew", ui-monospace, Menlo, monospace;
+
+  --t-numeral: clamp(5rem, 1.5rem + 14vw, 13rem);
+  --t-d1: clamp(3.5rem, 1.6rem + 8.4vw, 8.75rem);
+  --t-d2: clamp(2.75rem, 1.6rem + 4.6vw, 5.25rem);
+  --t-d3: clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+  --t-heading: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --t-lead: clamp(1.125rem, 1.02rem + 0.45vw, 1.375rem);
+  --t-body: 1.0625rem;
+  --t-small: 0.9375rem;
+  --t-label: 0.875rem;
+  --t-utility: 0.8125rem;
+
+  --s-tight: clamp(2.5rem, 1.5rem + 3vw, 4rem);
+  --s-base: clamp(4rem, 2.5rem + 4.5vw, 6rem);
+  --s-loose: clamp(5rem, 3rem + 6vw, 8rem);
+  --s-max: clamp(6rem, 3rem + 9vw, 11rem);
+
+  --container: 77.5rem;
+  --measure: 36rem;
+  --gutter: clamp(1rem, 0.25rem + 3.2vw, 2.5rem);
+  --col-gap: clamp(1rem, 0.6rem + 1.2vw, 1.5rem);
+  --header-h: 4.25rem;
+
+  --dur-fast: 140ms;
+  --dur-base: 220ms;
+  --dur-draw: 700ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-travel: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-settle: cubic-bezier(0.3, 1.3, 0.6, 1);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1512; --surface: #161E19; --sand: #1E1C16; --text: #E4E8E1; --muted: #A0ABA2; --border: #2C3830; --border-strong: #C9D0C7;
+    --primary: #8CC4A0; --primary-hover: #A6D4B6; --on-primary: #0F1A13; --accent: #F08A3C; --on-accent: #0F1512; --accent-text: #F5A066; --accent-border: #0F1512; --focus: #F5A066;
+    --band: #16301F; --band-text: #E4E8E1; --band-muted: #A3B6A8; --band-rule: #2F4A3A; --band-accent: #F08A3C; --band-cta: #8CC4A0; --band-cta-hover: #A6D4B6; --on-band-cta: #0F1A13; --band-focus: #F5A066;
+    --ph-bg: #18211B; --ph-hatch: #2E3A32; --ph-border: #5B675E; --ph-text: #A0ABA2; --selection: #F08A3C; --shadow-bar: 0 -1px 0 #2C3830;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1512; --surface: #161E19; --sand: #1E1C16; --text: #E4E8E1; --muted: #A0ABA2; --border: #2C3830; --border-strong: #C9D0C7;
+  --primary: #8CC4A0; --primary-hover: #A6D4B6; --on-primary: #0F1A13; --accent: #F08A3C; --on-accent: #0F1512; --accent-text: #F5A066; --accent-border: #0F1512; --focus: #F5A066;
+  --band: #16301F; --band-text: #E4E8E1; --band-muted: #A3B6A8; --band-rule: #2F4A3A; --band-accent: #F08A3C; --band-cta: #8CC4A0; --band-cta-hover: #A6D4B6; --on-band-cta: #0F1A13; --band-focus: #F5A066;
+  --ph-bg: #18211B; --ph-hatch: #2E3A32; --ph-border: #5B675E; --ph-text: #A0ABA2; --selection: #F08A3C; --shadow-bar: 0 -1px 0 #2C3830;
+  color-scheme: dark;
+}
+
+/* Base */
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 12px); }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: var(--t-body); line-height: 1.7; -webkit-text-size-adjust: 100%; }
+.site { overflow-x: clip; }
+::selection { background: var(--selection); color: var(--on-accent); }
+h1, h2, h3, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
+h1, h2, h3 { text-wrap: balance; }
+h1, h2 { font-family: var(--font-display); font-weight: 700; letter-spacing: 0; }
+h3 { font-size: var(--t-heading); font-weight: 600; line-height: 1.3; }
+p { max-width: var(--measure); }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; inset-inline-start: 12px; top: -100px; background: var(--surface); color: var(--text); padding: 10px 14px; z-index: 50; }
+.skip:focus { top: calc(env(safe-area-inset-top, 0px) + 8px); }
+
+.wrap { max-width: var(--container); margin-inline: auto; padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); box-sizing: content-box; }
+
+.label { font-size: var(--t-label); font-weight: 600; line-height: 1.3; color: var(--muted); }
+.utility { font-family: var(--font-utility); font-size: var(--t-utility); font-weight: 500; letter-spacing: .02em; font-variant-numeric: tabular-nums; line-height: 1.35; }
+.lead { font-size: var(--t-lead); line-height: 1.55; }
+.muted { color: var(--muted); }
+.num { font-family: var(--font-utility); font-variant-numeric: tabular-nums; font-weight: 500; }
+.lnk { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .25em; }
+.lnk:hover { text-decoration-thickness: 2px; }
+.fill { font-family: var(--font-utility); font-size: .82em; font-weight: 500; color: var(--ph-text); border-bottom: 1px dashed var(--ph-border); padding-inline: 2px; white-space: normal; }
+bdi { unicode-bidi: isolate; }
+
+/* Section head: ink rule + numbered label */
+.sec-head { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--border-strong); padding-top: 12px; margin-bottom: clamp(1.75rem, 1rem + 2vw, 3rem); }
+.sec-head .label { color: var(--text); }
+.sec-head .label + .label { color: var(--muted); }
+.h2 { font-size: var(--t-d2); line-height: .95; }
+
+/* Bands */
+.band { background: var(--band); color: var(--band-text); --text: var(--band-text); --muted: var(--band-muted); --border: var(--band-rule); --border-strong: var(--band-text); --focus: var(--band-focus); --accent: var(--band-accent); --accent-border: var(--band-text); --ph-text: var(--band-muted); --ph-border: var(--band-muted); }
+.sand { background: var(--sand); }
+
+/* Buttons */
+.btn-wa { display: inline-flex; align-items: center; gap: 12px; min-height: 52px; padding-inline: 22px 26px; box-sizing: border-box; background: var(--primary); color: var(--on-primary); border-radius: 2px; font-weight: 600; font-size: var(--t-body); line-height: 1.2; text-decoration: none; transition: background-color var(--dur-fast) var(--ease-standard); }
+.btn-wa svg { width: 20px; height: 20px; flex: none; }
+.btn-wa .arr { display: inline-block; transition: transform var(--dur-fast) var(--ease-standard); }
+.btn-wa:hover { background: var(--primary-hover); }
+.btn-wa:hover .arr { transform: translateX(-3px); }
+.btn-wa:active { transform: translateY(1px); }
+.band .btn-wa { background: var(--band-cta); color: var(--on-band-cta); }
+.band .btn-wa:hover { background: var(--band-cta-hover); }
+.btn-wa--sm { min-height: 44px; padding-inline: 14px 16px; font-size: var(--t-small); gap: 8px; }
+.btn-wa--sm svg { width: 18px; height: 18px; }
+.btn-wa--lg { min-height: 60px; padding-inline: 28px 32px; font-size: 1.125rem; }
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; }
+.cta-note { font-size: var(--t-small); color: var(--muted); }
+
+/* Wordmark */
+.wm { display: inline-flex; align-items: baseline; gap: .18em; text-decoration: none; color: inherit; font-size: 2.25rem; line-height: 1; }
+.wm-word { font-family: var(--font-display); font-weight: 700; display: inline-flex; }
+.wm-word > span { position: relative; padding-bottom: .16em; }
+.wm-word > span::after { content: ""; position: absolute; inset-inline: 0; bottom: 0; height: max(.1em, 4px); box-sizing: border-box; }
+.wm-bet::after { background: currentColor; inset-inline-end: .03em !important; }
+.wm-a::after { border: 1.5px solid currentColor; inset-inline-start: .03em !important; }
+.wm-suffix { font-family: var(--font-body); font-weight: 600; font-size: .4em; }
+
+/* Header */
+.hdr { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 1px solid transparent; transition: background-color var(--dur-base) var(--ease-standard), border-color var(--dur-base) var(--ease-standard); }
+.hdr.scrolled { background: var(--surface); border-bottom-color: var(--border); }
+.hdr-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; min-height: calc(var(--header-h) - 20px); }
+.hdr-id { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.hdr-lic { font-size: .75rem; color: var(--muted); line-height: 1.3; }
+.hdr-end { display: flex; align-items: center; gap: 22px; }
+.hdr-nav { display: flex; gap: 18px; font-size: var(--t-small); }
+.hdr-nav a { text-decoration: none; }
+.hdr-nav a:hover { text-decoration: underline; text-underline-offset: .3em; }
+@media (max-width: 44.99rem) { .hdr-nav { display: none; } .wm { font-size: 2rem; } }
+
+/* Placeholders for real photos */
+.ph { position: relative; box-sizing: border-box; background-color: var(--ph-bg); background-image: repeating-linear-gradient(45deg, var(--ph-hatch) 0 1px, transparent 1px 9px); border: 1px dashed var(--ph-border); color: var(--ph-text); padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; max-width: 100%; }
+.ph b { font-size: var(--t-label); font-weight: 600; }
+.ph span { font-size: var(--t-small); max-width: 22rem; }
+.ph i { position: absolute; inset-inline-end: 12px; bottom: 10px; font-style: normal; font-family: var(--font-utility); font-size: var(--t-utility); }
+.credit { margin-top: 8px; color: var(--muted); }
+
+/* Scale bar (signature) */
+.sbar { position: relative; height: 29px; color: var(--border-strong); }
+.sbar::before { content: ""; position: absolute; inset-inline: 0; top: 20px; height: 1px; background: currentColor; }
+.sbar .tk { position: absolute; bottom: 9px; width: 1px; height: 8px; background: currentColor; inset-inline-start: calc(var(--d) / 14 * (100% - 2px)); }
+.sbar .tk.mj { width: 2px; height: 20px; }
+.sbar .sg { position: absolute; top: 23px; height: 6px; box-sizing: border-box; }
+.sbar .sg.s1 { inset-inline-start: 0; width: calc(3 / 14 * 100%); background: currentColor; }
+.sbar .sg.s2 { inset-inline-start: calc(3 / 14 * 100%); width: calc(4 / 14 * 100%); border: 1px solid currentColor; }
+.sbar .sg.s3 { inset-inline-start: calc(7 / 14 * 100%); width: calc(7 / 14 * 100%); background: currentColor; }
+.sbar .mk { position: absolute; top: 14px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 2px var(--accent-border); inset-inline-start: calc(var(--m) / 14 * (100% - 12px)); }
+.sbar .sold { position: absolute; inset-inline-end: 0; bottom: calc(100% + 4px); }
+.tag-sold { display: inline-block; background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent-border); border-radius: 2px; font-size: var(--t-label); font-weight: 600; line-height: 1.2; padding: 3px 8px; }
+.band .tag-sold { color: var(--band); border-color: var(--band-text); }
+.sbar.play .mk { animation: travel var(--dur-draw) var(--ease-travel) both; }
+.sbar.play .sold { animation: settle var(--dur-base) var(--ease-settle) both; animation-delay: var(--dur-draw); }
+@keyframes travel { from { inset-inline-start: 0; } to { inset-inline-start: calc(100% - 12px); } }
+@keyframes settle { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.day-grid { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); column-gap: 0; }
+.dg-0 { grid-column: 1 / span 3; }
+.dg-3 { grid-column: 4 / span 4; }
+.dg-7 { grid-column: 8 / span 4; }
+.dg-14 { grid-column: 12 / span 3; text-align: end; }
+
+/* Hero */
+.hero { padding-block: var(--s-tight) var(--s-base); }
+.hero-grid { display: grid; grid-template-columns: [full-start] max(var(--gutter), (100% - var(--container)) / 2) [text-start] minmax(0, 5fr) [text-end] var(--col-gap) [photo-start] minmax(0, 7fr) [c-end] max(var(--gutter), (100% - var(--container)) / 2) [full-end]; row-gap: clamp(2rem, 1rem + 3vw, 3.5rem); }
+.hero-text { grid-column: text; display: flex; flex-direction: column; gap: clamp(1.25rem, .8rem + 1.2vw, 1.75rem); align-self: center; min-width: 0; }
+.hero h1 { font-size: var(--t-d1); line-height: .9; }
+.hero h1 .h1-sub { display: block; font-size: .5em; line-height: 1; margin-top: .25em; }
+.hero-proof { font-size: var(--t-small); color: var(--muted); }
+.hero-photo { grid-column: photo-start / full-end; min-width: 0; }
+.hero-photo .ph { aspect-ratio: 5 / 4; width: 100%; }
+.hero-bar { grid-column: text-start / c-end; }
+.hero-bar .day-grid { margin-top: 10px; }
+.hero-bar .day-grid span { padding-inline-end: 8px; }
+.hero-bar .lbl-long { display: inline; }
+@media (max-width: 44.99rem) {
+  .hero-grid { grid-template-columns: [full-start] max(var(--gutter), env(safe-area-inset-right, 0px)) [text-start photo-start] minmax(0, 1fr) [text-end c-end] max(var(--gutter), env(safe-area-inset-left, 0px)) [full-end]; }
+  .hero-photo { grid-column: photo-start / c-end; }
+  .hero-photo .ph { aspect-ratio: 4 / 5; }
+  .hero-bar .lbl-long { display: none; }
+}
+
+/* Section 2: marketing route */
+.route { padding-block: var(--s-max); }
+.route .intro { margin-top: 18px; color: var(--band-text); }
+.before { margin-top: clamp(2.5rem, 1.5rem + 3vw, 4rem); }
+.before > .label { display: block; margin-bottom: 10px; }
+.step-list { list-style: none; padding: 0; border-top: 1px solid var(--band-rule); }
+.step-list li { display: grid; grid-template-columns: 3.5rem minmax(0, 12rem) minmax(0, 1fr); gap: 8px 20px; align-items: baseline; padding-block: 16px; border-bottom: 1px solid var(--band-rule); }
+.step-list .idx { color: var(--band-muted); }
+.step-list h3 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.25rem, 1.8rem + 1.5vw, 3rem); line-height: 1; }
+.step-list p { color: var(--band-text); }
+.plan { margin-top: clamp(3rem, 2rem + 3vw, 4.5rem); }
+.plan .sbar { margin-bottom: 0; }
+.days { list-style: none; padding: 0; margin-top: 18px; row-gap: 20px; }
+.day .idx { font-size: var(--t-utility); }
+.lands { font-family: var(--font-display); font-weight: 700; font-size: var(--t-d3); line-height: 1; margin-top: clamp(2rem, 1.5rem + 2vw, 3rem); }
+.day { display: flex; flex-direction: column; gap: 10px; padding-inline-end: clamp(.75rem, .5rem + 1vw, 1.5rem); border-inline-start: 1px solid var(--band-rule); padding-inline-start: 12px; min-width: 0; }
+.day .dnum { font-family: var(--font-display); font-weight: 700; font-size: var(--t-numeral); line-height: .82; }
+.day .dnum small { display: block; font-family: var(--font-body); font-size: var(--t-label); font-weight: 600; line-height: 1.3; color: var(--band-muted); margin-bottom: 6px; }
+.day.d14 .dnum { color: var(--band-accent); }
+.day .idx { color: var(--band-muted); }
+.day h3 { font-size: var(--t-heading); }
+.day p { font-size: var(--t-small); color: var(--band-text); }
+.day.d14 { text-align: start; }
+.sold-line { margin-top: clamp(2rem, 1.5rem + 2vw, 3rem); display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; border-top: 1px solid var(--band-rule); padding-top: 18px; }
+.sold-line p { max-width: 40rem; }
+.sold-line .tag-sold { font-size: 1rem; padding: 4px 10px; }
+.route .cta-row { margin-top: clamp(2.5rem, 1.5rem + 3vw, 3.5rem); }
+.route .cta-row .lnk { color: var(--band-text); }
+@media (max-width: 44.99rem) {
+  .plan .sbar { display: none; }
+  .days { display: flex; flex-direction: column; gap: 0; margin-top: 0; border-inline-start: 1px solid var(--band-text); }
+  .day { border-inline-start: 0; padding-inline-start: 22px; padding-block: 18px 26px; position: relative; text-align: start; }
+  .day::before { content: ""; position: absolute; inset-inline-start: -4px; top: 0; bottom: 0; width: 7px; box-sizing: border-box; background: var(--band-text); }
+  .day.d3::before { background: transparent; border: 1px solid var(--band-text); }
+  .day .dnum { font-size: clamp(4rem, 2rem + 10vw, 6rem); }
+  .step-list li { grid-template-columns: 2.5rem minmax(0, 1fr); }
+  .step-list li p { grid-column: 2; }
+}
+
+/* Section 3: followers band */
+.reach { padding-block: var(--s-tight); }
+.reach-in { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px clamp(1.5rem, 1rem + 3vw, 4rem); }
+.reach-num { font-family: var(--font-display); font-weight: 700; font-size: var(--t-numeral); line-height: .82; }
+.reach-text { display: flex; flex-direction: column; gap: 10px; padding-bottom: .6rem; min-width: 0; }
+.reach-text h2 { font-family: var(--font-body); font-weight: 600; font-size: var(--t-heading); line-height: 1.3; }
+.reach-sum { font-size: var(--t-small); }
+
+/* Section 4: father and son */
+.family { padding-block: var(--s-loose) var(--s-base); }
+.family-top { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); row-gap: 20px; }
+.family-top h2 { grid-column: 1 / span 6; }
+.family-top .copy { grid-column: 7 / span 6; display: flex; flex-direction: column; gap: 14px; align-self: end; }
+.family-grid { margin-top: clamp(2.5rem, 1.5rem + 3vw, 4rem); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); row-gap: 28px; align-items: start; }
+.fg-father { grid-column: 1 / span 4; }
+.fg-father .ph { aspect-ratio: 4 / 5; width: 100%; }
+.fg-quote { grid-column: 5 / span 5; align-self: center; padding-inline: clamp(.5rem, 1vw, 1.25rem); }
+.fg-son { grid-column: 10 / span 3; margin-top: 96px; }
+.fg-son .ph { aspect-ratio: 1 / 1; width: 100%; }
+.fg-cap { margin-top: 10px; display: flex; flex-direction: column; gap: 2px; }
+.fg-cap b { font-weight: 600; }
+.quote { font-family: var(--font-display); font-weight: 400; font-size: var(--t-d3); line-height: 1; position: relative; }
+.quote::before { content: "״"; position: absolute; inset-inline-start: -.45em; top: -.05em; color: var(--muted); }
+.quote-by { margin-top: 14px; color: var(--muted); font-size: var(--t-small); }
+.family .cta-row { margin-top: clamp(2rem, 1.5rem + 2vw, 3rem); }
+@media (max-width: 63.99rem) {
+  .family-top h2, .family-top .copy { grid-column: 1 / -1; }
+  .fg-father { grid-column: 1 / span 6; }
+  .fg-son { grid-column: 7 / span 6; margin-top: 64px; }
+  .fg-quote { grid-column: 1 / -1; grid-row: 2; padding-inline-start: .6em; }
+}
+
+/* Section 5: listings */
+.listings { background: var(--surface); padding-block: var(--s-base) var(--s-loose); }
+.listings-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); row-gap: 16px; }
+.listings-head h2 { grid-column: 1 / span 7; }
+.listings-head p { grid-column: 8 / span 5; align-self: end; }
+.empty { margin-top: clamp(2rem, 1.5rem + 2vw, 3rem); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding-block: 22px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px 32px; align-items: center; }
+.empty .msg { font-size: var(--t-lead); line-height: 1.5; }
+.empty .links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 8px; font-size: var(--t-small); }
+@media (max-width: 44.99rem) { .listings-head h2, .listings-head p { grid-column: 1 / -1; } .empty { grid-template-columns: minmax(0, 1fr); } }
+
+/* Section 6: areas */
+.areas { padding-block: var(--s-loose) var(--s-tight); }
+.areas-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); row-gap: 32px; }
+.areas-main { grid-column: 1 / span 8; min-width: 0; display: flex; flex-direction: column; gap: 22px; }
+.cities { font-family: var(--font-display); font-weight: 400; font-size: var(--t-d3); line-height: 1.05; }
+.cities .sep { color: var(--muted); padding-inline: .2em; }
+.cities .fill { font-size: 1rem; vertical-align: middle; }
+.deal-table { grid-column: 9 / span 4; align-self: end; border-collapse: collapse; width: 100%; font-size: var(--t-small); }
+.deal-table th, .deal-table td { text-align: start; padding: 10px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.deal-table caption { caption-side: top; text-align: start; font-size: var(--t-label); font-weight: 600; color: var(--muted); padding-bottom: 8px; }
+.deal-table thead th { border-bottom: 1px solid var(--border-strong); font-weight: 600; }
+.deal-table tbody th { font-weight: 600; }
+@media (max-width: 63.99rem) { .areas-main, .deal-table { grid-column: 1 / -1; } }
+
+/* Section 8: FAQ */
+.faq { padding-block: var(--s-base) var(--s-loose); }
+.faq-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); row-gap: 28px; }
+.faq-side { grid-column: 1 / span 4; }
+.faq-side > div { position: sticky; top: calc(var(--header-h) + 24px); display: flex; flex-direction: column; gap: 18px; }
+.faq-list { grid-column: 5 / span 8; border-top: 1px solid var(--border-strong); }
+.faq details { border-bottom: 1px solid var(--border); }
+.faq summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding-block: 18px; font-weight: 600; font-size: 1.125rem; line-height: 1.45; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--font-utility); font-weight: 500; font-size: 1.25rem; color: var(--muted); }
+.faq details[open] summary::after { content: "−"; }
+.faq .ans { padding-bottom: 20px; display: flex; flex-direction: column; gap: 10px; }
+.faq-more { margin-top: 24px; }
+@media (max-width: 63.99rem) { .faq-side, .faq-list { grid-column: 1 / -1; } .faq-side > div { position: static; } }
+
+/* Section 9: closing */
+.closing { padding-block: var(--s-base) var(--s-max); }
+.closing .sbar { margin-bottom: clamp(2.5rem, 1.5rem + 3vw, 4rem); margin-top: 30px; }
+.closing-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); row-gap: 28px; align-items: end; }
+.closing-grid > div { grid-column: 1 / span 7; display: flex; flex-direction: column; gap: 22px; }
+.closing-phone { grid-column: 8 / span 5; display: flex; flex-direction: column; gap: 6px; }
+.closing-phone a { font-family: var(--font-display); font-weight: 400; font-size: var(--t-d3); line-height: 1; text-decoration: none; }
+.closing-phone a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .15em; }
+@media (max-width: 63.99rem) { .closing-grid > div, .closing-phone { grid-column: 1 / -1; } }
+
+/* Footer */
+.ftr { padding-block: var(--s-tight); font-size: var(--t-small); }
+.ftr-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--col-gap); row-gap: 28px; border-top: 1px solid var(--border-strong); padding-top: 24px; }
+.ftr-id { grid-column: 1 / span 6; display: flex; flex-direction: column; gap: 10px; }
+.ftr-id .wm { font-size: var(--t-d2); }
+.ftr-col { grid-column: span 3; display: flex; flex-direction: column; gap: 6px; }
+.ftr-col .label { margin-bottom: 4px; }
+.ftr-legal { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 14px; }
+@media (max-width: 44.99rem) { .ftr-id, .ftr-col { grid-column: 1 / -1; } }
+
+/* Mobile action bar */
+.abar { display: none; }
+@media (max-width: 44.99rem) {
+  .abar { display: grid; grid-template-columns: 2fr 1fr; position: fixed; z-index: 30; left: 0; right: 0; bottom: 0; background: var(--surface); border-top: 1px solid var(--border); box-shadow: var(--shadow-bar); padding: 8px max(12px, env(safe-area-inset-right, 0px)) calc(8px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); gap: 8px; transform: translateY(110%); transition: transform var(--dur-base) var(--ease-standard); }
+  .abar.on { transform: none; }
+  .abar .btn-wa { min-height: 56px; justify-content: center; }
+  .abar .call { display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; border-inline-start: 1px solid var(--border-strong); font-weight: 600; line-height: 1.2; }
+  .abar .call .utility { color: var(--muted); }
+  .site { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* Copy notice */
+.copied { position: fixed; z-index: 40; inset-inline-start: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(50%); background: var(--text); color: var(--bg); padding: 10px 16px; border-radius: 2px; font-size: var(--t-small); font-weight: 600; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 80ms !important; animation: none !important; }
+  .btn-wa:hover .arr, .btn-wa:active { transform: none; }
+  .abar { transition: none; }
+}
+</style>
+<div class="site" id="top" dir="rtl" lang="he">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.2 20.8l4.5-1.2A8.8 8.8 0 1 0 12 3.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.2 8.4c.3-.3.8-.3 1 .1l.7 1.4c.1.3 0 .6-.2.8l-.5.5c.6 1.2 1.6 2.2 2.8 2.8l.5-.5c.2-.2.5-.3.8-.2l1.4.7c.4.2.4.7.1 1l-.6.6c-.5.5-1.3.6-2 .3-2-1-3.6-2.6-4.6-4.6-.3-.7-.2-1.5.3-2Z" fill="currentColor"/></symbol>
+</svg>
+<a class="skip" href="#main">דילוג לתוכן</a>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <div class="hdr-id">
+      <a class="wm" href="#top" aria-label="ביתא נדל״ן, לראש העמוד"><span class="wm-word"><span class="wm-bet">בית</span><span class="wm-a">א</span></span><span class="wm-suffix">נדל״ן</span></a>
+      <p class="hdr-lic">אלכס רויט, מתווך נדל״ן, רישיון מס׳ <span class="num">3141979</span></p>
+    </div>
+    <div class="hdr-end">
+      <nav class="hdr-nav" aria-label="ניווט בעמוד"><a href="#marketing">שיווק</a><a href="#listings">נכסים</a><a href="#faq">שאלות</a></nav>
+      <a class="btn-wa btn-wa--sm" href="https://wa.me/972544944622?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A0%D7%9B%D7%A1%20%D7%9C%D7%9E%D7%9B%D7%99%D7%A8%D7%94%20%D7%91___%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%90%D7%99%D7%9A%20%D7%AA%D7%A9%D7%95%D7%95%D7%A7%D7%95%20%D7%90%D7%95%D7%AA%D7%95%20%28%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%29" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>וואטסאפ<span class="vh"> (נפתח בחלון חדש)</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="h1">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <p class="label">מכירה והשכרה · כפר סבא, השרון וכל הארץ</p>
+      <h1 id="h1">מתווך נדל״ן בכפר סבא ובשרון<span class="h1-sub">אבא ובן, 15 שנה בתחום</span></h1>
+      <p class="lead">כל נכס שנכנס אלינו מקבל לוח שיווק כתוב של שבועיים. אתם יודעים מראש מה עולה, ובאיזה יום.</p>
+      <div>
+        <div class="cta-row" id="heroCta">
+          <a class="btn-wa" href="https://wa.me/972544944622?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A0%D7%9B%D7%A1%20%D7%9C%D7%9E%D7%9B%D7%99%D7%A8%D7%94%20%D7%91___%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%90%D7%99%D7%9A%20%D7%AA%D7%A9%D7%95%D7%95%D7%A7%D7%95%20%D7%90%D7%95%D7%AA%D7%95%20%28%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%29" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>שלחו וואטסאפ על הנכס<span class="arr" aria-hidden="true">←</span><span class="vh"> (נפתח בחלון חדש)</span></a>
+          <a class="lnk" href="tel:+972544944622">או התקשרו <bdi dir="ltr" class="num">054-4944622</bdi></a>
+        </div>
+        <p class="cta-note" style="margin-top:10px">נפתחת הודעה מוכנה. רק תשלימו את העיר.</p>
+      </div>
+      <p class="hero-proof"><span class="num">כ-8,600</span> עוקבים בשני עמודי הפייסבוק שלנו</p>
+    </div>
+    <figure class="hero-photo">
+      <div class="ph" role="img" aria-label="מקום לצילום נכס אמיתי של אלכס רויט"><b>תמונה אמיתית תבוא כאן</b><span>נכס שאלכס צילם: הסלון או החזית, באור יום</span></div>
+      <figcaption class="credit utility">צילום: אלכס רויט</figcaption>
+    </figure>
+    <div class="hero-bar">
+      <p class="label" style="margin-bottom:12px">לוח ההשקה של כל נכס</p>
+      <div class="sbar" data-marker="0"></div>
+      <div class="day-grid utility">
+        <span class="dg-0">יום 0<span class="lbl-long"> · כל הערוצים</span></span>
+        <span class="dg-3">יום 3<span class="lbl-long"> · קרוסלה וסטורי</span></span>
+        <span class="dg-7">יום 7<span class="lbl-long"> · סרטון שכונה</span></span>
+        <span class="dg-14">יום 14<span class="lbl-long"> · עדיין זמין</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="route band" id="marketing" aria-labelledby="h-marketing">
+  <div class="wrap">
+    <div class="sec-head"><span class="label">01 · שיווק</span><span class="label">לוח שיווק · 14 יום</span></div>
+    <h2 class="h2" id="h-marketing">איך נשווק את הנכס שלכם</h2>
+    <p class="lead intro">מכירת דירה בשרון מתחילה אצלנו במצלמה של אלכס. מהיום שהנכס עולה לאוויר יש לו לוח פרסום של שבועיים, כתוב מראש, ואתם רואים אותו כאן לפני שחותמים.</p>
+
+    <div class="before">
+      <span class="label">לפני יום 0</span>
+      <ol class="step-list">
+        <li><span class="idx utility">01</span><h3>צילום</h3><p>אלכס מגיע לנכס ומצלם אותו בעצמו, תמונות וסרטונים. <span class="fill">[למלא: תוך כמה ימים מהחתימה מגיעים לצלם]</span></p></li>
+        <li><span class="idx utility">02</span><h3>עריכה</h3><p>הבן עורך את הצילומים לרילס ולקרוסלת תמונות, וכותב את הטקסט לפוסט.</p></li>
+      </ol>
+    </div>
+
+    <div class="plan">
+      <div class="sbar" data-marker="14" data-play></div>
+      <ol class="day-grid days">
+        <li class="day d0 dg-0">
+          <span class="idx utility">03 · יום</span>
+          <span class="dnum" aria-hidden="true">0</span>
+          <h3><span class="vh">יום 0: </span>כל הערוצים</h3>
+          <p>רילס ופוסט נפרד בכל אחד משני עמודי הפייסבוק, ובנוסף אינסטגרם, טיקטוק, סטטוס וואטסאפ, קבוצות הנדל״ן באזור ויד2.</p>
+        </li>
+        <li class="day d3 dg-3">
+          <span class="idx utility">04 · יום</span>
+          <span class="dnum" aria-hidden="true">3</span>
+          <h3><span class="vh">יום 3: </span>קרוסלה וסטורי</h3>
+          <p>קרוסלת תמונות וסטורי. <span class="fill">[למלא: באילו ערוצים]</span></p>
+        </li>
+        <li class="day d7 dg-7">
+          <span class="idx utility">05 · יום</span>
+          <span class="dnum" aria-hidden="true">7</span>
+          <h3><span class="vh">יום 7: </span>סרטון שכונה</h3>
+          <p>סרטון שני, הפעם על השכונה ומה יש בסביבה. <span class="fill">[למלא: באילו ערוצים]</span></p>
+        </li>
+        <li class="day d14 dg-14">
+          <span class="idx utility">06 · יום</span>
+          <span class="dnum" aria-hidden="true">14</span>
+          <h3><span class="vh">יום 14: </span>עדיין זמין, או מחיר חדש</h3>
+          <p>פוסט "עדיין זמין" או עדכון מחיר, ושוב בקבוצות הנדל״ן.</p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="sold-line">
+      <span class="tag-sold">נמכר!</span>
+      <p>כשהנכס נמכר, עולה פוסט "נמכר!" בשני העמודים. 14 הימים הם לוח ההשקה של הנכס, ומתי הוא יימכר תלוי בשוק ובמחיר. <span class="fill">[למלא: מה ממשיך לקרות אחרי יום 14]</span></p>
+    </div>
+    <p class="lands">אותו לוח לכל נכס.</p>
+    <div class="cta-row">
+      <a class="btn-wa" href="https://wa.me/972544944622?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A0%D7%9B%D7%A1%20%D7%9C%D7%9E%D7%9B%D7%99%D7%A8%D7%94%20%D7%91___%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%90%D7%99%D7%9A%20%D7%AA%D7%A9%D7%95%D7%95%D7%A7%D7%95%20%D7%90%D7%95%D7%AA%D7%95%20%28%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%29" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>ספרו לנו על הנכס בוואטסאפ<span class="arr" aria-hidden="true">←</span><span class="vh"> (נפתח בחלון חדש)</span></a>
+      <a class="lnk" href="https://wa.me/972544944622?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A0%D7%9B%D7%A1%20%D7%9C%D7%94%D7%A9%D7%9B%D7%A8%D7%94%20%D7%91___%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%90%D7%99%D7%9A%20%D7%AA%D7%A9%D7%95%D7%95%D7%A7%D7%95%20%D7%90%D7%95%D7%AA%D7%95%20%28%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%29" target="_blank" rel="noopener">משכירים? אותו לוח. לוואטסאפ למשכירים</a>
+    </div>
+    <p class="cta-note" style="margin-top:10px">נפתחת הודעה מוכנה. השלימו את העיר ושלחו.</p>
+  </div>
+</section>
+
+<section class="reach sand" aria-labelledby="h-reach">
+  <div class="wrap">
+    <div class="reach-in">
+      <p class="reach-num" aria-hidden="true">כ-8,600</p>
+      <div class="reach-text">
+        <p class="label">פייסבוק · נכון לאוקטובר 2026</p>
+        <h2 id="h-reach"><span class="vh">כ-8,600 </span>עוקבים בשני עמודי פייסבוק</h2>
+        <p class="reach-sum utility">5,400 בעמוד של אלכס + 3,200 בעמוד של הבן</p>
+        <p>ביום 0 כל נכס עולה בפוסט נפרד בכל אחד משני העמודים. לא כל עוקב רואה כל פוסט, ככה פייסבוק עובד. באינסטגרם התחלנו לאחרונה, אז שם עוד אין מה לספור.</p>
+        <p><span class="fill">[למלא: קישורים לשני עמודי הפייסבוק]</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="family" id="about" aria-labelledby="h-family">
+  <div class="wrap">
+    <div class="sec-head"><span class="label">02 · אב ובן</span><span class="label">15 שנה בתחום</span></div>
+    <div class="family-top">
+      <h2 class="h2" id="h-family">אבא מצלם, הבן עורך</h2>
+      <div class="copy">
+        <p>אנחנו אב ובן, 15 שנה בתיווך נדל״ן. כל נכס עובר דרך שנינו לפני שהוא עולה לאוויר.</p>
+        <p>מול המצלמה עומד רק הנכס. אנחנו מאחוריה.</p>
+      </div>
+    </div>
+    <div class="family-grid">
+      <figure class="fg-father">
+        <div class="ph" role="img" aria-label="מקום לתמונה אמיתית של אלכס רויט בצילום נכס"><b>תמונה אמיתית תבוא כאן</b><span>אלכס בצילום נכס, או המצלמה שלו על חצובה בסלון</span><i>4:5</i></div>
+        <figcaption class="fg-cap">
+          <b>אלכס רויט</b>
+          <span class="muted">מתווך נדל״ן · רישיון מס׳ <span class="num">3141979</span></span>
+          <span>מצלם כל נכס בעצמו, תמונות וסרטונים. אין לו יום צילומים קבוע. יש נכס, יוצאים לצלם.</span>
+        </figcaption>
+      </figure>
+      <blockquote class="fg-quote">
+        <p class="quote"><span class="fill">[למלא: משפט או שניים במילים שלכם, כמו שאתם מדברים עם לקוח]</span></p>
+      </blockquote>
+      <figure class="fg-son">
+        <div class="ph" role="img" aria-label="מקום לתמונה אמיתית של מסך העריכה"><b>תמונה אמיתית תבוא כאן</b><span>מסך העריכה באמצע רילס של נכס</span><i>1:1</i></div>
+        <figcaption class="fg-cap">
+          <b><span class="fill">[למלא: שם הבן]</span></b>
+          <span class="muted">שיווק ועריכה</span>
+          <span>לוקח את הצילומים של אבא ועורך מהם רילס וקרוסלות, וכותב את הטקסט לפוסטים.</span>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="cta-row">
+      <a class="btn-wa" href="https://wa.me/972544944622?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A0%D7%9B%D7%A1%20%D7%9C%D7%9E%D7%9B%D7%99%D7%A8%D7%94%20%D7%91___%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%90%D7%99%D7%9A%20%D7%AA%D7%A9%D7%95%D7%95%D7%A7%D7%95%20%D7%90%D7%95%D7%AA%D7%95%20%28%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%29" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>כתבו לנו על הנכס<span class="arr" aria-hidden="true">←</span><span class="vh"> (נפתח בחלון חדש)</span></a>
+      <a class="lnk" href="tel:+972544944622">או התקשרו <bdi dir="ltr" class="num">054-4944622</bdi></a>
+    </div>
+  </div>
+</section>
+
+<section class="listings" id="listings" aria-labelledby="h-listings">
+  <div class="wrap">
+    <div class="sec-head"><span class="label">03 · נכסים</span><span class="label">דירות למכירה בשרון · נכסים להשכרה</span></div>
+    <div class="listings-head">
+      <h2 class="h2" id="h-listings">נכסים בשיווק עכשיו</h2>
+      <p>כל נכס כאן צולם על ידי אלכס רויט, וליד כל אחד כתוב באיזה יום של הלוח הוא נמצא.</p>
+    </div>
+    <div class="empty">
+      <div>
+        <p class="msg">הרשימה מתעדכנת. בינתיים, הנכסים החדשים עולים קודם בפייסבוק.</p>
+        <p class="links"><span class="fill">[למלא: קישורים לעמוד של אלכס ולעמוד של הבן]</span></p>
+      </div>
+      <div>
+        <a class="btn-wa" href="https://wa.me/972544944622?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%97%D7%A4%D7%A9/%D7%AA%20%D7%A0%D7%9B%D7%A1%20%D7%91___%20%28%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%29" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>ספרו לנו מה אתם מחפשים<span class="arr" aria-hidden="true">←</span><span class="vh"> (נפתח בחלון חדש)</span></a>
+        <p class="cta-note" style="margin-top:10px">נפתחת הודעה מוכנה. השלימו את האזור.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="areas" aria-labelledby="h-areas">
+  <div class="wrap">
+    <div class="sec-head"><span class="label">04 · אזורים</span><span class="label">סוגי עסקאות</span></div>
+    <div class="areas-grid">
+      <div class="areas-main">
+        <h2 class="h2" id="h-areas">תיווך נדל״ן בשרון ובכל הארץ</h2>
+        <p class="cities">כפר סבא<span class="sep" aria-hidden="true">·</span>השרון<span class="sep" aria-hidden="true">·</span>כל הארץ <span class="fill">[למלא: עוד ערים ושכונות שאתם עובדים בהן]</span></p>
+        <p>הכי חזקים בכפר סבא ובשרון, ועובדים גם בכל הארץ. נכס מחוץ לשרון מקבל את אותו לוח של שבועיים.</p>
+        <p><a class="lnk" href="https://wa.me/972544944622?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A0%D7%9B%D7%A1%20%D7%9C%D7%9E%D7%9B%D7%99%D7%A8%D7%94%20%D7%91___%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%90%D7%99%D7%9A%20%D7%AA%D7%A9%D7%95%D7%95%D7%A7%D7%95%20%D7%90%D7%95%D7%AA%D7%95%20%28%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%29" target="_blank" rel="noopener">הנכס שלכם מחוץ לשרון? שלחו וואטסאפ</a></p>
+      </div>
+      <table class="deal-table">
+        <caption>מגורים ונדל״ן מסחרי</caption>
+        <thead><tr><td></td><th scope="col">מכירה</th><th scope="col">השכרה</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">מגורים</th><td>כן</td><td>כן</td></tr>
+          <tr><th scope="row">מסחרי</th><td>כן</td><td>כן</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq" aria-labelledby="h-faq">
+  <div class="wrap">
+    <div class="sec-head"><span class="label">05 · שאלות</span><span class="label">לפני שחותמים</span></div>
+    <div class="faq-grid">
+      <div class="faq-side"><div>
+        <h2 class="h2" id="h-faq">שאלות של בעלי נכסים</h2>
+        <p>השאלות שכדאי לשאול כל מתווך לפני שחותמים, והתשובות שלנו.</p>
+      </div></div>
+      <div class="faq-list">
+        <details>
+          <summary>כמה זמן לוקח השיווק?</summary>
+          <div class="ans"><p>חבילת ההשקה נמשכת שבועיים, מיום 0 ועד יום 14, לפי הלוח שלמעלה. לזה אנחנו מתחייבים. מתי הנכס יימכר תלוי בשוק ובמחיר, ואת זה אף מתווך לא יכול להבטיח מראש. <span class="fill">[למלא: מה ממשיך לקרות אחרי יום 14]</span></p></div>
+        </details>
+        <details>
+          <summary>מי מצלם את הנכס?</summary>
+          <div class="ans"><p>אלכס רויט, בעצמו. הוא מצלם תמונות וסרטונים, והבן עורך מהם את הרילס ואת הקרוסלה. <span class="fill">[למלא: תוך כמה זמן מגיעים לצלם]</span></p></div>
+        </details>
+        <details>
+          <summary>איפה הנכס יתפרסם?</summary>
+          <div class="ans"><p>ביום 0 בכל הערוצים: פוסט נפרד בכל אחד משני עמודי הפייסבוק שלנו (כ-8,600 עוקבים ביחד), ובנוסף אינסטגרם, טיקטוק, סטטוס וואטסאפ, קבוצות הנדל״ן באזור ויד2. משם ממשיכים לפי הלוח עד יום 14.</p></div>
+        </details>
+        <details>
+          <summary>אתם עובדים גם בהשכרת דירות ובנכסים מסחריים?</summary>
+          <div class="ans"><p>כן. מכירה והשכרה, מגורים ומסחרי. נכס להשכרה מקבל את אותו לוח של שבועיים.</p></div>
+        </details>
+        <details>
+          <summary>אתם עובדים מחוץ לשרון?</summary>
+          <div class="ans"><p>כן, בכל הארץ, ונכס מחוץ לשרון מקבל את אותו לוח. <span class="fill">[למלא: תוך כמה זמן מגיעים לצלם נכס רחוק]</span></p></div>
+        </details>
+        <details>
+          <summary>צריך לחתום על משהו?</summary>
+          <div class="ans"><p>כן. לפי חוק המתווכים במקרקעין, מתווך זכאי לדמי תיווך רק אם יש הזמנת שירותי תיווך בכתב, חתומה על ידכם. <span class="fill">[למלא: איך זה נעשה אצלכם, למשל בפגישה בנכס או בחתימה דיגיטלית]</span></p></div>
+        </details>
+        <details>
+          <summary>כמה עולה עמלת התיווך?</summary>
+          <div class="ans"><p><span class="fill">[למלא: מדיניות העמלה במילים פשוטות: אחוז ממחיר העסקה או מדמי השכירות, כולל מע״מ או לא, ומתי משלמים]</span></p></div>
+        </details>
+        <details>
+          <summary>חייבים לחתום על בלעדיות? לכמה זמן?</summary>
+          <div class="ans"><p><span class="fill">[למלא: האם אתם עובדים בבלעדיות, לכמה זמן, ומה קורה בסוף התקופה]</span></p></div>
+        </details>
+        <div class="faq-more">
+          <a class="btn-wa" href="https://wa.me/972544944622?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A0%D7%9B%D7%A1%20%D7%9C%D7%9E%D7%9B%D7%99%D7%A8%D7%94%20%D7%91___%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%90%D7%99%D7%9A%20%D7%AA%D7%A9%D7%95%D7%95%D7%A7%D7%95%20%D7%90%D7%95%D7%AA%D7%95%20%28%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%29" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>שלחו שאלה בוואטסאפ<span class="arr" aria-hidden="true">←</span><span class="vh"> (נפתח בחלון חדש)</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing band" id="contact" aria-labelledby="h-contact">
+  <div class="wrap">
+    <div class="sbar" data-marker="0"></div>
+    <div class="closing-grid">
+      <div>
+        <h2 class="h2" id="h-contact">דברו איתנו בוואטסאפ</h2>
+        <p class="lead">שורה אחת על הנכס מספיקה כדי להתחיל.</p>
+        <div>
+          <a class="btn-wa btn-wa--lg" href="https://wa.me/972544944622?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A0%D7%9B%D7%A1%20%D7%9C%D7%9E%D7%9B%D7%99%D7%A8%D7%94%20%D7%91___%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%90%D7%99%D7%9A%20%D7%AA%D7%A9%D7%95%D7%95%D7%A7%D7%95%20%D7%90%D7%95%D7%AA%D7%95%20%28%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%29" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>שלחו וואטסאפ<span class="arr" aria-hidden="true">←</span><span class="vh"> (נפתח בחלון חדש)</span></a>
+          <p class="cta-note" style="margin-top:10px">ההודעה כבר כתובה. חסרה בה רק העיר.</p>
+        </div>
+      </div>
+      <div class="closing-phone">
+        <span class="label">או התקשרו</span>
+        <a href="tel:+972544944622"><bdi dir="ltr">054-4944622</bdi></a>
+        <span class="utility muted">אלכס רויט, מתווך נדל״ן, רישיון מס׳ 3141979</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-grid">
+      <div class="ftr-id">
+        <a class="wm" href="#top" aria-label="ביתא נדל״ן, לראש העמוד"><span class="wm-word"><span class="wm-bet">בית</span><span class="wm-a">א</span></span><span class="wm-suffix">נדל״ן</span></a>
+        <p>אלכס רויט, מתווך נדל״ן, רישיון תיווך מס׳ <span class="num">3141979</span></p>
+        <p class="muted">צילומי הנכסים באתר: אלכס רויט</p>
+      </div>
+      <div class="ftr-col">
+        <span class="label">קשר</span>
+        <a class="lnk" href="tel:+972544944622"><bdi dir="ltr" class="num">054-4944622</bdi></a>
+        <span>טלפון וגם וואטסאפ</span>
+        <span>מכירה והשכרה בכפר סבא, בשרון ובכל הארץ</span>
+      </div>
+      <div class="ftr-col">
+        <span class="label">ברשתות</span>
+        <span class="fill">[למלא: פייסבוק של אלכס, פייסבוק של הבן, אינסטגרם, טיקטוק]</span>
+      </div>
+      <div class="ftr-legal">
+        <span>© 2026 ביתא נדל״ן · Beta Nadlan</span>
+        <span class="fill">[למלא: הצהרת נגישות ואיש קשר לנגישות]</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="abar">
+  <a class="btn-wa" href="https://wa.me/972544944622?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A0%D7%9B%D7%A1%20%D7%9C%D7%9E%D7%9B%D7%99%D7%A8%D7%94%20%D7%91___%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%90%D7%99%D7%9A%20%D7%AA%D7%A9%D7%95%D7%95%D7%A7%D7%95%20%D7%90%D7%95%D7%AA%D7%95%20%28%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%29" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>שלחו וואטסאפ<span class="vh"> (נפתח בחלון חדש)</span></a>
+  <a class="call" href="tel:+972544944622">חיוג<span class="utility"><bdi dir="ltr">054-4944622</bdi></span></a>
+</div>
+<div id="copied" class="copied" role="status" hidden></div>
+</div>
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Scale bars: 15 ticks (major at 0/3/7/14), three segments, a marker on day --m */
+  document.querySelectorAll('.sbar').forEach(bar => {
+    const m = Number(bar.dataset.marker || 0);
+    let html = '';
+    for (let d = 0; d <= 14; d++) html += `<span class="tk${[0, 3, 7, 14].includes(d) ? ' mj' : ''}" style="--d:${d}"></span>`;
+    html += '<span class="sg s1"></span><span class="sg s2"></span><span class="sg s3"></span>';
+    html += `<span class="mk" style="--m:${m}"></span>`;
+    if (bar.dataset.sold !== undefined) html += '<span class="sold"><span class="tag-sold">נמכר!</span></span>';
+    bar.insertAdjacentHTML('afterbegin', html);
+    bar.setAttribute('aria-hidden', 'true');
+  });
+
+  /* The marketing bar plays once: the marker travels 0 → 14 and settles into the sold tag */
+  const playBar = document.querySelector('.sbar[data-play]');
+  if (playBar && !reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      if (entries.some(e => e.isIntersecting)) { playBar.classList.add('play'); io.disconnect(); }
+    }, { threshold: 0.35 });
+    io.observe(playBar.closest('section') || playBar);
+  }
+
+  /* Header gets a sheet background once the page scrolls */
+  const hdr = document.querySelector('.hdr');
+  const onScroll = () => hdr && hdr.classList.toggle('scrolled', window.scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* Mobile action bar: shows after the hero CTA leaves, hides while the closing section is on screen */
+  const abar = document.querySelector('.abar');
+  const heroCta = document.getElementById('heroCta');
+  const closing = document.getElementById('contact');
+  if (abar && heroCta && closing && 'IntersectionObserver' in window) {
+    let heroVisible = true, closingVisible = false;
+    const sync = () => abar.classList.toggle('on', !heroVisible && !closingVisible);
+    new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; sync(); }).observe(heroCta);
+    new IntersectionObserver(([e]) => { closingVisible = e.isIntersecting; sync(); }).observe(closing);
+  } else if (abar) abar.classList.add('on');
+
+  /* Desktop: clicking the phone number copies it; touch devices dial */
+  const fine = matchMedia('(hover: hover) and (pointer: fine)');
+  const notice = document.getElementById('copied');
+  let timer;
+  document.querySelectorAll('a[href^="tel:"]').forEach(a => {
+    a.addEventListener('click', e => {
+      if (!fine.matches || !navigator.clipboard) return;
+      e.preventDefault();
+      navigator.clipboard.writeText('054-4944622').then(() => {
+        if (!notice) return;
+        notice.textContent = 'המספר הועתק: 054-4944622';
+        notice.hidden = false;
+        clearTimeout(timer);
+        timer = setTimeout(() => { notice.hidden = true; }, 2400);
+      }, () => { location.href = a.href; });
+    });
+  });
+})();
+</script>

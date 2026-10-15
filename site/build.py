@@ -4,6 +4,7 @@ index.html   - the real website (full document, for hosting and Google)
 preview.html - the same page shaped for a Claude Artifact preview
 """
 from pathlib import Path
+from urllib.parse import quote
 
 ROOT = Path(__file__).parent
 SRC = ROOT / "src"
@@ -12,6 +13,16 @@ head = (SRC / "head.html").read_text(encoding="utf-8")
 body = (SRC / "body.html").read_text(encoding="utf-8")
 css = (SRC / "site.css").read_text(encoding="utf-8")
 js = (SRC / "site.js").read_text(encoding="utf-8")
+
+WA = "https://wa.me/972544944622?text="
+LINKS = {
+    "{{WA_SELL}}": WA + quote("שלום, יש לי נכס למכירה ב___ ואשמח לשמוע איך תשווקו אותו (הגעתי מהאתר)"),
+    "{{WA_RENT}}": WA + quote("שלום, יש לי נכס להשכרה ב___ ואשמח לשמוע איך תשווקו אותו (הגעתי מהאתר)"),
+    "{{WA_BUY}}": WA + quote("שלום, אני מחפש/ת נכס ב___ (הגעתי מהאתר)"),
+    "{{TEL}}": "tel:+972544944622",
+}
+for key, url in LINKS.items():
+    body = body.replace(key, url)
 
 FONTS = (
     '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
